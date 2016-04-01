@@ -1,6 +1,6 @@
 {
-  "name": "ArticlePage",
-  "version": "3.0.0",
+  "name": "Bizjournals Website",
+  "version": "1.0.0",
   "description": "bizjournals article page",
   "devDependencies": {
     "grunt": "^0.4.5",

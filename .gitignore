@@ -1,3 +1,5 @@
 .DS_Store
 .sass-cache
-bower_components
+bower_components/*
+/lib/*
+/node_modules/*
