@@ -1,0 +1,55 @@
+/*------------------------------------*
+    $DIRECTORY-LISTS
+
+    Can have links in a list for site section
+    Should have priority plus applied to it
+\*------------------------------------*/
+@directory-list-divider-height: 1em;
+@directory-list-divider-spacing: 1.5em;
+.directory-list {
+    display: table;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    .font-size(13px);
+
+    .viewport--md & {
+        .font-size(14px);
+    }
+    .viewport--lg & {
+        .font-size(15px);
+    }
+
+}
+.directory-list__item {
+    display: table-cell;
+
+    &:not(:first-child):not(.priority-plus__whitespace) {
+        padding-left: @directory-list-divider-spacing;
+        padding-left: ~"calc(@{directory-list-divider-spacing} + 1px)";
+    }
+}
+.directory-list__link {
+    display: block;
+    position: relative;
+    width: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    line-height: 1;
+
+    .directory-list__item:not(:first-child):not(.priority-plus__whitespace) &:before {
+        content: " ";
+        display: block;
+        position: absolute;
+
+        width: 1px;
+        height: @directory-list-divider-height;
+        top: 50%;
+        margin-top: -(@directory-list-divider-height/2);
+        left: -@directory-list-divider-spacing;
+        left: ~"calc(-@{directory-list-divider-spacing}/2 - 1px)";
+
+        background: darken(@border-color, 15%);
+    }
+}

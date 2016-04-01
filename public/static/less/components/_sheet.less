@@ -1,0 +1,91 @@
+/*------------------------------------*
+    $SHEET
+\*------------------------------------*/
+.sheet {
+    display: none;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: @z-sheets;
+	overflow: hidden;
+
+	border-top: @header-top-border-color solid @header-top-border-width--mobile;
+
+	background: @sheet-background;
+
+	&.is-open {
+	    display: block;
+	}
+
+    .viewport--md &.not-full-width {
+        top: 5%;
+        right: auto;
+        bottom: 5%;
+        left: auto;
+    }
+
+}
+.sheet__header {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: @z-sheets + 10;
+
+    .box-shadow(0 1px 1px fade(@black, 36%));
+
+    .titlebar {
+        box-shadow: none;
+    }
+}
+.sheet__body {
+	position: absolute;
+	top: @menubar-height--mobile; // Make room for titlebar
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding-right: -@sheet-spacing-unit;
+    padding-left: -@sheet-spacing-unit;
+	//max-width: @sheet-body-max-width;
+
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	overflow-scrolling: touch;
+
+	background: @white;
+
+	.viewport--xs-only .sheet--has-fixed-leaderboard &,
+	.viewport--sm-only .sheet--has-fixed-leaderboard & {
+		top: @menubar-height--mobile + 50; // Make room for titlebar and ad
+	}
+
+	// .viewport--md .sheet--has-fixed-island & {
+	// 	right: (300px + (2 * @sheet-spacing-unit));
+	// }
+	.viewport--md .sheet--has-fixed-leaderboard & {
+		top: @sheet-leaderboard-height + @menubar-height--mobile;
+	}
+}
+.sheet__island {
+	// position: absolute;
+	// top: @menubar-height--mobile + @sheet-spacing-unit;
+	// right: @sheet-spacing-unit;
+}
+.sheet__leaderboard {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: @sheet-leaderboard-height;
+// 	padding-top: @sheet-spacing-unit;
+// 	padding-bottom: @sheet-spacing-unit;
+
+	// .viewport--md .sheet--has-fixed-island & {
+	// 	right: (300px + (2 * @sheet-spacing-unit));
+	// }
+}
+// Used when disabling sheets as a part of premium content strategy
+.js-paywall-trigger { cursor: pointer; }

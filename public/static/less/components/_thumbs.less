@@ -1,0 +1,133 @@
+/*------------------------------------*
+    $THUMBS
+\*------------------------------------*/
+
+// .row modifier to have 2px betwen each thumb on sides and on bottom.
+@row-thumbs-gutter: 2px;
+@row-thumbs-column-spacing: (@row-thumbs-gutter / 2);
+
+@row-thumbs-spread-gutter: 8px;
+@row-thumbs-spread-column-spacing: (@row-thumbs-spread-gutter / 2);
+.row--thumbs,
+[class*='viewport--'] .row--thumbs {
+    margin-top: @row-thumbs-gutter;
+    margin-right: -@row-thumbs-column-spacing;
+    margin-left: -@row-thumbs-column-spacing;
+}
+.row--thumbs > *,
+[class*='viewport--'] .row--thumbs > * {
+    padding-right: @row-thumbs-column-spacing;
+    padding-left: @row-thumbs-column-spacing;
+
+    margin-bottom: @row-thumbs-gutter;
+}
+
+.row--thumbs--spread,
+[class*='viewport--'] .row--thumbs--spread {
+    margin-top: @row-thumbs-spread-gutter;
+    margin-right: -@row-thumbs-spread-column-spacing;
+    margin-left: -@row-thumbs-spread-column-spacing;
+}
+.row--thumbs--spread > *,
+[class*='viewport--'] .row--thumbs--spread > * {
+    padding-right: @row-thumbs-spread-column-spacing;
+    padding-left: @row-thumbs-spread-column-spacing;
+
+    margin-bottom: @row-thumbs-spread-gutter;
+}
+// one off style to remove top margin in the XL viewport for in-content media featured items
+.media--featured .row--thumbs .row--thumbs {
+    margin-top: 0;
+}
+/*
+The opacity and transition HAVE TO be on the immediate parent element of the image.
+Otherwise, GPU rending during the transition changes the image in undesireable ways.
+
+So .thumb-link will primarily be used to apply active states to the thumbnail display,
+while .hover-fade will wrap the image and handle opacity/transition.
+*/
+.hover-fade {
+    opacity: .90;
+
+    .transition(opacity 100ms ease-out);
+
+    a&:hover,
+    a:hover & {
+        opacity: 1;
+        .transition(opacity 100ms ease-out);
+    }
+}
+.thumb-link {
+    display: block;
+    position: relative;
+}
+.thumb-link--active {
+    opacity: 1;
+    .transition(opacity 100ms ease-out);
+}
+
+.thumb-link img :extend(.img--block) {}
+
+.thumb-link [class^="crop--"]:before {
+    .thumb-outline();
+}
+.thumb-link:hover [class^="crop--"]:before {
+    .thumb-outline-hover();
+}
+// TODO Don't use the crop classes
+
+.thumb-link--active [class^="crop--"]:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: @white;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+
+    .ruby & {
+        border-bottom-color: @ruby;
+    }
+    .sapphire & {
+        border-bottom-color: @sapphire;
+    }
+    .emerald & {
+        border-bottom-color: @emerald;
+    }
+}
+.thumb-link--top-rule {
+    margin-top: 4px; // Make room for the rule
+}
+.thumb-link--top-rule:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: -4px;
+    left: 0;
+    height: 2px;
+    background: @white;
+    border-top-style: solid;
+    border-top-width: 2px;
+
+    .ruby & {
+        border-top-color: @ruby;
+    }
+    .sapphire & {
+        border-top-color: @sapphire;
+    }
+    .emerald & {
+        border-top-color: @emerald;
+    }
+}
+/*
+.thumb-link--active img,
+.thumb-link--active [class^="crop--"] img {
+    opacity: 1;
+}
+*/

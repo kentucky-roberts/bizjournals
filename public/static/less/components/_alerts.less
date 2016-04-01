@@ -1,0 +1,119 @@
+/*------------------------------------*
+    $ALERTS
+    Initially based on alerts from Bootstrap 3.x
+\*------------------------------------*/
+.generate-alert(@background; @border; @text-color) {
+    background-color: @background;
+    border-color: @border;
+    color: @text-color;
+
+    hr {
+        border-top-color: darken(@border, 5%);
+    }
+    .alert__title {
+	   color: darken(@text-color, 15%);
+	}
+    .alert__link {
+        color: darken(@text-color, 10%);
+    }
+}
+.alert {
+    margin-bottom: 1em;
+    padding: .5em 1em;
+
+    font-family: @alert__font-family;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: @border-color;
+    border-radius: 0.333em; // TODO: Don't hardcode this
+}
+.alert--success {
+    .generate-alert(@alert--success__bg-color, @alert--success__border-color, @alert--success__text-color);
+}
+.alert--info {
+    .generate-alert(@alert--info__bg-color, @alert--info__border-color, @alert--info__text-color);
+}
+.alert--warning {
+    .generate-alert(@alert--warning__bg-color, @alert--warning__border-color, @alert--warning__text-color);
+}
+.alert--error {
+    .generate-alert(@alert--error__bg-color, @alert--error__border-color, @alert--error__text-color);
+}
+
+
+/* Renewal Badge Alert */
+.icon-attention {
+    &.renewal-badge {
+        display: none;
+    
+        &--hot {
+            display: inline-block;
+            color: @warning-state;
+        }
+        
+        &--cold {
+            display: inline-block;
+            color: @gray-light;
+        }
+    }
+}
+
+/* Renewal Module */
+.renewal-poke {
+    display: none;
+    background: @champagne-light;
+    
+    &.renewal-poke--active {
+        display: block;
+    }
+    
+    &.module--padded {
+        margin-bottom: 0;
+        padding-bottom: 1.4em;
+        margin-left: -20px; // Remove menu padding
+        margin-right: -20px; // Remove menu padding
+    }
+}
+
+/* Error Notification */
+.notification-detail {
+    .notification-detail__title {
+        margin: 0;
+        font-family: @font-family;
+        font-size: 16px;
+        font-weight: bold;
+
+        .notification-detail--error& {
+            color: @error-state;
+        }
+        .notification-detail--warning& {
+            color: @warning-state;
+        }
+        .notification-detail--success& {
+            color: @success-state;
+        }
+    }
+    
+    ul {
+        font-size: 12px; 
+        margin-top: .5em;
+        
+        li {
+            font-size: 12px; 
+            margin-top: .5em; 
+            list-style-type: disc; 
+            list-style-position: inside;
+            
+            .notification-detail--error& {
+                color: @error-state;
+            }
+            .notification-detail--warning& {
+                color: @warning-state;
+            }
+            .notification-detail--success& {
+                color: @success-state;
+            }
+        }
+    }
+}

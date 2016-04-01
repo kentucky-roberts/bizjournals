@@ -1,0 +1,65 @@
+// Is this still being used? as of 4/14/15 the author mug was updated to a float
+
+.flag {
+    display: table;
+}
+.flag__media,
+.flag__body {
+    display: table-cell;
+	vertical-align: top;
+}
+.flag__media {
+    width: @flag__media-width;
+	min-width: @flag__media-min-width;
+	padding-right: (@flag__gutter-width / 2);
+
+	img:extend(.img--block){}
+}
+.flag__body {
+    width: 100%;
+    padding-right: (@flag__gutter-width / 2);
+}
+.flag__media + .flag__body {
+    padding-left: (@flag__gutter-width / 2);
+}
+.flag__body + .flag__media {
+    padding-right: 0;
+	padding-left: (@flag__gutter-width / 2);
+}
+
+/*
+Changing previous values here, for use on 3col.
+Working under the notion that it's safe to change these here (and not as an override in _article-3col.less)
+since the author photo was never used on 2col in production.
+
+Also, should this naming be related to the author photo, or more generic, based on size?
+*/
+.flag__media--author-photo {
+    width: 100%;
+    min-width: 58px;
+
+    .viewport--lg &,
+    .viewport--xl & {
+        width: 68px;
+    }
+}
+
+// flag specifics for pulse chart legend style
+@color-block-size: 44px;
+
+.flag__pulse {
+    .flag__media {
+        width:@color-block-size;
+        min-width: @color-block-size;
+
+        .color-block {
+            width: @color-block-size;
+            height:@color-block-size;
+
+            .viewport--sm & {
+                width: (@color-block-size + 22);
+                height:(@color-block-size + 22);
+            }
+        }
+    }
+}

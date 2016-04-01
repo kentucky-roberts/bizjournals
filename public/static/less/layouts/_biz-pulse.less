@@ -1,0 +1,176 @@
+
+/* ---------------------------------------------
+   Generate color scheme for Bizpulse results
+   bars
+--------------------------------------------- */
+.generate-answer-bar-background (@market-color; @lighten-max: 90%; @lighten-steps: 9; @i: 0) when (@i <= @lighten-steps) {
+    .@{market-color} {
+        .result__answer__bar--@{i} { background: lighten(@@market-color, (@lighten-max / @lighten-steps) * @i); }
+    }
+    .generate-answer-bar-background (@market-color, @lighten-max, @lighten-steps, (@i + 1));
+}
+
+.generate-answer-bar-background(sapphire, 65%);
+.generate-answer-bar-background(ruby, 40%);
+.generate-answer-bar-background(emerald, 80%);
+
+/* ---------------------------------------------
+   Response message - Bizpulse results page
+   and elsewhere...
+--------------------------------------------- */
+.response-message {
+    .padding-top(@module__spacing);
+    .padding-bottom(@module__spacing);
+    // .margin-bottom(@module__spacing);
+
+    // border-bottom: 1px solid @border-color;
+
+    [class*="icon--"] {
+        font-size: 9em;
+        color: @sapphire;
+
+        .viewport--xs & {
+            font-size: 6em;
+        }
+
+        .sapphire & { color: @sapphire; }
+        .ruby & { color: @ruby; }
+        .emerald & { color: @emerald; }
+    }
+}
+    .response-message__title,
+    .response-message__sub-title {
+        display: block;
+    }
+    .response-message__title {
+        margin-top:.25em;
+        margin-bottom:.25em;
+    }
+    .response-message__sub-title {
+        font-weight: normal;
+    }
+    .response-score {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        margin-bottom:.125em;
+        background-color: @sapphire;
+        border-radius: 200px;
+        text-align: center;
+        color: @white;
+        font-size: 5em;
+        font-weight: bold;
+        font-family: @sans-serif;;
+
+        .sapphire & { background-color: @sapphire; }
+        .ruby & { background-color: @ruby; }
+        .emerald & { background-color: @emerald; }
+    }
+    .response-score-descriptor {
+        font-size: .25em;
+        font-weight: normal;
+        display: block;
+        margin: 45px auto -15px;
+    }
+
+    .response--is-national-quiz {
+        .response-score {
+            background-color: transparent;
+            color: #222;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            font-size: 1em;
+            margin: 0;
+            display: inline;
+        }
+        .response-score-descriptor {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+        .response-score-value {
+            display: inline-block;
+            background-color: @gray-light;
+            color: #fff;
+            width: auto;
+            height: auto;
+            padding: .25em 1em;
+            border-radius: 10px;
+            font-size: 1.25em;
+        }
+    }
+
+/* ---------------------------------------------
+   form response - Bizpulse results page
+   and elsewhere...
+--------------------------------------------- */
+
+.result {
+    .margin-bottom(@module__spacing * 1.4);
+    //.font-size(17px);
+}
+.result__answer { .relative; }
+.result--correct {
+    .result__answer__type { color: @success-state; }
+    // .result__answer__graphic { background-color: lighten(@success-state, 30%); }
+}
+.result--incorrect {
+    .result__answer__type { color: @error-state; }
+    .result__answer--incorrect { background-color: lighten(@error-state, 52.5%); }
+    .result__answer--correct { background-color: lighten(@success-state, 52.5%);
+        .result__answer__type { color: @success-state; }
+    }
+}
+.result__title {
+    font-family: @sans-serif;
+    // .font-size(24px);
+}
+.result__answer__title {
+    margin-bottom: .25em;
+}
+.result__answer__score {
+    color: lighten(@gray-light, 10%);
+    // font-weight: normal;
+    margin-left: .5em;
+}
+.result__answer__bar__container {
+    border: 1px solid @gray-lighter;
+    background-color: @gray-lightest;
+}
+.result__answer__bar {
+    .height(28px);
+}
+.result__answer--scoring {
+    .result__answer {
+        padding: @module__spacing / 2;
+        margin-left: -(@module__spacing / 2);
+
+        // &:first-child {
+        //     padding-top: 0;
+        // }
+    }
+}
+.result__answer__type {
+    display: block;
+    font-weight:bold;
+}
+.result__answer__graphic {
+    position: absolute;
+    left: -70px;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background-color: @gray-lightest;
+    border-radius: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: @white;
+    font-size: 2em;
+    font-weight: 100;
+}
+
+.pulse-related-article-link {
+    .serif;
+    .font-size(15px);
+}

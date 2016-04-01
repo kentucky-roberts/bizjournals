@@ -1,0 +1,306 @@
+/*------------------------------------*
+    3 col specific layout
+\*------------------------------------*/
+.article--3col {
+    .detail__header {
+        position: relative;
+        margin-bottom: 1em;
+    }
+    .content {
+        // Overruling from base/_typography.less for right now
+        .font-size(16px);
+
+
+        // All browsers that support rem units also support vw units and calc(),
+        // So let's set the fallback in pixels but then do the calc in rems for right now.
+        // That is, if we want to continue using rems at all?
+        .viewport--sm & {
+            font-size: 16px;
+            //font-size: ~"calc( 16px + (17 - 16) * ( (100vw - 415px) / (735 - 415) ) )";
+            font-size: ~"calc( 1.6rem + (17 - 16) * ( (100vw - 41.5rem) / (735 - 415) ) )";
+
+        }
+
+        .viewport--md & {
+            font-size: 16px;
+            //font-size: ~"calc( 16px + (17 - 16) * ( (100vw - 736px) / (969 - 736) ) )";
+            font-size: ~"calc( 1.6rem + (17 - 16) * ( (100vw - 73.6rem) / (969 - 736) ) )";
+        }
+
+        .viewport--lg & {
+            font-size: 16px;
+            //font-size: ~"calc( 16px + (17 - 16) * ( (100vw - 970px) / (1200 - 970) ) )";
+            font-size: ~"calc( 1.6rem + (17 - 16) * ( (100vw - 97rem) / (1200 - 970) ) )";
+        }
+
+        .viewport--xl & {
+            .font-size(18px);
+        }
+
+        // TODO: What other selectors should be used?
+        > p,
+        > ol,
+        > ul,
+        > hr,
+        > h4,
+        > blockquote,
+        .truncated-content > p,
+        .truncated-content > ol,
+        .truncated-content > ul,
+        .truncated-content > hr,
+        .truncated-content > h4,
+        .truncated-content > blockquote,
+        .media--featured,
+        .content__segment {
+
+            .viewport--md & {
+                margin-right: 0;
+                margin-left: (180px + @buffer--tablet-ish);
+            }
+            .viewport--lg & {
+                margin-right: (300px + @gutter--desktop-ish);
+                margin-left: (180px + @gutter--desktop-ish);
+            }
+            .viewport--xl & {
+                margin-right: (300px + @gutter--desktop-ish--large);
+                margin-left: (180px + @gutter--desktop-ish--large);
+            }
+
+            &.content__segment--expander {
+                margin-top: 0;
+                margin-bottom: 1em;
+
+                .viewport--md & {
+                    margin-left: 0;
+                }
+                .viewport--lg & {
+                    margin-left: 0;
+                }
+                .viewport--xl & {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        // Establish a new block context for anything containing floats
+        // This is very brittle and scary!
+        .content__segment,
+        .media--featured {
+            .clearfix,
+            .row {
+                //display: inline-block;
+                //min-width: 100%;
+                overflow: hidden;
+            }
+        }
+
+        // .media--featured {
+        //     .row {
+//
+        //         // kill overflow on a row when in xs only for featured media images
+        //         .viewport--xs-only &.row--overflow-visible {
+        //             overflow:visible
+        //         }
+        //     }
+        // }
+
+        // new featured image layout needs to let first paragraph kill top margin md and above
+        // .viewport--md &,
+        // .viewport--lg &,
+        // .viewport--xl & {
+        //     p {
+        //         margin-top: 0;
+        //     }
+        // }
+    }
+
+    // Inset-minor gets float layout removed on phone
+    .viewport--xs-only & .inset--minor,
+    .viewport--sm-only & .inset--minor {
+        float: none;
+        clear: none;
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    .inset--minor {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+
+        .viewport--md & {
+            // Insets don't need right margin since the content__segments are padded from the left
+            margin-right: 0;
+            width: 180px; // going smaller by default
+        }
+    }
+
+    // Lots of overriding the 2col styles, which are still being treated as default for now.
+    .inset--major {
+        width: 100%;
+        float: none;
+        clear: none;
+        margin-left: 0;
+
+        .viewport--md & {
+            float: none;
+            clear: none;
+            width: auto;
+            width: ~"calc(100% - 180px - @{buffer--tablet-ish})";
+
+            // Margins same as content__segment for viewport--md
+            margin-right: 0;
+            margin-left: (180px + @buffer--tablet-ish);
+        }
+
+        .viewport--lg & {
+            width: 300px;
+            float: right;
+            clear: right;
+            .margin-left(@gutter--desktop-ish);
+        }
+        .viewport--xl & {
+            .margin-left(@gutter--desktop-ish--large);
+        }
+    }
+
+    // Smaller item metas than 2col
+    .page__meta,
+    .detail__meta,
+    .breadcrumbs {
+        .font-size(13px);
+
+        .viewport--md & {
+            .font-size(14px);
+        }
+    }
+
+    .detail__meta__byline,
+    .detail__meta__byline-info {
+        display: block;
+        line-height: 1.2;
+    }
+    .has-byline-thumb .detail__meta__byline,
+    .has-byline-thumb .detail__meta__byline-info {
+        margin-left: 48px;
+
+        .viewport--md & {
+            margin-left: 0;
+        }
+
+    }
+    .content__author {
+        .viewport--xs-only &,
+        .viewport--sm-only & {
+            .margin-top(13px);
+        }
+    }
+    .detail__meta__byline {
+        .viewport--md &  {
+            .font-size(13px);
+        }
+    }
+
+    .detail__meta__byline-info {
+        .font-size(12px);
+
+        .viewport--md & {
+            .font-size(12px);
+        }
+    }
+
+    .detail__meta__byline + .detail__meta__byline-info {
+        .viewport--md & {
+            margin-top: .5em;
+        }
+    }
+
+    .detail__meta__byline-thumb {
+        float: left;
+        width: 40px;
+        margin-right: 6px;
+        margin-bottom: 2px;
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .viewport--md & {
+            float: right;
+            width: 56px;
+            margin-right: 0;
+            margin-left: 6px;
+        }
+    }
+
+    .detail__meta__datetime + .detail__meta__datetime {
+        .viewport--xs-only &,
+        .viewport--sm-only & {
+            display: block;
+            padding-left: 0;
+        }
+    }
+
+    .content__author {
+        .clear-floats();
+
+        .viewport--md & {
+            margin-bottom: (@module__spacing * 3);
+        }
+    }
+    /*
+    Gross nesting to make room for the share menu on mobile
+    TODO: when integrating 3col as the standard template, bake this behavior in,
+        if the share button still uses the same logic
+    */
+    .detail__header {
+        .content__author,
+        .detail__meta {
+            .viewport--xs-only &,
+            .viewport--sm-only & {
+                margin-right: 82px; // Enough room for the share button
+            }
+
+        }
+    }
+
+
+    .media--featured {
+        // margin-top: 1em; // no border = no margin top
+        margin-bottom: .7em;
+
+        &.media--featured--portrait {
+            .media__media { background-color: @gray-darker; }
+
+            .img--block,
+            .item__media img,
+            .flag__media img,
+            .media__img,
+            .thumb-link img {
+                width: auto;
+                height: 389px; // xl landscape max height
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+    }
+
+    .content__segment--embargoed {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        top: 30%;
+        width: @tablet-ish - @buffer--tablet-ish;
+        z-index: 1000000;
+
+        background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 88%, #ffffff 99%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(88%, #ffffff), color-stop(99%, #ffffff));
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 88%, #ffffff 99%);
+        background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 88%, #ffffff 99%);
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 88%, #ffffff 99%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+    }
+
+}

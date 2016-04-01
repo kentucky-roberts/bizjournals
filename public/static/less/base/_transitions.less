@@ -1,0 +1,49 @@
+/*------------------------------------*
+    $TRANSITIONS
+\*------------------------------------*/
+@easeOutBack: ~"cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+.scale-in {
+    -webkit-transform: scale(.8) translateY(-20%);
+    -webkit-transform-origin: 50% -20%;
+    -webkit-transition: all .2s @easeOutBack;
+}
+.scale-in.is-scaled {
+    -webkit-transform: scale(1) translateY(0%);
+}
+
+.transition-in--opacity {
+    opacity: 0;
+}
+.transition-in--display {
+    display: block !important;
+}
+
+
+
+
+
+.overlay-layer {
+    display: none;
+    position: fixed !important;
+    top: 0;
+    right: 0 !important;
+    bottom: 0;
+    left: 0 !important;
+    overflow: hidden;
+    z-index: @z-sheets - 1 !important;
+    cursor: pointer;
+    
+    background: fade(@gray-dark, 70%) !important;
+}
+.overlay-layer--under-menubar {
+    top: @menubar-height--mobile + @header-top-border-width--mobile; // TODO: Remove hack that accounts for border
+    
+    z-index: (@z-menubar - 100) !important;
+    
+    .viewport--md & {
+        top: @menubar-height + @header-top-border-width + 1; // TODO: Remove hack that accounts for border
+    }
+}
+
+
+

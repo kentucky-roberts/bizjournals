@@ -1,0 +1,182 @@
+/*------------------------------------*
+    $Promos
+\*------------------------------------*/
+
+.promo--wide {
+    background: @champagne;
+    border-top: 2px solid @champagne;
+    padding: 4% 2%;
+    text-align: center;
+
+    .ruby & {
+        border-top-color: @ruby;
+    }
+    .sapphire & {
+        border-top-color: @sapphire;
+    }
+    .emerald & {
+        border-top-color: @emerald;
+    }
+
+    .viewport--md & {
+        &.promo--wide--flush-left {
+            text-align: left;
+        }
+    }
+
+    .promo--wide__body {
+        .promo--wide__headline {
+            font-size: 2.1rem;
+            font-family: 'Graphik Web','Helvetica Neue','Helvetica','Arial',sans-serif;
+            font-weight: normal;
+            margin-bottom: 1em;
+        }
+    }
+
+    .promo--wide__media {
+        margin-top: 3em;
+    }
+
+    // Audience updated - #17751
+    .promo--wide__media--v2 {
+        position: relative;
+        height: 210px;
+        margin-bottom: -8.5%;
+        margin-top: -2%;
+        overflow: hidden;
+
+        .promo-cover-subscribe--back {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            z-index: 10;
+            margin-left: -220px;
+        }
+
+        .promo-cover-subscribe--front {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            z-index: 11;
+            margin-left: -175px;
+
+            border: 1px solid rgb(215,215,215);
+        }
+
+    }
+
+
+    &.promo--embargo {
+        position: relative;
+        margin-top: -2.25em;
+        padding: .5em 1em 2em;
+        border-top: none;
+        border-bottom: #EDEAE4 solid 2px;
+        box-shadow: 0 -2px 4px rgba(0,0,0,.25);
+    }
+    .promo__subtitle {
+        font-size: 15px;
+    }
+
+
+    .viewport--md-only &,
+    .viewport--sm-only & {
+        .promo--wide__media--v2 {
+
+            .promo-cover-subscribe--back {
+                display: none;
+            }
+        }
+    }
+
+    .viewport--sm-only &,
+    .viewport--xs-only & {
+        .promo--wide__media--v2 {
+            margin-bottom: -4%;
+            margin-top: 1.5em;
+        }
+    }
+
+    .viewport--xs-only & {
+        .promo--wide__media--v2 {
+
+            .promo-cover-subscribe--back {
+                display: none;
+            }
+
+            .promo-cover-subscribe--front {
+                max-width: 260px;
+                // display: inline-block;
+                margin-left: -130px;
+            }
+        }
+    }
+}
+
+// Styles only for promo
+.ruby-only,
+.emerald-only,
+.sapphire-only {
+    display: none;
+}
+.ruby .ruby-only,
+.emerald .emerald-only,
+.sapphire .sapphire-only {
+    display: inline-block;
+}
+.promo-newspaper--front {
+    position: absolute;
+    right: 30%;
+    bottom: 8%;
+    max-height: 50px;
+    max-width: 90px;
+    overflow: hidden;
+    border: #dadada solid 1px;
+}
+.promo-newspaper--back {
+    position: absolute;
+    right: 29%;
+    bottom: 8%;
+    max-height: 45px;
+    max-width: 90px;
+    overflow: hidden;
+    border: #dadada solid 1px;
+}
+
+.item__event-promo {
+    height: 100%;
+    background-color: @champagne!important;
+    padding: 0 0.65em;
+    margin-top: 0;
+    margin-bottom: 1.4em;
+}
+
+.item__title--event-promo {
+    margin-top: 1px;
+    margin-top: 0.1em;
+    margin-bottom: 0.5em;
+    font-family: Acta, Georgia, 'Times New Roman', serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+    font-size: 2rem;
+    text-transform: none;
+    -webkit-font-feature-settings: "liga";
+    webkit-font-feature-settings: "liga";
+    color: #333;
+
+
+}
+
+img.item__media--promo-image {
+    border: 2px solid @champagne-dark;
+    background-color:white;
+    padding: 5px;
+
+    .viewport--xsmall & {
+        display: none;
+    }
+    .viewport--small & {
+        display: none;
+    }
+}

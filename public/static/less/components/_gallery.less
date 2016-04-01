@@ -1,0 +1,210 @@
+/*------------------------------------*
+    $GALLERY
+
+    Originally for scrolling gallery A/B test
+    Now used on Home of the Day galleries/articles
+    Copied then modified from the refactored (non-responsive) HOD pages.
+\*------------------------------------*/
+@gallery-item-container__margin-bottom: (@gutter--desktop-ish * 2);
+
+@gallery-item__controls__width: 60px;
+@gallery-item__margin-left: @gallery-item__controls__width;
+@gallery-item__inner-padding: 15px;
+
+.gallery-item-container {
+    //&:extend(.clearfix);
+    .clear-floats();
+
+    margin: 0 0 @gallery-item-container__margin-bottom;
+    .padding(@gutter--desktop-ish 0 0 0);
+
+    &:first-child {
+        padding-top: 0;
+    }
+
+    .viewport--xs & {
+        &.gallery-item-container {
+            margin-bottom:0;
+        }
+    }
+    .viewport--sm & {
+        &.gallery-item-container {
+            margin-bottom:0;
+        }
+    }
+
+}
+
+.gallery-item {
+    .gallery--slider & {
+        margin-left: 0;
+    }
+}
+
+.gallery-item__controls {
+	position: absolute;
+    float: left;
+    width: @gallery-item__controls__width;
+    font-family: @sans-serif;
+    color: @gray-light;
+    text-align: center;
+}
+
+[class*="gallery-item__controls__"] {
+    display: block;
+    text-align: center;
+    line-height: 1;
+
+    a& {
+        text-decoration: none;
+
+        &:hover {
+            color: @gray-darker;
+        }
+    }
+}
+
+.gallery-item__controls__index {
+    padding: .25em 0;
+    .font-size(36px);
+    color: @gray-darker;
+
+    &.gallery-item__controls__index--more-digits {
+        .font-size(24px);
+        padding: .625em 0;
+    }
+}
+
+.gallery-item__controls__up,
+.gallery-item__controls__down {
+    .font-size(36px);
+}
+
+.gallery-item__controls__up {
+    .margin(-12px 0 -4px 0); // Magic numbers! Because icon alignment is tricky?
+}
+
+.gallery-item__controls__down {
+    .margin(-8px 0 0 0); // Magic numbers! Because icon alignment is tricky?
+}
+
+.gallery-item__controls__prev,
+.gallery-item__controls__next {
+    .font-size(11px);
+    text-transform: uppercase;
+}
+
+.gallery-item__media,
+.gallery-item__body {
+    .margin-left(@gallery-item__margin-left);
+
+    .gallery--slider & {
+        margin-left: 0;
+    }
+}
+
+.gallery-item__media {
+    position: relative;
+    text-align: center;
+    background: #222;
+
+    img {
+        display: block;
+        margin: 0 auto;
+        height: auto;
+        max-width: 100%;
+    }
+}
+
+.gallery-item__body {
+    background: #f8f8f8;
+    border: 1px solid #e6e6e6;
+    border-top: none;
+    padding-top: 10px;
+    padding-right: 15px;
+}
+
+.gallery-item__content {
+    font-family: @serif;
+    .font-size(14px);
+    .padding(@gallery-item__inner-padding);
+}
+
+.gallery-item__art-credit {
+    .margin-left(@gallery-item__inner-padding);
+    .height(32px); // Magic number! Matches height of sharing icons
+    line-height: 32px;
+}
+
+.gallery-item__link-to-photo {
+    .padding-top(5px);
+    .padding-right(2px);
+    text-align: right;
+}
+
+// Damn. Not thrilled about how unreusable this is at the moment - Ryan.
+.gallery-item__link-to-photo__label {
+    display: inline;
+    .font-size(11px);
+    color: @gray-light;
+}
+
+input.gallery-item__link-to-photo__control {
+    .font-size(11px);
+    width: auto;
+}
+
+.gallery__leaderboard {
+    margin-top: -(@gallery-item-container__margin-bottom/2);
+}
+
+.gallery-item__title {
+    margin-top: 0;
+}
+
+.gallery-item__media__img {
+    width: 100%;
+    min-width: 100%;
+}
+
+.detail__headline {
+    width: 100%;
+
+    .viewport--xs & {
+        &.detail__headline {
+            padding-bottom: 25px;
+        }
+    }
+
+    .viewport--sm & {
+        &.detail__headline {
+            padding-bottom: 25px;
+        }
+    }
+
+    .viewport--md & {
+        &.detail__headline {
+            padding-bottom: 0;
+        }
+    }
+
+
+    .viewport--lg & {
+        &.detail__headline {
+            padding-bottom: 0;
+        }
+    }
+
+    .viewport--xl & {
+        &.detail__headline {
+            padding-bottom: 0;
+        }
+    }
+}
+
+.gallery__listing {
+
+    p {
+        font-size: 14px;
+    }
+}

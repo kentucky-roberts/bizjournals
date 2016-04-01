@@ -1,0 +1,75 @@
+// printed page level styling - margins, headers, footnotes
+// @page {
+//
+// }
+// -----------------------------------------------------------------------------
+// screen level styling - hide/show page elements, reformating for typography
+@media print {
+    // typography --------------------------------------------------------------
+    // reset to 12pt??
+    // html {
+    //     font-size: 12pt !important;
+    //     * {
+    //         color: #000 !important;
+    //         font-size: inherit !important;
+    //     }
+    // }
+    // h1 {
+    //     font-size: 21pt !important;
+    //     padding-top: 12pt !important;
+    // }
+    // .detail__subhead {
+    //     font-size: 14pt !important;
+    //     padding-top: 10pt !important;
+    // }
+    // .detail__meta,
+    // .breadcrumbs { font-size: 10pt !important; }
+    // .detail__meta { margin-top: 10pt !important; }
+    a { color: inherit !important; } // revert color to body color.
+    .print__URL {
+        text-decoration: underline;
+
+        font-weight: 900;
+    }
+    // .detail__header { padding-bottom: 12pt !important; }
+    // -------------------------------------------------------------------------
+    // layout ------------------------------------------------------------------
+    .header {
+        position: relative !important;
+        // height: 66px !important;
+    }
+    // .market-header { height: 66px !important; }
+    .clear-header { padding-top: 0 !important; }
+    // hide elements not given a hidden--print class hide
+    .menubar:after,
+    .js-truncate-cta,
+    .media__caption .read-more { display: none !important; }
+    // show items hidden by default. don't forget opacity!! :)
+    .truncated-content,
+    .media__caption .details {
+        display: block !important;
+        opacity: 1 !important;
+    }
+    .media--featured,
+    .inset {
+        width: 40% !important;
+        float: right !important;
+        margin-top: 1em !important;
+        margin-bottom: .7em !important;
+        margin-left: 1em !important;
+    }
+    .inset { margin-right: -3em !important; }
+    .media__caption {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    // -------------------------------------------------------------------------
+    // page break cases --------------------------------------------------------
+    // h1, h2, h3, h4, h5, h6 {
+    //     page-break-after: avoid;
+    // }
+    // table, figure {
+    //     page-break-inside: avoid;
+    // }
+    // -------------------------------------------------------------------------
+}

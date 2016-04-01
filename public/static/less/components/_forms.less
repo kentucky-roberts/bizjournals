@@ -1,0 +1,488 @@
+/*------------------------------------*
+    $FORMS
+
+    Much of this is adapted from Bootstrap,
+    especially using Bootstrap's basic selectors
+    and normalization.
+\*------------------------------------*/
+
+
+
+
+
+
+
+
+/*------------------------------------*
+    // Normalize non-controls
+    //
+    // Restyle and baseline non-control form elements.
+\*------------------------------------*/
+
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    // Chrome and Firefox set a `min-width: -webkit-min-content;` on fieldsets,
+    // so we reset that to ensure it behaves more like a standard block element.
+    // See https://github.com/twbs/bootstrap/issues/12359.
+    min-width: 0;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    .margin-bottom(@module__spacing);
+    font-size: 1.5em;
+    line-height: inherit;
+    color: @text-color;
+    border: 0;
+    //  border-bottom: 1px solid @legend-border-color;
+}
+
+label {
+    display: inline-block;
+    .margin-bottom(5px);
+//    font-weight: bold;
+}
+// Normalize form controls
+//
+// While most of our form styles require extra classes, some basic normalization
+// is required to ensure optimum display with or without those classes to better
+// address browser inconsistencies.
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+  .box-sizing(border-box);
+}
+
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9; /* IE8-9 */
+  line-height: normal;
+}
+
+// Set the height of file controls to match text inputs
+input[type="file"] {
+  display: block;
+}
+
+// Make range inputs behave like textual form controls
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+// Focus for file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  .tab-focus();
+}
+
+
+
+
+/*------------------------------------*
+    $DEFAULT
+\*------------------------------------*/
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    line-height: 1.2;
+    padding: .4em .8em .4em;
+
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+    .transition(~"border linear .2s, box-shadow linear .2s");
+}
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    display: inline-block;
+    //min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+    font-family: @font--form__input;
+    .font-size(16px); // Prevents zoom on mobile
+
+    color: @gray;
+    vertical-align: middle;
+    background-color: @input__bg;
+
+    border: 1px solid @input__border;
+    border-radius: @input__border-radius;
+
+    .viewport--md & {
+        .font-size(15px);
+        padding-top: .5em;
+    }
+}
+
+// Reset appearance properties for textual inputs and textarea
+// Can't be on input[type=*] selectors or it's too specific
+input,
+select,
+textarea {
+  width: 100%;
+}
+
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+input[type="file"],
+input[type="image"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+}
+
+label {
+    display: block;
+    margin-bottom: .5em;
+
+    font-family: @font--form__label;
+}
+
+select {
+    // Match the height of default buttons (font size + line-height + padding + border)
+    line-height: 2.1;
+    height: ~"calc(2.1em + 2px)";
+}
+
+.radio,
+.checkbox {
+    display: block;
+    min-height: 1em; // Clearing floated elements?
+    .margin(10px 0); // TODO: Some sort of standard units for forms?
+    .padding-left(20px);
+
+    label {
+        display: inline;
+        font-weight: normal;
+        line-height: 1.4;
+        cursor: pointer;
+    }
+}
+
+.radio--inline,
+.checkbox--inline {
+  display: inline-block;
+  .padding-left(20px);
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+}
+.radio--inline + .radio--inline,
+.checkbox--inline + .checkbox--inline {
+  margin-top: 0;
+  .margin-left(10px); // space out consecutive inline controls
+}
+
+.radio input[type="radio"],
+.radio--inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox--inline input[type="checkbox"] {
+    float: left;
+    .margin-left(-20px);
+}
+.radio + .radio,
+.checkbox + .checkbox {
+    .margin-top(-5px); // Move up sibling radios or checkboxes for tighter spacing
+}
+
+.input-overlay { position: relative; } // For overlaid buttons, like the search icon
+
+
+
+
+
+/*------------------------------------*
+    $FORM-ITEMS
+\*------------------------------------*/
+* + .form-item {
+    margin-top: @module__spacing;
+}
+
+.form-item--inline {
+    display: inline-block;
+    //margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.form-item__control {
+    display: block;
+    width: 100%;
+    min-height: 2em;
+    text-align: left;
+
+
+    .form-item--inline &,
+    .form-item--sentence & {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+    }
+
+    // Reset height for `textarea`s
+    textarea& {
+        height: auto;
+    }
+
+    // select& {
+    //     height: 2em;
+    //     line-height: 2;
+    // }
+}
+
+.form-item__control--xlarge {
+    .font-size(20px);
+}
+
+.form-item--sentence {
+    label {
+        display: inline-block;
+    }
+}
+
+.form-item--required {
+    label {
+        font-weight: bold;
+
+        &:after {
+            content: " *";
+        }
+    }
+}
+
+.error-msg {
+    color: @error-state;
+}
+.form-item--error {
+    color: @error-state;
+
+    input,
+    select,
+    textarea {
+        border-color: @error-state;
+    }
+}
+
+.form-item__help-text {
+   display: block;
+   margin-top: .333em;
+   margin-bottom: .667em;
+   .font-size(13px);
+   color: @gray-light;
+}
+
+.form-item--group {
+    // Has an element attached to the main input
+    position: relative;
+    display: table;
+    border-collapse: separate;
+
+    .form-item__control {
+        display: table-cell;
+        position: relative;
+        z-index: 2;
+        float: left;
+        width: 100%;
+        margin-bottom: 0;
+
+        &:not(select):first-child,
+        &:not(select):not(:last-child) {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border-right: none;
+        }
+    }
+}
+
+
+.form-item--group__add-on {
+    display: table-cell;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.form-item__control:not(select) + .form-item--group__add-on--btn .btn {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+.form-item--group__add-on--spacer {
+    .width(8px);
+}
+.form-item--group__add-on--btn {
+    position: relative;
+    font-size: 0;
+}
+
+/* Float labels */
+.form-item--float-label {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+
+    .form-item__label {
+        position: absolute;
+        opacity: 1;
+        top: 8px;
+        left: 8px;
+        color: #777;
+        z-index: 1;
+
+        font-size: 10px;
+
+        cursor: text;
+        pointer-events: none; /* For browsers that don't suppor this, we'll need to pass clicks through to focus on the control */
+
+        -webkit-transition: .2s ease all;
+        transition: .2s ease all;
+
+        .form-item--required& {
+            font-weight: bold;
+            color: grey;
+            opacity: .5;
+
+            &:before {
+                content: "";
+            }
+            &:after {
+                content: "*";
+            }
+        }
+
+        .is-empty& {
+            /* Default, placeholder-ish label */
+            position: absolute;
+            z-index: 0;
+            font-size: 16px;
+            font-weight: normal;
+            color: grey;
+            opacity: .5;
+            top: 24px;
+        }
+
+        .is-focused& {
+            opacity: 1;
+            color: #222;
+        }
+
+        .is-empty.is-focused& {
+            color: grey;
+            opacity: .5;
+        }
+
+        .form-item--error& {
+            color: @error-state;
+        }
+    }
+
+    .form-item__control {
+        position: relative;
+        margin: 0;
+        padding-top: 1.75em;
+        padding-left: 8px;
+        border-radius: 0;
+        /*box-shadow: none;*/
+        background: transparent;
+
+        -webkit-transition: .1s ease background;
+        transition: .1s ease background;
+
+        &:focus {
+            outline-color: transparent;
+            outline-style: none;
+            background: rgba(248,245,239,.25);
+            background: rgba(255,255,255,.25);
+        }
+        /* Test and add if necessary */
+        &::-webkit-input-placeholder {}
+        &:-moz-placeholder {/* Firefox 18- */}
+        &::-moz-placeholder {/* Firefox 19+ */}
+        &:-ms-input-placeholder {}
+        &:input-placeholder {}
+
+        .viewport--md & {
+            padding-top: 1.75em;
+        }
+    }
+}
+.float-form__group {
+    margin-bottom: 1.5em;
+}
+
+/*------------------------------------*
+    $READ-ONLY
+\*------------------------------------*/
+.form-item__control--read-only,
+.form-item__control[disabled] {
+    color: lighten(@gray, 20%);
+}
+.form-item__control--read-only--selectable {
+    //text-align: left;
+    //direction: rtl;
+}
+
+.form-item__control[disabled] {
+    cursor: default;
+    pointer-events: none; // Future-proof disabling of clicks
+    .opacity(.65);
+}
+
+/*------------------------------------*
+    $JanRain 3rd party login
+\*------------------------------------*/
+.janrainSignin ul.providers li {
+    padding-right: 45px;
+}
+
+ .error {
+    color: @ruby;
+ }

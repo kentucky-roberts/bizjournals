@@ -1,0 +1,285 @@
+/*------------------------------------*
+    $OFF-CANVAS NAVIGATION
+\*------------------------------------*/
+.canvas {
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+
+    background: @canvas__background;
+}
+.on-canvas {
+    position: relative;
+    left: 0;
+    z-index: @z-on-canvas;
+
+    //padding-top: (@header-height - @body-border-height);
+
+    background: @on-canvas__background;
+
+    /*
+    &:after {
+        opacity: 0;
+        .transition(opacity @leading-transition-duration easeInFull);
+    }
+    */
+
+    .is-off-canvas--left &,
+    .is-off-canvas--right & {
+
+        //-webkit-filter: blur(4px);
+        /*
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10000;
+            opacity: 1;
+
+            cursor: pointer;
+
+            background: fade(@gray, 80%);
+
+            .transition(opacity @leading-transition-duration easeOutFull)
+        }
+        */
+        // Hopefully temporary hack
+        // Skyboxes' border appears above the pseudocontent overlay
+        &.skyboxes {
+            border: none;
+        }
+    }
+
+    .is-off-canvas--left & {
+        left: @off-canvas__width;
+    }
+    .is-off-canvas--right & {
+        right: @off-canvas__width;
+    }
+
+    &.on-canvas--shadowed {
+        .box-shadow(0 -2px 6px rgba(0,0,0,.25));
+    }
+}
+.off-canvas {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 0;
+    width: @off-canvas__width;
+
+    // Don't put padding or borders on this element!
+    // Using content-box because of IE(9?) bug that borks the width calculation
+    // Of position: fixed elements with scrollbars
+    .box-sizing(content-box);
+
+    // needs to have a color for z-index issues when sliding back and forth with skin ads or other positioned elements - Bug #20962
+    background: @canvas__background;
+}
+.off-canvas__content {
+    z-index: @z-off-canvas__content;
+	padding-right: @menu-horizontal-padding;
+	padding-left: @menu-horizontal-padding;
+}
+.off-canvas--left {
+    left: -@off-canvas__width;
+
+    .is-off-canvas--left & {
+        left: 0;
+        z-index: @z-skyboxes + 1; // TODO: Don't use a skyboxes variable here
+    }
+    .is-off-canvas--right & {
+        left: -@off-canvas__width;
+    }
+}
+.off-canvas--right {
+    right: -@off-canvas__width;
+
+    .is-off-canvas--right & {
+        right: 0;
+        z-index: @z-skyboxes + 1; // TODO: Don't use a skyboxes variable here
+    }
+    .is-off-canvas--left & {
+        right: -@off-canvas__width;
+    }
+}
+
+.is-off-canvas--left,
+.is-off-canvas--right {
+    overflow: hidden;
+}
+
+
+.csstransforms,
+.csstransforms3d {
+    .off-canvas--left,
+    .is-off-canvas--left .off-canvas--left,
+    .is-off-canvas--left .on-canvas {
+        left: 0;
+    }
+    .off-canvas--right,
+    .is-off-canvas--right .off-canvas--right,
+    .is-off-canvas--right .on-canvas {
+        right: 0;
+    }
+}
+.csstransforms {
+    .on-canvas {
+        .translate(0,0);
+    }
+    .off-canvas--left {
+        .translate(-100%,0);
+    }
+    .off-canvas--right {
+        .translate(100%,0);
+    }
+
+    .is-off-canvas--left {
+        .on-canvas {
+            .translate(@off-canvas__width,0);
+        }
+
+        .off-canvas--left {
+            .translate(0,0);
+        }
+        .off-canvas--right {
+            .translate(100%,0);
+        }
+    }
+    .is-off-canvas--right {
+        .on-canvas {
+            .translate(-@off-canvas__width,0);
+        }
+
+        .off-canvas--right {
+            .translate(0,0);
+        }
+        .off-canvas--left {
+            .translate(-100%,0);
+        }
+    }
+}
+.csstransforms3d {
+    .on-canvas {
+        .translate3d(0,0,0);
+        .backface-visibility(hidden);
+    }
+    .off-canvas {
+        .backface-visibility(hidden);
+    }
+    .off-canvas--left {
+        .translate3d(-100%,0,0);
+    }
+    .off-canvas--right {
+        .translate3d(100%,0,0);
+    }
+
+    .is-off-canvas--left {
+        .on-canvas {
+            .translate3d(@off-canvas__width,0,0);
+        }
+
+        .off-canvas--left {
+            .translate3d(0,0,0);
+        }
+        .off-canvas--right {
+            .translate3d(100%,0,0);
+        }
+    }
+    .is-off-canvas--right {
+        .on-canvas {
+            .translate3d(-@off-canvas__width,0,0);
+        }
+
+        .off-canvas--right {
+            .translate3d(0,0,0);
+        }
+        .off-canvas--left {
+            .translate3d(-100%,0,0);
+        }
+    }
+}
+.csstransitions {
+    .on-canvas {
+        //.transition-transform(@leading-transition-duration @easeOutFull);
+        .transition-transform(@trailing-transition-duration @easeOutFull);
+    }
+
+    .off-canvas {
+        //.transition-transform(@trailing-transition-duration @easeOutFull);
+        .transition-transform(@leading-transition-duration @easeOutFull);
+    }
+}
+
+
+
+
+/*
+.csstransforms3d.csstransitions {
+    .on-canvas {
+        left: 0 !important;
+
+        .transition-transform(@leading-transition-duration @easeOutFull);
+    }
+
+    .off-canvas {
+        .backface-visibility(hidden);
+
+        .transition-transform(@trailing-transition-duration @easeOutFull);
+    }
+    .off-canvas--left {
+        left: 0 !important;
+    }
+    .off-canvas--right {
+        right: 0 !important;
+    }
+
+    .on-canvas {
+        .translate3d(0,0,0);
+
+        .backface-visibility(hidden);
+
+        .transition-transform(@trailing-transition-duration @easeOutFull);
+    }
+
+    .off-canvas {
+        .transition-transform(@leading-transition-duration @easeOutFull);
+    }
+    .off-canvas--left {
+        .translate3d(-100%,0,0);
+    }
+    .off-canvas--right {
+        .translate3d(100%,0,0);
+    }
+
+    .is-off-canvas--left {
+        .on-canvas {
+            .translate3d(@off-canvas__width,0,0);
+        }
+
+        .off-canvas--left {
+            .translate3d(0,0,0);
+        }
+        .off-canvas--right {
+            .translate3d(100%,0,0);
+        }
+    }
+    .is-off-canvas--right {
+        .on-canvas {
+            .translate3d(-@off-canvas__width,0,0);
+        }
+
+        .off-canvas--right {
+            .translate3d(0,0,0);
+        }
+        .off-canvas--left {
+            .translate3d(-100%,0,0);
+        }
+    }
+}
+*/

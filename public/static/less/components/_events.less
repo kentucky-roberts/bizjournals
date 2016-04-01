@@ -1,0 +1,96 @@
+@import "events/_hero.less";
+@import "events/_ticket-type.less";
+@import "events/_countdown.less";
+
+h2.module__title--registration {
+    padding: .25em  0 0.2em;
+}
+
+.event__registration-message {
+    padding: 1em;
+    text-align: center;
+    background: @champagne-dark;
+}
+.event__registration-message__title {
+    margin: 0;
+    padding: 0;
+    font-family: @sans-serif;
+    font-weight: bold;
+    .font-size(18px);
+    line-height: 1;
+    color: @gray-light;
+
+    .viewport--md & {
+        .font-size(24px);
+    }
+}
+.event__registration-message__text {
+
+}
+// TODO: Pull this out of events, make more generic.
+.truncate {
+    .js & {
+        .truncate__mask {
+            position: relative;
+            max-height: 700px;
+            overflow: hidden;
+
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                height: 10em;
+                #gradient > .vertical(@start-color: fade(@white, 0%); @end-color: fade(@white, 100%); @start-percent: 0%; @end-percent: 90%);
+            }
+        }
+
+        .truncate__trigger {
+            margin-top: 0em;
+
+            .viewport--lg & {
+                margin-top: 1em;
+            }
+
+        }
+    }
+    &.not-truncated {
+        .truncate__mask {
+            max-height: none !important;
+
+            &:after {
+                content: none;
+            }
+        }
+
+        .truncate__trigger {
+            display: none;
+        }
+    }
+}
+
+/*------------------------------------*
+    $OVERRIDES
+
+    Override inline styles from the WYSIWYG editor
+\*------------------------------------*/
+.event__body-text {
+    //[style*='width'],
+    [width='100%'] {
+        width: 100% !important;
+    }
+
+    ol, ul {
+        padding-left: 15px;
+    }
+
+    ol {
+        list-style-type: number;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+}
