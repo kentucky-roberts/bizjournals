@@ -1,0 +1,28 @@
+<?php if (APP_ENV != 'production'): ?>
+<div class="globalEnv <?php echo APPLICATION_ENV; ?> clearfix">
+<style>
+  /*Global Env Header*/
+.globalEnv{text-align:center;background-color:#ff0000;padding:0;}
+.globalEnv.preview{background-color:#CC7700;} /* orange */
+.globalEnv.development{background-color:#008000;} /* green */
+.globalEnv.testing{background-color:#A05210;} /* brown */
+.globalEnv.devtesting{background-color:#B758E4;} /* purple */
+.globalEnv.staging{background-color:#00DDDD;} /* cyan */
+.globalEnv span{font-size:14px;line-height:20px;color:#000;}
+</style>
+  <span><?php echo APPLICATION_ENV; ?> <?php echo isset($_SERVER['READ_ONLY']) && $_SERVER['READ_ONLY'] ? ' (read-only)' : ''; ?>
+<?php
+if (file_exists(APPLICATION_PATH . '/../.git/HEAD')):
+    $stringfromfile = file(APPLICATION_PATH . '/../.git/HEAD');
+    $firstLine = $stringfromfile[0]; //get the string from the array
+    $explodedstring = explode("/", $firstLine, 3); //separate out by the "/" in the string
+    $branchname = isset($explodedstring[2])?$explodedstring[2] : 'no branch' ; //get the one that is always the branch name
+    echo ' | '. $branchname;
+endif;
+?>
+ </span>
+<?php   if (version_compare(PHP_VERSION, '5.6.11', '<')): ?>
+    <span><br>Bizjournals code now requires PHP 5.6.11 or greater.  You are running <?php echo PHP_VERSION ?>.<br>  Please upgrade!</span>
+<?php   endif; ?>
+</div>
+<?php endif; ?>
