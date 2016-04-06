@@ -1,0 +1,72 @@
+/*------------------------------------*
+    $RULE-BOX
+    
+    Mimics the ruled/bordered boxes seen on pinstripe print front pages
+\*------------------------------------*/
+@rule-box-padding-horizontal: 6px;
+@rule-box-padding-vertical: 10px;
+
+@rule-box-padding-horizontal--mobile: 5px;
+@rule-box-padding-vertical--mobile: 6px;
+
+.rule-box {
+    
+    padding: @rule-box-padding-vertical--mobile @rule-box-padding-horizontal--mobile;
+    
+    /*
+    border-top: @gray solid 2px;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    
+    .ruby & {
+        border-bottom-color: @ruby;
+    }
+    .sapphire & {
+        border-bottom-color: @sapphire;
+    }
+    .emerald & {
+        border-bottom-color: @emerald;
+    }
+    */
+    .viewport--md & {
+        padding: @rule-box-padding-vertical @rule-box-padding-horizontal;
+        padding-bottom: (@rule-box-padding-vertical * 1.5)
+    }
+}
+.rule-box__expander {
+    margin: -@rule-box-padding-vertical--mobile -@rule-box-padding-horizontal--mobile;
+    
+    .viewport--md & {
+        margin: -@rule-box-padding-vertical -@rule-box-padding-horizontal;
+        margin-bottom: -(@rule-box-padding-vertical * 1.5)
+    }
+}
+/*
+.rule-box--open-left {
+//    margin-right: -@rule-box-padding;
+//    padding-right: @rule-box-padding-horizontal--mobile;
+    padding-left: 0;
+    
+    border-left: none;
+    
+    .viewport--md & {
+        padding-right: @rule-box-padding-horizontal;
+    }
+}
+.rule-box--open-right {
+//    margin-left: -@rule-box-padding;
+//    padding-left: @rule-box-padding-horizontal--mobile;
+    padding-right: 0;
+    
+    border-right: none;
+    
+    .viewport--md & {
+        padding-left: @rule-box-padding-horizontal;
+    }
+}
+*/
+
+
+
+
+

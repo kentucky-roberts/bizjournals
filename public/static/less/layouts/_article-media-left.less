@@ -1,0 +1,53 @@
+/*------------------------------------*
+    Featured media floated to left.
+    Article content is along left edge of container
+\*------------------------------------*/
+.article--media-left {
+    .content {
+        // TODO: What other selectors should be used?
+        > p,
+        > ol,
+        > ul,
+        .content__segment {
+             max-width: 40em;
+
+                .viewport--lg & {
+                    max-width: 37em;
+                }
+        }
+        
+       
+    }
+
+     .media--featured {
+         max-width: 40em;
+         margin-bottom: .35em;
+         margin-right: -1em;
+         
+         
+         
+        .viewport--lg & {
+            //width: 60%;
+            max-width: 37em;
+            float: left;
+            margin-top: -1px; // Nudge over the .detail__header's 1px rule
+        }
+
+    }
+}
+
+.article--media-left--narrow {
+    .media--featured {
+        width: 40%;
+        margin-right: 1em;
+        
+        .viewport--md & {
+            float: left;
+            width: 25%;
+        }
+    
+        .viewport--lg & {
+            width: 30%;
+        }
+    }
+}

@@ -1,0 +1,82 @@
+.priority-plus {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    /*
+    &.has-no-overflow .priority-plus__overflow-trigger {
+        display: none;
+    }
+    */
+}
+.priority-plus__mask {
+    /*
+    Mask is only for creating an auto-width container with position: relative for positioning any children elements.
+    The background color is only for visualization purposes, and would not be wanted in a real version.
+    */
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+      
+}
+.priority-plus__items {
+    //display: table-row;
+    display: table;
+    width:  auto;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.priority-plus__item {
+    width: auto;
+    display: table-cell;
+    white-space: nowrap;
+
+    &.is-overflow {
+        display: none;
+    }
+
+}
+
+
+.priority-plus__item.tabs__control {
+    white-space: nowrap;
+    vertical-align: middle;
+    border-right: transparent solid .75em;
+}
+.priority-plus__item--overflow-trigger {
+    display: none;
+
+    .has-overflow & {
+        display: table-cell;
+    }
+}
+.priority-plus__overflow-item {
+    display: none;
+
+    &.is-overflow {
+        display: block;
+    }
+}
+.priority-plus__whitespace {
+    display: table-cell;
+    width: auto;
+}
+/*
+.page-nav_item--transition {
+    transform:translateX(10px);
+}
+
+.page-nav__item:nth-child(2)  {
+    color: green!important;
+    background-color: green!important;
+
+    .viewport--md & {
+        transform:translateX(10px);
+    }
+    .viewport--lg & {
+        transform:translateX(10px);
+    }
+    
+}
+*/

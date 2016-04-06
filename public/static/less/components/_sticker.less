@@ -1,0 +1,107 @@
+/*------------------------------------*
+    $STICKER
+\*------------------------------------*/
+.sticker-boundary {
+    .chunk();
+}
+/* Sticky update to ipad */
+//.no-csspositionsticky {
+    .sticker-boundary,
+    .sticky-boundary {
+        position: relative;
+    }
+
+    .sticker-boundary.is-inview {
+        // Actual top and bottom values are set in the JS
+        .sticker.is-stuck-to-boundary-bottom {
+            position: absolute;
+        }
+
+        .sticker.is-stuck-to-window-top {
+            position: fixed;
+            z-index: (@z-on-canvas + 1);
+        }
+    }
+//}
+.sticker:not(.is-stuck-to-boundary-bottom):not(.is-stuck-to-window-top) {
+    .sticker__visible-when-stuck {
+        display: none;
+    }
+}
+
+.flexbox--stretch() {
+    display: -webkit-box; /* iOS 6? */
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    align-items: stretch;
+}
+.sticker-boundary-properties() {
+    .flexbox--stretch();
+}
+.sticker-properties() {
+    z-index: 1;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    top: 0;
+}
+.generate-responsive-flexbox--stretch(@size-name, @media-query) {
+    @media @media-query {
+        .flexbox--stretch--@{size-name} {
+            .flexbox--stretch();
+        }
+    }
+}
+/*
+.generate-responsive-sticker-boundaries(@size-name, @media-query) {
+    @media @media-query {
+        .sticker-boundary--@{size-name} {
+            .sticker-boundary-properties();
+        }
+    }
+}
+*/
+
+.csspositionsticky.flexbox {
+    /*
+    Commenting out to disable native sticky support while working on events page
+
+    .flexbox--stretch {
+        // TODO: Take this out of a csspositionsticky dependency
+        // ALSO: This is structure really freaking silly. I mean...
+        .flexbox--stretch();
+    }
+    */
+    /*
+    .sticker-boundary {
+        .sticker-boundary-properties();
+    }
+    */
+    /*
+    .sticker {
+        .sticker-properties();
+    }
+    */
+    /*
+    Responsive flexbox properties for each size will be applied "this size only"
+    rather than "this size and greater" which is how the .hidden-- responsive utilities are applied.
+
+    TODO: Reevaluate this? Will likely have to if we
+
+    */
+    /*
+    .responsive {
+        [class*="flexbox--stretch--"] {
+            display: block;
+        }
+        .generate-responsive-flexbox--stretch(xs, @mq__phone-ish--small--only);
+        .generate-responsive-flexbox--stretch(sm, @mq__phone-ish--large--only);
+        .generate-responsive-flexbox--stretch(md, @mq__tablet-ish--only);
+        .generate-responsive-flexbox--stretch(lg, @mq__desktop-ish--only);
+        .generate-responsive-flexbox--stretch(xl, @mq__desktop-ish--large);
+    }
+    */
+}

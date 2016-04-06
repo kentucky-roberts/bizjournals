@@ -1,0 +1,130 @@
+/*------------------------------------*
+    $PHOTO-VIEWER
+\*------------------------------------*/
+.photo-viewer {
+	margin: 0 auto;
+	// max-width: 800px;
+
+	padding-right: @photo-viewer-spacing-unit;
+	padding-left: @photo-viewer-spacing-unit;
+
+    .viewport--sm & {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .viewport--lg & {
+        max-width: 1100px;
+    }
+}
+.photo-viewer__body {
+    .viewport--md-only & .primary { padding-right: 0; }
+}
+
+.photo-viewer__slideshow {
+    margin-right: -@photo-viewer-spacing-unit;
+    margin-left: -@photo-viewer-spacing-unit;
+
+    .viewport--sm & {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+.photo-viewer__slide {
+    width: 100%;
+}
+.photo-viewer__slide__media {
+	position: relative;
+	width: 100%;
+	background: @gray-darker;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+}
+.photo-viewer__slide__img {
+	display: block;
+	margin: 0 auto;
+
+	max-width: 100%;
+
+	max-height: 480px;
+
+	.viewport--xl & {
+		max-height: 540px;
+	}
+}
+.photo-viewer__slide__body {
+    .clear-floats();
+    padding-right: @photo-viewer-spacing-unit;
+    padding-left: @photo-viewer-spacing-unit;
+    padding-bottom: 1em;
+
+    .viewport--sm & {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+.photo-viewer__slideshow__btn,
+.photo-viewer__state__btn {
+	border: none;
+	background: none;
+}
+.photo-viewer__slideshow__btn {
+    display: table-cell;
+	position: absolute;
+	top: 50%;
+	bottom: 0;
+    z-index: @z-sheets + 100;
+	vertical-align: middle;
+
+	font-size: 36px;
+	width: 1.25em;
+    height: 2.25em;
+    margin-top: -1.125em;
+	line-height: 1;
+	text-shadow: 0 1px 2px rgba(0,0,0,.15);
+    color: fade(@white, 85%);
+
+    background: fade(@gray-darker, 30%);
+
+	&:hover {
+		color: @white;
+        background: fade(@gray-darker, 50%);
+	}
+
+    .viewport--lg & {
+        font-size: 48px;
+    }
+}
+.photo-viewer__slideshow__btn--next {
+	right: 0;
+	text-align: right;
+	padding-right: 0;
+}
+.photo-viewer__slideshow__btn--prev {
+	left: 0;
+	text-align: left;
+	padding-left: 0;
+}
+
+.photo-viewer__state {
+    &:extend(.page__meta);
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    margin-bottom: 8px;
+    width: auto;
+    text-align: right;
+}
+.photo-viewer__state__btn:hover {
+    .branded(@text: true);
+}

@@ -1,0 +1,345 @@
+/*------------------------------------*
+    $SKYBOXES
+\*------------------------------------*/
+.skyboxes {
+    .clearfix();
+
+    position: relative;
+
+    display: none;
+
+    background: @skyboxes-background-color;
+
+    .viewport--md & {
+        display: block;
+        top: @menubar-height;
+        position: absolute;
+        right: 0;
+        left: 0;
+        z-index: @z-skyboxes;
+        overflow: hidden;
+        height: @skyboxes-height;
+        border-bottom: @skyboxes-border-color solid 1px;
+
+        .box-shadow(@header-shadow);
+    }
+
+    .viewport--md.no-js & {
+        overflow-x: auto;
+    }
+}
+.skyboxes__title {
+    display: none;
+
+	.viewport--md & {
+        display: block;
+	}
+
+	.viewport--md .peekaboo--is-hidden &,
+	.viewport--md .is-off-canvas--left &,
+	.viewport--md .is-off-canvas--right & {
+		display: none;
+	}
+
+    width: auto;
+    position: absolute;
+    top: (@header-height__skyboxes - 3); // Expected this to be 1. Is it 3 because of the header border?
+    left: @menubar__btn-width;
+	z-index: (@z-skyboxes + 1);
+
+	//padding: 2px 12px;
+	padding: 0 12px 3px;
+
+    font-size: 12px;
+	line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+
+	background: @white;
+	border-radius: 0 0 2px 2px;
+	border: @skyboxes-border-color solid 1px;
+	border-top: none;
+
+	.box-shadow(0 1px 1px fade(@black, 8%));
+}
+.skyboxes__loader {
+    display: none;
+    position: absolute;
+    top: (@menubar-height + 3);
+    left: (@menubar__btn-width + @skyboxes-gutter);
+    width: @skybox-media-width;
+    height: @skyboxes-height;
+	z-index: (@z-skyboxes + 1);
+
+    line-height: @skyboxes-height;
+    text-align: center;
+
+    .viewport--md & {
+        display: block;
+	}
+}
+// Use Modernizr to show the animated SVG in browsers that support SVG and SMIL
+.skybox__loader__svg {
+    height: 20px;
+
+    .no-svg &,
+    .no-smil & {
+        display: none;
+    }
+}
+.skybox__loader__gif {
+    height: 20px;
+    opacity: .5;
+
+    .svg.smil & {
+        display: none;
+    }
+}
+.skyboxes__list {
+    position: absolute;
+    top: 0;
+    left: @menubar__btn-width;
+    right: @menubar__btn-width;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: @skyboxes-height;
+
+    list-style-type: none;
+
+    .viewport--md.no-js & {
+        right: auto;
+        width: 8760px;
+    }
+}
+.skybox {
+    display: block;
+    float: left;
+    margin: 0;
+	padding: 4px 0 3px @skyboxes-gutter;
+
+    width: @skybox-width;
+    height: @skybox-height;
+
+    .js & {
+        display: none;
+    }
+
+    &:nth-child(-n+8) {
+        // First 12 will be animated in
+//        opacity: 0;
+        /*
+        .csstransforms3d & {
+            .translate3d(100%,0,0);
+        }
+
+
+        .transition(~"opacity 66ms ease-out, transform 200ms @{easeOutBackLightly}");
+
+        .skyboxes__list.is-initialized & {
+            opacity: 1;
+            .translate3d(0,0,0);
+        }*/
+    }
+
+}
+.skybox--sponsored {
+    background: #f4f4f4;
+}
+/*
+.generate-delay(@n; @i: 1) when (@n >= @i) {
+    .skybox:nth-child(@{i}) {
+        .transition-delay(@i * 50ms);
+    }
+
+    .generate-delay(@n, @i + 1);
+}
+.generate-delay(8);
+*/
+.item--skybox {
+	&:extend(.item--flag);
+
+	height: @item--skybox-height;
+	padding-top: @item--skybox-padding-top;
+	padding-bottom: 0;
+
+	.item__media {
+		&:extend(.item--flag .item__media);
+
+		width: (@skybox-media-width + @skybox-horizontal-padding);
+		min-width: (@skybox-media-width + @skybox-horizontal-padding);
+		padding-right: @skybox-horizontal-padding;
+	}
+	.item__body {
+		&:extend(.item--flag .item__body);
+
+		max-width: (@skybox-width - @skyboxes-gutter);
+		padding-right: @skybox-horizontal-padding;
+	}
+	.item__body + .item__media {
+		padding-left: @skybox-horizontal-padding;
+	}
+	.item__media + .item__body {
+		max-width: (@skybox-width - @skyboxes-gutter - @skybox-media-width - @skybox-horizontal-padding);
+		padding-left: @skybox-horizontal-padding;
+	}
+
+	&.item--sponsored {
+		margin: 0 0 0 -@item-container-adjustment;
+		padding: @item--skybox-padding-top 0 0 @item-container-adjustment;
+	}
+
+	.item__title {
+	    letter-spacing: -.5px; // Try to have more headlines fit on 3 lines. TODO: Don't chain this?
+	}
+
+    .meta-item { white-space: nowrap; } // this is a temp fix for meta items that need to behave in containers
+}
+
+//@skyboxes__control-width: 48px;
+//@skyboxes__control-height: 48px;
+@skyboxes__control-width: @menubar__btn-width + 1; // make room for borders
+@skyboxes__control-height: (@skyboxes-height / 2);
+@skyboxes__control-background: @white;
+@skyboxes__control-background-disabled: #f4f4f4;
+@skyboxes__controls-background: #f4f4f4;
+@skyboxes__control-border: #e9e9e9;
+
+
+.skyboxes__controls {
+    position: absolute;
+    top: 0;
+    z-index: (@z-skyboxes + 10);
+	/*
+    display: none;
+    opacity: 0;
+	*/
+	width: @skyboxes__control-width;
+    height: (@skyboxes__control-height * 2);
+
+    //background: darken(@skyboxes-background-color, 6%);
+    //background: @skyboxes-background-color;
+	//background: @skyboxes__controls-background;
+	border-color: @skyboxes__control-border;
+
+    .transition(opacity 150ms @easeOutFull);
+
+    .has-controls & {
+        //display: block;
+    }
+
+}
+.skyboxes__controls--left {
+    left: 0;
+
+	.skyboxes__control.disabled.disabled {
+		border-right: @skyboxes__control-border solid 1px;
+	}
+}
+.skyboxes__controls--right  {
+    right: 0;
+
+	.skyboxes__control.disabled.disabled {
+		border-left: @skyboxes__control-border solid 1px;
+	}
+}
+
+// TODO: use btn classes?
+.skyboxes__control {
+    display: block;
+	margin: 0;
+	padding: 0;
+    width: @skyboxes__control-width;
+    height: @skyboxes__control-height;
+
+    font-size: 20px;
+	line-height: @skyboxes__control-height;
+    text-align: center;
+
+    background: @skyboxes__control-background;
+	border: none;
+	//border-color: @skyboxes__control-border;
+
+    &:hover {
+        background: @white;
+		//border-color: darken(@skyboxes__control-border, 2%);
+    }
+
+
+    .ruby & {
+        //color: fade(@ruby, 80%);
+        //border-color: fade(@ruby, 20%);
+
+        &:hover {
+            color: @ruby;
+
+            //border-color: @ruby;
+            //background: @ruby;
+            //border-color: fade(@ruby, 40%);
+        }
+    }
+    .sapphire & {
+        //color: fade(@sapphire, 80%);
+        //border-color: fade(@sapphire, 10%);
+
+        &:hover {
+            color: @sapphire;
+            //border-color: fade(@sapphire, 40%);
+        }
+    }
+    .emerald & {
+        //color: fade(@emerald, 80%);
+        //border-color: fade(@emerald, 20%);
+
+        &:hover {
+            color: @emerald;
+            //border-color: fade(@emerald, 40%);
+        }
+    }
+
+    &:active {
+		padding-top: 1px;
+
+		background: @skyboxes__control-background;
+		.box-shadow(inset 0 1px 2px fade(@black, 16%));
+	}
+
+	&.disabled.disabled,
+    &.disabled.disabled:hover,
+ 	&.disabled.disabled:active {
+		padding-top: 0;
+
+        color: lighten(@gray-lighter, 20%);
+        background: @skyboxes__control-background-disabled;
+		//border-color: @skyboxes__control-border;
+		.box-shadow(none);
+
+        cursor: default;
+        //border-color: fade(@gray, 10%);
+
+		&.skyboxes__control--next {
+			border-bottom-color: @skyboxes__control-background-disabled;
+		}
+		&.skyboxes__control--prev {
+			border-top-color: #e9e9e9;
+		}
+
+    }
+
+	&.disabled.disabled {
+
+	}
+}
+.skyboxes__control--next {
+	top: 0;
+    bottom: 50%;
+    text-indent: 1px;
+	border-bottom: @skyboxes__control-background solid 1px;
+	//border-bottom: darken(@skyboxes__control-background, 4%) solid 1px;
+}
+.skyboxes__control--prev {
+    top:50%;
+    bottom: 0;
+	text-indent: -1px;
+	border-top: #eee solid 1px;
+}
