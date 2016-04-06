@@ -1,0 +1,170 @@
+<?= $this->headMeta() . PHP_EOL ?>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<?= $this->headTitle() . PHP_EOL; ?>
+<base href="<?= $this->serverUrl($this->baseUrl('/')) ?>">
+<?php if (APP_ENV == 'production' || APP_ENV == 'staging'): ?>
+<link href="<?= $this->cdnUrl('static/css/bizjournals.min.css') ?>" rel="stylesheet">
+<?php else: ?>
+<link href="static/css/bizjournals.css" rel="stylesheet">
+<?php endif ?>
+
+<!-- @TODO - Some static things needing view vars set :D -->
+<link href="http://www.bizjournals.com/charlotte/syndication" rel="alternate" type="text/html" title="Widgets &amp; RSS Feeds from Charlotte Business Journal">
+<link href="http://feeds.bizjournals.com/bizj_charlotte" rel="alternate" type="application/rss+xml" title="Charlotte breaking news from Charlotte Business Journal">
+<link href="http://bizjournals.tst/lib/img/charlotte/apple_touch_icon.png" rel="apple-touch-icon">
+<link href="https://plus.google.com/115058816124972466715/" rel="publisher">
+<link href="http://bizjournals.tst/lib/img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+
+<!-- Begin site-section config -->
+<?= $this->headLink() . PHP_EOL . $this->headStyle(); ?>
+<?= $this->headScript() . PHP_EOL ?>
+<!-- End site-section config -->
+
+<script type="text/javascript" src="<?= $this->cdnUrl('lib/js/jquery.min.js') ?>"></script>
+<script type="text/javascript" src="<?= $this->cdnUrl('static/js/lib/modernizr.custom.min.js') ?>"></script>
+<!--[if lte IE 9]>
+<script type="text/javascript" src="<?= $this->cdnUrl('static/js/lib/matchMedia.js') ?>"></script>
+<script type="text/javascript" src="<?= $this->cdnUrl('static/js/lib/matchMedia.addListener.js') ?>"></script>
+<![endif]-->
+<script type="text/javascript" src="<?= $this->cdnUrl('static/js/lib/enquire.min.js') ?>"></script>
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "20214854" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=20214854&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+<script type="text/javascript">
+    setViewport = function(name) {
+        $('html').addClass('viewport--' + name);
+    }
+    unsetViewport = function(name) {
+        $('html').removeClass('viewport--' + name);
+    }
+
+    var viewports = {};
+    viewports.breakpoints = {
+        'xs': {
+            min: null,
+            max: '414px'
+        },
+        'sm': {
+            min: '415px',
+            max: '735px'
+        },
+        'md': {
+            min: '736px',
+            max: '969px'
+        },
+        'lg': {
+            min: '970px',
+            max: '1199px'
+        },
+        'xl': {
+            min: '1200px',
+            max: null
+        }
+    };
+    viewports.mediaQueries = {
+        'xs-only': '(max-width: ' + viewports.breakpoints['xs']['max'] + ')',
+        'sm-only': '(min-width: ' + viewports.breakpoints['sm']['min'] + ') and (max-width: ' + viewports.breakpoints['sm']['max'] + ')',
+        'sm':      '(min-width: ' + viewports.breakpoints['sm']['min'] + ')',
+        'md-only': '(min-width: ' + viewports.breakpoints['md']['min'] + ') and (max-width: ' + viewports.breakpoints['md']['max'] + ')',
+        'md':      '(min-width: ' + viewports.breakpoints['md']['min'] + ')',
+        'lg-only': '(min-width: ' + viewports.breakpoints['lg']['min'] + ') and (max-width: ' + viewports.breakpoints['lg']['max'] + ')',
+        'lg':      '(min-width: ' + viewports.breakpoints['lg']['min'] + ')',
+        'xl-only': '(min-width: ' + viewports.breakpoints['xl']['min'] + ')',
+        'xl':      '(min-width: ' + viewports.breakpoints['xl']['min'] + ')',
+    };
+    // xs only
+    enquire.register(viewports.mediaQueries['xs-only'], {
+        match: function() { setViewport('xs'); setViewport('xs-only'); },
+        unmatch: function() { unsetViewport('xs'); unsetViewport('xs-only'); }
+    });
+
+    // sm and larger
+    enquire.register(viewports.mediaQueries['sm'], {
+        match: function() { unsetViewport('xs-only'); setViewport('sm'); },
+        unmatch: function() { unsetViewport('sm'); }
+    });
+    // sm only
+    enquire.register(viewports.mediaQueries['sm-only'], {
+        match: function() { setViewport('sm-only'); },
+        unmatch: function() { unsetViewport('sm-only'); }
+    });
+
+    // md and larger
+    enquire.register(viewports.mediaQueries['md'], {
+        match: function() { setViewport('md'); },
+        unmatch: function() { unsetViewport('md'); }
+    });
+    // md only
+    enquire.register(viewports.mediaQueries['md-only'], {
+        match: function() { setViewport('md-only'); },
+        unmatch: function() { unsetViewport('md-only'); }
+    });
+
+    // lg and larger
+    enquire.register(viewports.mediaQueries['lg'], {
+        match: function() { setViewport('lg'); },
+        unmatch: function() { unsetViewport('lg'); }
+    });
+    // lg only
+    enquire.register(viewports.mediaQueries['lg-only'], {
+        match: function() { setViewport('lg-only'); },
+        unmatch: function() { unsetViewport('lg-only'); }
+    });
+
+    // xl and larger
+    enquire.register(viewports.mediaQueries['xl'], {
+        match: function() { setViewport('xl'); setViewport('xl-only'); },
+        unmatch: function() { unsetViewport('xl'); unsetViewport('xl-only'); }
+    });
+</script>
+<!-- Google Publisher Tags -->
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function(){
+    var gads = document.createElement('script');
+    gads.async = true;
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+})();
+</script>
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-851607-1', '.bizjournals.com');
+<?php if (isset($this->isCanonicalArticle) && ($this->isCanonicalArticle == true)): // canonical article ?>
+  ga('send', 'pageview', {'dimension1':'Yes'});
+<?php else: ?>
+  ga('send', 'pageview');
+<?php endif; ?>
+</script>
+<?php $marketCode = $this->getMarketCode(); ?>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "<?= $this->getMainJournalName() ?>",
+    "url": "http://www.bizjournals.com<?= ($marketCode != 'bizjournals') ? '/' . $marketCode : '' ?>",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://www.bizjournals.com<?= ($marketCode != 'bizjournals') ? '/' . $marketCode : '' ?>/search/results?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
