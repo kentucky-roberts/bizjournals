@@ -2,6 +2,23 @@ module.exports = function (grunt) {
 
     // 1. All configuration goes here
     grunt.initConfig({
+
+        comments: {
+            js: {
+              options: {
+                singleline: true,
+                multiline: false
+              },
+              src: [ 'lib/*.js' ]
+            },
+            php: {
+              options: {
+                singleline: true,
+                multiline: true
+              },
+              src: [ 'lib/*.php' ]
+            }
+        },
         pkg: grunt.file.readJSON('package.json'),
 
         config: {
@@ -423,6 +440,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jst');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-stripcomments');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default',
