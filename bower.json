@@ -1,0 +1,24 @@
+{
+  "name": "bizjournals-roberts",
+  "description": "My local bizjournals site for hacking around",
+  "main": "index.js",
+  "authors": [
+    "Christopher J. Roberts"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kentucky-roberts/wireframe-nascar-site",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6"
+  }
+}
