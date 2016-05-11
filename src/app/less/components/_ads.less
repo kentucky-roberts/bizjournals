@@ -1,0 +1,147 @@
+/*------------------------------------*
+    ADS & SPONSOR LOGOS
+
+    Doing this in a way that I've recommended against previously:
+    Tying the styling changes for .ad-container to breakpoints to achieve the specific design we're implementing,
+    instead of generating .xs__ad-container-class-here -like extension classes.
+    I will be pleasantly surprised if we don't need to tweak this when it comes time to implement major revisions to the article, or new pages altogether.
+
+    The GPT javascript will wrap the ad (iframe, image, whatever) inside a div with a class of 'ad'
+\*------------------------------------*/
+.ad-container {
+    .box-sizing(content-box);
+    width: 100%;
+    padding: (@vertical-rhythm / 2) 0;
+
+    // Trying to set some sane default min-heights to prevent content from jumping around when the gpt script executes
+    // This will not be a perfect catch-all at first. But the gpt script will hard-code min-heights on the actual ads.
+    .viewport--xs & {
+        min-height: 50px;
+    }
+    .viewport--md & {
+        min-height: 90px;
+    }
+    .viewport--md &.ad-container--in-inset {
+        min-height: 250px;
+    }
+}
+.ad-container--stripe {
+    .viewport--xs-only &,
+    .viewport--sm-only & {
+        padding-top: 0;
+        padding-bottom: 0;
+        background: #f1f1f1;
+    }
+}
+
+.ad-container--contrasted {
+    background: #f1f1f1;
+}
+
+.ad-container--in-inset {
+    .viewport--md & {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.ad {
+    display: block;
+    margin: 0 auto;
+}
+
+// sponsored ad slot or sponsored area (module, section, whatever... it just makes it sponsored gray)
+.ad-slot--sponsored,
+.ad--sponsored {
+    background-color: @sponsored;
+}
+
+// page skin ad
+.container--has-skin-ad {
+    background: white !important;
+    max-width: 1040px !important;
+    // max-width: 980px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.skin-ad {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    width: 1600px;
+    margin-left: -800px;
+
+    // this sets up the homepage layout to allow for proper z-indexing and positioning w/o screwing the article page
+    // TODO: fix the layout : FARNHAM SAYS SO!!!
+    .drawer--layout & {
+        position: fixed;
+        top: @menubar-height;
+    }
+}
+.skin-ad img {
+    display: block;
+    margin: 0 auto;
+}
+/*
+    when it comes time for implemetatiion we can base this
+    on viewport lg and do some mods to the enquire to remove
+    viewport xl after load. help rework the padding on container
+*/
+@media screen and (max-width: 1199px) {
+    .container--has-skin-ad {
+        min-width: 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container--has-skin-ad .container {
+        padding: 0 35px !important;
+    }
+}
+
+
+/*
+    Moved sponsored-by logos to components/_section_header.less for right now.
+    It may be appropriate to move the core .sponsored-by classes back here.
+
+*/
+
+// Need a better way to detect has-skyboxes to set skin ad offset properly.
+
+
+
+// Module sponsor pattern - table display styles
+.ad--sponsored-by__container {
+
+    // this sets module sponsored by header styles
+    .module& {
+        .module__header {
+            display: table;
+            width: 100%;
+            padding-bottom: .625em; // takes away extra padding not needed in table display format
+
+            .module__title {
+                display: table-cell;
+                padding-right: 1em;
+                width: 100%;
+            }
+
+            .ad--sponsored-by__item {
+                display: table-cell;
+                max-width: 88px; // this falls inline with our small sponsor ad logo size
+                width: 100%;
+
+                text-align: right;
+            }
+
+            .ad--sponsored-by__text,
+            .gpt {
+                display: table-row;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+/*------------------------------------*
+    $ICONS-IMPORTER
+
+    Created at http://fontello.com/
+    Modified from CSS included with download
+    Not sure if these are right for us, but we have to start somewhere, right?
+
+\*------------------------------------*/
+@import (inline) "../fonts/fontello/css/bizj-icons.css";
+
+
+
+
+
+/*------------------------------------*
+    $ICONS
+\*------------------------------------*/
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    // Default right margin of .2em is actually a bit out of balance, at least at 15px
+    margin-right: .15em;
+}
+
+.icon--branded:before {
+    .branded(@text: true);
+}
+
+.icon--larger:before { font-size: 1.2em; }
+.icon--smaller:before { font-size: .8em; }
+.icon__hidden-text {
+    .hidden-text();
+}
+
+[class*="icon-"]:only-child:before {
+    margin-left: 0;
+    margin-right: 0;
+}
+.btn [class*="icon-"]:first-child:before {
+    margin-left: 0;
+}
+.btn [class*="icon-"]:last-child:before {
+    margin-right: 0;
+}

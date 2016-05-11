@@ -1,0 +1,418 @@
+/*------------------------------------*
+    $STRUCTURE
+\*------------------------------------*/
+@default-viewports:
+    ~"xs",
+    ~"sm",
+    ~"md",
+    ~"lg",
+    ~"xl";
+//@container__max-width: 1024px;
+
+// Gutter: spacing between columns
+// Buffer: spacing inside container
+@gutter--phone-ish: 12px;
+@gutter--phone-ish--condensed: @gutter--phone-ish;
+@gutter--phone-ish--stretched: (@gutter--phone-ish * 1.333);
+@buffer--phone-ish: (@gutter--phone-ish * 1.5);
+//@buffer--phone-ish--large: 46px;
+@buffer--phone-ish--large: @gutter--phone-ish;
+
+@gutter--tablet-ish: 12px; // Changed from 16px with 3-col test
+@gutter--tablet-ish--condensed: @gutter--phone-ish--condensed;
+@gutter--tablet-ish--stretched: @gutter--phone-ish--stretched;
+//@buffer--tablet-ish: @gutter--tablet-ish;
+//@buffer--tablet-ish: 64px;
+@buffer--tablet-ish: (@gutter--tablet-ish * 1.5);
+
+@gutter--desktop-ish: 24px;
+@gutter--desktop-ish--condensed: @gutter--tablet-ish--condensed;
+@gutter--desktop-ish--stretched: @gutter--tablet-ish--stretched;
+//@buffer--desktop-ish: 64px;
+@buffer--desktop-ish: (@gutter--desktop-ish * 1.5);
+
+@gutter--desktop-ish--large: 30px;
+@gutter--desktop-ish--large--condensed: @gutter--desktop-ish--condensed;
+@gutter--desktop-ish--large--stretched: @gutter--desktop-ish--stretched;
+//@buffer--desktop-ish--large: @gutter--desktop-ish--large;
+//@buffer--desktop-ish--large: 64px;
+@buffer--desktop-ish--large: (@gutter--desktop-ish--large * 1.5);
+
+@sidebar__width: 300px; // 340px
+@sidebar__width--tablet-ish: 300px;
+
+@container__max-width: 1112px; // 1362px;
+@container--wide__max-width: (800px + @sidebar__width + @gutter--desktop-ish--large + (2 * @buffer--desktop-ish--large));
+
+@element__spacing: 14px;
+@module__spacing: 1.4em;
+//@module__spacing: (@element__spacing * 2);
+@vertical-rhythm: 1.4em;
+
+
+
+
+/*------------------------------------*
+    $FONTS
+\*------------------------------------*/
+//@serif: 'PT Serif', Georgia, 'Times New Roman', serif;
+@serif: Acta, Georgia, 'Times New Roman', serif;
+//@serif: Georgia, 'Times New Roman', serif;
+@sans-serif: 'Graphik Web', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+@font-family: @sans-serif;
+@font-family--alternate: @serif;
+//@line-height--default: 1.4;
+@line-height--default: 1.5; // Because of Acta's x-height :-/
+
+@base-font-size: 18px;
+@alpha-font-size: 40px;
+@beta-font-size: 32px;
+@gamma-font-size: 24px;
+@delta-font-size: 16px;
+@epsilon-font-size: 14px;
+@zeta-font-size: 12px;
+
+
+
+
+
+/*------------------------------------*
+    $COLORS
+\*------------------------------------*/
+@white:                 #fff;
+@black:                 #000;
+
+@sapphire:              #1F3A7D;
+@ruby:                  #ab3032;
+@emerald:               #005B26;
+
+@link-color-sapphire:   @sapphire;
+@link-color-ruby:       @ruby;
+@link-color-emerald:    @emerald;
+
+@champagne:             #f8f5ef;
+@champagne-light:       mix(@champagne, @white, 75%);
+@champagne-x-light:     #FDFCFB;
+@champagne-dark:        #EDEAE4;
+
+@gray-base:             #000;
+@gray-darker:           lighten(@gray-base, 13.5%); // #222
+@gray-dark:             lighten(@gray-base, 20%);   // #333
+@gray:                  lighten(@gray-base, 33.5%); // #555
+@gray-light:            lighten(@gray-base, 46.7%); // #777
+@gray-lighter:          lighten(@gray-base, 66.667%); // #aaa
+@gray-lightest:         lighten(@gray-base, 93.5%); // #eee
+
+@sponsored:             #f1f1f1; // IE: deloitte gray bg
+
+@body__background: @white;
+
+@text-color: @gray-darker;
+@border-color: @gray-lightest;
+
+// social media color schemes
+@facebook-brand-color: #3b5998;
+@linkedin-brand-color: #007bb5;
+@twitter-brand-color: #2ba9e1;
+@googleplus-brand-color: #b62c25;
+@email-color: #538A31;
+
+
+@breaking-news-color: #B73D41;
+
+
+// alert colors
+@error-state: #b62c25;
+@success-state: #25b628;
+@warning-state: #d1a01f;
+
+//## Define colors for form feedback states and, by default, alerts. (BOOTSTRAP)
+@state--success__text-color:             #3c763d;
+@state--success__bg-color:               #dff0d8;
+@state--success__border-color:           darken(spin(@state--success__bg-color, -10), 5%);
+
+@state--info__text-color:                #31708f;
+@state--info__bg-color:                  #d9edf7;
+@state--info__border-color:              darken(spin(@state--info__bg-color, -10), 7%);
+
+@state--warning__text-color:             #8a6d3b;
+@state--warning__bg-color:               #fcf8e3;
+@state--warning__border-color:           darken(spin(@state--warning__bg-color, -10), 5%);
+
+@state--danger__text-color:              @white;
+@state--danger__bg-color:                #b62c25;
+@state--danger__border-color:            darken(spin(@state--danger__bg-color, -10), 5%);
+
+@state--error__text-color:              @state--danger__text-color;
+@state--error__bg-color:                @state--danger__bg-color;
+@state--error__border-color:            @state--danger__border-color;
+
+//## Define alert colors, border-color radius, and padding. (BOOTSTRAP)
+@alert--success__bg-color:            @state--success__bg-color;
+@alert--success__text-color:          @state--success__text-color;
+@alert--success__border-color:        @state--success__border-color;
+
+@alert--info__bg-color:               @state--info__bg-color;
+@alert--info__text-color:             @state--info__text-color;
+@alert--info__border-color:           @state--info__border-color;
+
+@alert--warning__bg-color:            @state--warning__bg-color;
+@alert--warning__text-color:          @state--warning__text-color;
+@alert--warning__border-color:        @state--warning__border-color;
+
+@alert--danger__bg-color:             @state--danger__bg-color;
+@alert--danger__text-color:           @state--danger__text-color;
+@alert--danger__border-color:         @state--danger__border-color;
+
+@alert--error__bg-color:             @state--error__bg-color;
+@alert--error__text-color:           @state--error__text-color;
+@alert--error__border-color:         @state--error__border-color;
+
+@alert__font-family:                 @font-family;
+
+
+
+
+
+
+
+/*------------------------------------*
+    $MEDIA QUERIES
+\*------------------------------------*/
+@desktop-ish:           1024px;
+@desktop-ish--large:    1200px;
+@desktop-ish--max:      (@desktop-ish--large - 1);
+@tablet-ish--max:       (@desktop-ish - 1);
+@tablet-ish:            768px; // Overriding the above. For bizwomen, it came out to 770.
+@phone-ish--large:      480px; // Landscape iPhone, phablets?
+@phone-ish--small--max: (@phone-ish--large - 1);
+@phone-ish--max:        (@tablet-ish - 1);
+@phone-ish:             0;
+
+
+@mq__phone-ish--only:   ~"(min-width: @{phone-ish}) and (max-width: @{phone-ish--max})"; // Portrait & Landscape phone-ish only
+@mq__phone-ish--small--only: ~"(max-width: @{phone-ish--small--max})"; // Portrait phone-ish only
+@mq__phone-ish--large:  ~"(min-width: @{phone-ish--large})"; // At least landscape phone-ish
+@mq__phone-ish--large--only: ~"(min-width: @{phone-ish--large}) and (max-width: @{phone-ish--max})";
+@mq__tablet-ish:        ~"(min-width: @{tablet-ish})"; // At least portrait tablet-ish
+@mq__tablet-ish--only:  ~"(min-width: @{tablet-ish}) and (max-width: @{tablet-ish--max})"; // Only greater than portrait iPad and less than landscape iPad
+@mq__desktop-ish:       ~"(min-width: @{desktop-ish})"; // At least desktop-ish (includes landscape iPad)
+@mq__desktop-ish--only: ~"@{mq__desktop-ish} and (max-width: @{desktop-ish--max})";
+@mq__desktop-ish--large: ~"(min-width: @{desktop-ish--large})"; // At least desktop-ish wide
+
+@mq__retina-ish:        ~"only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)";
+
+
+
+
+
+/*------------------------------------*
+    $Z-INDEXES
+\*------------------------------------*/
+@z-off-canvas: 0;
+@z-on-canvas: 2;
+@z-header: 500;
+@z-skyboxes: 1000;
+@z-off-canvas__content: 2000;
+@z-drawer: 2925;
+@z-submenus: 2950;
+@z-menubar: 3000;
+@z-dropdowns: 3100;
+@z-sheets: 4000;
+
+
+
+
+
+
+/*------------------------------------*
+    $MENUBAR and MENUS
+\*------------------------------------*/
+@menubar-desktop-scale: 1.5;
+
+@menubar-list-height--mobile: 40px;
+@menubar-list-height: (@menubar-list-height--mobile * @menubar-desktop-scale);
+@menubar-background-color: @white;
+@header-top-border-color: @gray-darker;
+@header-top-border-width: 2px;
+@header-top-border-width--mobile: @header-top-border-width;
+@menubar-height: @menubar-list-height;
+@menubar-height--mobile: @menubar-list-height--mobile;
+//@menubar-bottom-border-color: darken(@champagne, 3%);
+
+@pillbox-stripe-padding--mobile: 2px;
+@pillbox-stripe-padding: (@pillbox-stripe-padding--mobile * @menubar-desktop-scale);
+
+@pillbox-vertical-padding--mobile: 0;
+@pillbox-vertical-padding: 2px; //(@pillbox-vertical-padding--mobile * @menubar-desktop-scale);
+
+@pillbox-horizontal-padding--mobile: 6px;
+@pillbox-horizontal-padding: 8px; //(@pillbox-horizontal-padding--mobile * @menubar-desktop-scale);
+
+@menubar__btn-width: @menubar-list-height;
+@menubar__btn-height: (@menubar-list-height);
+@menubar__btn-width--mobile: @menubar-list-height--mobile;
+@menubar__btn-height--mobile: @menubar-list-height--mobile;
+
+@menubar__search-width: 240px;
+
+@menu-container-top-margin: 16px;
+@menu-horizontal-padding: 20px;
+
+
+
+
+
+
+/*------------------------------------*
+    $SKYBOXES
+\*------------------------------------*/
+@skyboxes-height: 92px;
+@skyboxes-gutter: 12px;
+//@skyboxes-background-color: mix(@champagne, @white, 75%);
+@skyboxes-background-color: @white;
+//@skyboxes-border-color: desaturate(darken(@champagne, 12%), 20%);
+@skyboxes-border-color: #dadada;
+
+//@skybox-width: 245px;
+@skybox-media-height: 68px;
+@skybox-media-width: 68px;
+@skybox-width: 280px + @skyboxes-gutter;
+@skybox-height: @skyboxes-height;
+@item--skybox-height: (@skybox-media-height + 16); // 84px
+@item--skybox-padding-top: 8px;
+//@skybox-vertical-padding: ((@skyboxes-height - @skybox-media-height) / 2);
+//@skybox-horizontal-padding: (@skybox-vertical-padding * .75);
+//@skybox-horizontal-padding: 10px;
+//@skybox-right-padding: 10px;
+//@skybox-left-padding: 10px;
+@skybox-horizontal-padding: 4px;
+@skybox-right-padding: 20px;
+//@skybox-border-color: darken(@champagne, 3%);
+@skybox-border-color: #eaeaea;
+
+
+
+
+/*------------------------------------*
+    $HEADER
+\*------------------------------------*/
+// skybox is a attr of the header.
+@header-height: (@menubar-height + @header-top-border-width); // global menubar height
+@header-height--mobile: (@menubar-height--mobile + @header-top-border-width--mobile); // global menu mobile adjustment
+@header-height__skyboxes: (@menubar-height + @header-top-border-width + @skyboxes-height); // menubar when skybox present
+
+@header-shadow: ~"0 2px 1px rgba(0,0,0,.08)";
+
+
+/*------------------------------------*
+    $OFF-CANVAS NAVIGATION
+\*------------------------------------*/
+@scrollbar-width: 20px;
+@off-canvas__width: 240px;
+@off-canvas__width--scrollbar: @off-canvas__width + @scrollbar-width;
+@canvas__background: darken(@body__background, 10%);
+@on-canvas__background: @body__background;
+@drawer__width: 240px;
+@drawer__width--scrollbar: @drawer__width + @scrollbar-width;
+@drawer__background: darken(@body__background, 10%);
+@leading-transition-duration: 125ms;
+@trailing-transition-duration: 225ms;
+@easeOutBack: ~"cubic-bezier(0.175, 0.885, 0.32, 1.275)"; // Overshoots for a bit of bounce
+@easeOutBackLightly: ~"cubic-bezier(0.175, 0.885, 0.32, 1.05)"; // Overshoots for a tiny amount of bounce
+@easeOutFull: ~"cubic-bezier(0.175, 0.885, 0.32, 1.0)";
+
+
+
+
+/*------------------------------------*
+    $ITEMS
+\*------------------------------------*/
+@item-vertical-padding: (@module__spacing / 2);
+@item-container-adjustment: 3px;
+
+@flag__media-width: 16.667%;
+@flag__media-min-width: 100px;
+@flag__media--small-min-width: 88px;
+@flag__gutter-width: @gutter--phone-ish--condensed;
+
+
+
+
+/*------------------------------------*
+    $META-ITEMS
+\*------------------------------------*/
+@meta-item__font-weight: normal;
+@meta-item__font-color: @gray-dark;
+//@meta-item--tag__font-color: @meta-item__font-color;
+@meta-item--tag__font-color: @white;
+//@meta-item--tag__background-color: lighten(@meta-item--tag__font-color, 45%);
+@meta-item--tag__border-radius: 2px;
+@meta-item--tag--is-link__font-color: @white;
+
+
+
+
+
+/*------------------------------------*
+    $FORMS
+\*------------------------------------*/
+@font--form__label: @sans-serif;
+@font--form__input: @sans-serif;
+//@input__height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+@input__bg: @white;
+@input__border: darken(@border-color, 15%);
+//@input__border-radius: .333em;
+@input__border-radius: 2px; // Match button border radius
+
+
+
+
+
+/*------------------------------------*
+    $BUTTONS
+\*------------------------------------*/
+@btn__padding-vertical: .5em;
+@btn__padding-horizontal: .8em;
+@btn__border-radius: 2px;
+@btn__is-flat: true;
+@btn__text-color: @gray;
+@btn__background-color: #dddddd;
+@btn__background-color--hover: darken(@btn__background-color, 5%);
+@btn__border-color: #ccc;
+@btn__font-size: 15px;
+@btn__font-family: @sans-serif;
+@btn__font-weight: normal;
+@btn__box-shadow: ~"inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)";
+
+@btn--primary__border-radius: @btn__border-radius;
+
+@btn--primary__text-color: @white;
+@btn--primary__background-color: @sapphire;
+@btn--primary__border-color: darken(@btn--primary__background-color, 5%);
+@btn--secondary__text-color: @white;
+@btn--secondary__background-color: @gray-light;
+@btn--secondary__border-color: darken(@gray-light, 5%);
+@btn--secondary__border-color: #6a6a6a;
+
+@btn--large__font-size: 18px;
+@btn--small__font-size: 12px;
+@btn--xsmall__font-size: 1.0rem;
+
+
+
+
+/*------------------------------------*
+    $SHEET
+\*------------------------------------*/
+@sheet-background: @canvas__background;
+@sheet-spacing-unit: 12px;
+@sheet-body-max-width: (800px + (2 * @sheet-spacing-unit));
+// @sheet-leaderboard-height: (90px + (2 * @sheet-spacing-unit)); // old sheet leaderboard with padding top/bottom
+@sheet-leaderboard-height: (90px);
+
+
+
+
+
+@photo-viewer-spacing-unit: @sheet-spacing-unit;

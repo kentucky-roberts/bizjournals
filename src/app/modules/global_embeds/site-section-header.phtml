@@ -1,0 +1,29 @@
+<div class="site-section-header has-<?= $this->sponsoredByCount ?>-sponsor-logos hidden--print" data-count="<?= $this->sponsoredByCount ?>">
+    <div class="container">
+        <div class="site-section-header__container">
+
+<?php if (!empty($this->showTitle)) : ?>
+    <?php if (!empty($this->title)) : ?>
+            <h1 class="site-section-header__title"><strong><?= $this->title; ?></strong></h1>
+    <?php endif; ?>
+<?php endif; ?>
+
+
+    <span class="sponsored-by sponsored-by--<?=($this->sponsoredByPosition == 'logo') ? 'blog' : 'special-section' ?>">
+        <span class="sponsored-by__label">Sponsored By</span>
+                <?php if (!empty($this->ad)) : ?>
+                    <?php if (!empty($this->sponsoredByCount)) : ?>
+                        <?php for ($i = 0; $i < $this->sponsoredByCount; $i ++) : ?>
+                            <?php $this->ad->setParam(str_replace('_1', '', $this->sponsoredByPosition), ($i + 1)); ?>
+                                <div class="sponsored-by__logo">
+                                <?= $this->ad->createTag() ?>
+                            </div>
+                        <?php endfor; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+    </span><!-- /.sponsored-by -->
+
+
+        </div><!-- /.site-section-header__container -->
+    </div><!-- /.container -->
+</div><!-- /.site-section-header -->

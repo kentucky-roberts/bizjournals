@@ -1,0 +1,128 @@
+<?php
+$env = APP_ENV;
+$homepage = $this->getPage();
+$portalAuth = false;
+$portalId = base64_decode($this->getRequest()->getCookie('portal_id', false));
+if($portalId) {
+    $portalAuth = true;
+}
+
+
+?>
+
+<?php if (isset($this->skyboxList)): ?>
+<header class="header header--has-skyboxes js-init js-sticker-ignore" data-init="app/peekaboo">
+<?php else: ?>
+<header class="header">
+<?php endif ?>
+    <div class="market-header">
+        <div class="menubar">
+            <ul class="menubar-list">
+                <li class="menubar-item menubar-item--has-button menubar__menu-toggle hidden--print">
+                    <button class="no-focus menubar-item__btn drawer__toggle menu-button" data-ct="Nav Home" data-drawer-direction="left">
+                        <span class="menubar-item__text hidden--xs hidden--sm" data-drawer-toggle-html="<strong style='font-size: 2.5em;'>&times;</strong>">
+                            <strong>Menu</strong>
+                        </span>
+                        <span class="hamburger hidden--md hidden--lg hidden--xl">
+                            <span class="hamburger__bar"></span>
+                            <span class="hamburger__bar"></span>
+                            <span class="hamburger__bar"></span>
+                        </span>
+                    </button>
+                </li>
+                <li class="menubar-item menubar-item--fit-width menubar-item--has-logo">
+                    <a href="<?= $this->getMarketCode() ?>" class="logo-link">
+                        <img src="<?= $this->cdnUrl('static/img/logos/' . $this->getMarketCode() . '-logo.svg') ?>"  alt="<?= $this->getMainJournalName()?>" onError="this.onerror=null;this.src=this.src.replace('.svg','.png');">
+                    </a>
+                </li>
+                <li class="menubar-item menubar-item--promo relative menubar-item--auto-width hidden--print" data-ct="APT: Subscribe Now header">
+                    <div class="mboxDefault">
+<?php
+if ($this->getMarket()->isVirtual()):
+?>
+                        <a href="/<?= $this->getMarketCode() ?>/promo/<?= $this->getMarketCode() ?>-ampm" class="menubar__promo-link hidden--xs hidden--sm" data-ct="APT: Digital Mkt : Subscribe AMPM Header">
+                            <strong>Subscribe Now</strong><em>Get News Alerts In Your Inbox</em>
+                        </a>
+<?php
+else:
+?>
+<?php
+if (!empty($homepage)): ?>
+                        <a href="https://secure.bizjournals.com/subscribe/selectTerm?market=<?= $this->getMarketCode() ?>&iana=csnav&csrc=6310" class="menubar__promo-link hidden--xs hidden--sm" data-ct="APT: Subscribe Now Header">
+                            <strong>Subscribe Now</strong> <em>Limited Time Offer</em>
+                        </a>
+<?php endif;?>
+<?php
+endif;
+?>
+                  </div>
+                  <script type="text/javascript">
+                      if (typeof mboxCreate === 'function') {
+                        mboxCreate('subscribeOfferMbox');
+                      }
+                  </script>
+                </li>
+                <li class="menubar-item hidden--print">
+                    <div class="menubar__search js-init" data-init="app/menubarSearch">
+                        <a href="<?= ($this->getMarketCode() == 'bizjournals') ? $this->baseUrl('/search/results') : $this->baseUrl(sprintf('/%s/search/results', $this->getSiteSection()->getMarket()->getMarketCode()))?>" class="search__trigger no-focus menubar-item__btn hidden--lg hidden--xl" style="border-right: #eee solid 1px; border-left: #eee solid 1px;">
+                            <span >
+                                <i class="icon-search"></i>
+                            </span>
+                        </a>
+                        <form id="search" class="menubar__search-form" name="search" action="<?= ($this->getMarketCode() == 'bizjournals') ? $this->baseUrl('/search/results') : $this->baseUrl(sprintf('/%s/search/results', $this->getSiteSection()->getMarket()->getMarketCode()))?>" method="get">
+                            <input name="q" type="text" placeholder="Search" class="form-item__control menubar__search__form-item__control no-focus">
+                            <!--<button class="no-focus menubar-item__btn menubar__search__close-btn"><i class="icon-cancel"></i></button>-->
+                            <button class="no-focus menubar-item__btn menubar__search__submit-btn" type="submit">
+                                <i class="icon-search"></i>
+                            </button>
+                        </form>
+
+                    </div>
+                </li>
+                <li class="menubar-item hidden--print menubar-item--profile hidden--no-js">
+<?php /* Non-logged-in state */ ?>
+                    <a href="<?= Bizjournals_Auth_Links::getLoginLink($this) ?>" class="no-focus menubar-item__btn menubar-item--loggedout js-login" style="width: auto;">
+                        <span class="hidden--md hidden--lg hidden--xl"><i class="icon-user"></i></span>
+                        <span class="menubar-item__text hidden--xs hidden--sm"><strong>Sign In</strong></span>
+                    </a>
+<?php /* Logged-in state */ ?>
+                    <div class="dropdown js-init display-none menubar-item--loggedin" data-init="app/dropdown">
+                        <button class="dropdown__trigger no-focus menubar-item__btn" style="width: auto;">
+                            <span class="hidden--md hidden--lg hidden--xl">
+                                <i class="icon-user"></i>
+                            </span>
+                            <span class="menubar-item__text hidden--xs hidden--sm">
+                                <strong><i class="icon-attention renewal-badge"></i> My Profile <i class="icon-down-dir"></i></strong>
+                            </span>
+                        </button>
+                        <div class="dropdown__target dropdown__target--padded dropdown__target--right">
+                            <!-- Renewal Poke is injected here -->
+                            <div class="menu-container">
+                                <h2 class="menu-header"></h2>
+                                <ul class="menu menu--submenu">
+                                    <li>
+                                        <a data-ct="" href="<?= Bizjournals_Auth_Links::getAccountLink($this) ?>" class="menu-item submenu-item">My Account</a>
+                                    </li>
+                                    <li>
+                                        <a data-ct="" href="<?= $this->url(array('market' => $this->getMarketCode(), 'action' => 'printsub'), 'account') ?>" class="menu-item submenu-item">Subscriptions</a>
+                                    </li>
+                                    <!-- if portal notifications -->
+                                    <?php if($portalAuth):?>
+                                    <li>
+                                        <a href="<?php echo '/' . $this->getMarketCode() . "/portal-tools/notification"?>" class="menu-item submenu-item">Custom Notifications</a>
+                                    </li>
+                                    <?php endif;?>
+                                    <li class="submenu--logout">
+                                        <a data-ct="" href="<?= Bizjournals_Auth_Links::getLogoutLink($this, array()); ?>" class="menu-item submenu-item js-logout">Sign Out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<?= $this->siteNavigation() ?>
+

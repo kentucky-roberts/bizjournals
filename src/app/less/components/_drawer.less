@@ -1,0 +1,128 @@
+/*------------------------------------*
+    $DRAWER
+\*------------------------------------*/
+.drawer--layout body {
+    position: relative;
+    z-index: 0;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: @z-drawer;
+    width: @drawer__width;
+
+    // Don't put padding or borders on this element!
+    // Using content-box because of IE(9?) bug that borks the width calculation
+    // Of position: fixed elements with scrollbars
+    .box-sizing(content-box);
+
+    // needs to have a color for z-index issues when sliding back and forth with skin ads or other positioned elements - Bug #20962
+    background: @drawer__background;
+}
+.drawer__content {
+    //z-index: @z-off-canvas__content;
+    padding-right: @menu-horizontal-padding;
+    padding-left: @menu-horizontal-padding;
+}
+.drawer--left {
+    left: -@drawer__width;
+
+    .is-drawer--left & {
+        left: 0;
+    }
+    .is-drawer--right & {
+        left: -@drawer__width;
+    }
+}
+.drawer--right {
+    right: -@drawer__width;
+
+    .is-drawer--right & {
+        right: 0;
+    }
+    .is-drawer--left & {
+        right: -@drawer__width;
+    }
+}
+
+.is-drawer--left,
+.is-drawer--right {
+    overflow: hidden;
+}
+
+
+.csstransforms,
+.csstransforms3d {
+    .drawer--left,
+    .is-drawer--left .drawer--left,
+    .is-drawer--left .drawer {
+        left: 0;
+    }
+    .drawer--right,
+    .is-drawer--right .drawer--right,
+    .is-drawer--right .drawer {
+        right: 0;
+    }
+}
+.csstransforms {
+    .drawer--left {
+        .translate(-100%,0);
+    }
+    .drawer--right {
+        .translate(100%,0);
+    }
+
+    .is-drawer--left {
+        .drawer--left {
+            .translate(0,0);
+        }
+        .drawer--right {
+            .translate(100%,0);
+        }
+    }
+    .is-drawer--right {
+        .drawer--right {
+            .translate(0,0);
+        }
+        .drawer--left {
+            .translate(-100%,0);
+        }
+    }
+}
+.csstransforms3d {
+    .drawer {
+        .backface-visibility(hidden);
+    }
+    .drawer--left {
+        .translate3d(-100%,0,0);
+    }
+    .drawer--right {
+        .translate3d(100%,0,0);
+    }
+
+    .is-drawer--left {
+        .drawer--left {
+            .translate3d(0,0,0);
+        }
+        .drawer--right {
+            .translate3d(100%,0,0);
+        }
+    }
+    .is-drawer--right {
+        .drawer--right {
+            .translate3d(0,0,0);
+        }
+        .drawer--left {
+            .translate3d(-100%,0,0);
+        }
+    }
+}
+.csstransitions {
+    .drawer {
+        //.transition-transform(@trailing-transition-duration @easeOutFull);
+        .transition-transform(@leading-transition-duration @easeOutFull);
+    }
+}

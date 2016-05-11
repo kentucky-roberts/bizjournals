@@ -1,0 +1,55 @@
+/*------------------------------------*
+    $THE LIST
+\*------------------------------------*/
+
+// .the-list__container {
+//     position: relative;
+//     overflow: hidden;
+// }
+//
+// .the-list__table {}
+//
+// .the-list--tease {
+//     position: relative;
+//
+//     & + .the-list__cta {
+//         position: absolute;
+//         right: 0;
+//         bottom: 0;
+//         left: 0;
+//
+//         box-shadow: 0 -2px 5px @gray;
+//     }
+// }
+
+// this a retarded hack to overspecify the specificity in the social icons "Reprints (docs) icon" - WOOOT
+.btn {
+    .icon-docs.icon-docs {
+        .sapphire & { color: @sapphire; }
+        .ruby & { color: @ruby; }
+        .emerald & { color: @emerald; }
+
+        font-size: inherit;
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    &.btn--primary {
+        .icon-docs.icon-docs {
+            color: @white;
+        }
+    }
+}
+
+.detail__header {
+    .detail__meta--share-spacing {
+        .viewport--xs-only &,
+        .viewport--sm-only & {
+            margin-right: 82px; // Enough room for the share button
+        }
+
+    }
+}
+

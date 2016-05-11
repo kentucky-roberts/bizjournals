@@ -1,0 +1,83 @@
+/*------------------------------------*
+    Featured media floated to right.
+    Article content is along left edge of container
+\*------------------------------------*/
+.article--media-right {
+    .content {
+        // TODO: What other selectors should be used?
+        > p,
+        > ol,
+        > ul,
+        > hr,
+        > h4,
+        > blockquote,
+        .truncated-content > p,
+        .truncated-content > ol,
+        .truncated-content > ul,
+        .truncated-content > hr,
+        .truncated-content > h4,
+        .truncated-content > blockquote,
+        .content__segment {
+             
+            .viewport--md & {
+                //max-width: 37em;
+                .max-width(666px);
+            }
+            .viewport--lg & {
+            }
+            .viewport--xl & {
+            }    
+        }
+    }
+    
+    .media--featured {
+        float: right;
+        width: 100%;
+        margin-bottom: .35em;
+        margin-top: 1em;
+        margin-bottom: .7em;
+        margin-left: 1em;
+         
+        .viewport--md & {
+            width: 60%;
+        }
+    }
+    
+    .media--featured--video {
+       margin-top: -1px; // Nudge over the .detail__header's 1px rule
+    }
+    
+    .media--featured--portrait {
+        width: 50%;
+        
+        .viewport--md & {
+            width: 40%;
+        }
+    }
+    
+    .media--featured--landscape {
+        .viewport--xs-only &,
+        .viewport--sm-only & {
+            margin-top: -1px; // Nudge over the .detail__header's 1px rule
+        }
+    }
+
+    // Keep major insets from conflicting with minor ones on wide no-js viewports
+    .no-js & {
+        .inset--major {
+            float: left;
+            clear: left;
+            width: 100%;
+        }
+    }
+}
+
+.article--media-right--vertical {
+    .media--featured {
+        width: 50%;
+    
+        .viewport--lg & {
+            width: 30%;
+        }
+    }
+}

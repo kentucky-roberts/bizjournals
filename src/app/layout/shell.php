@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Shell</title>
-    <link href="../../../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
     <?php include('bar-header.php'); ?>
@@ -17,6 +17,7 @@
         <div class="col-lg-12">
 
           <h1><?php $title = "Shell"; print($title); ?></h1>
+          <?php include_once("../modules/home/home.php"); ?>
 
 
         </div><!--/.col-lg-12 -->
@@ -27,11 +28,9 @@
     <?php include('bar-footer.php'); ?>
     <?php include('bar-sub-footer.php'); ?>
 
-
-
-    <script src="../../../lib/jquery/dist/jquery.min.js"></script>
-    <script src="../../../lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../app.js"></script>
-    <script src="../app.core.js"></script>
+    <script src="./lib/jquery/dist/jquery.min.js"></script>
+    <script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./src/app/app.js"></script>
+    <script src="./src/app/app.core.js"></script>
   </body>
 </html>

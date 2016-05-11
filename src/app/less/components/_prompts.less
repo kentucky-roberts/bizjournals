@@ -1,0 +1,224 @@
+@prompt-background: #FFFDE5;
+.prompt {
+    font-family: 'Graphik Web','Helvetica Neue','Helvetica','Arial',sans-serif;
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 16px;
+    text-align: center;
+    background: @prompt-background;
+    color: @gray;
+    z-index: 110000;
+
+    &.prompt--full-width {
+        position: fixed;
+        bottom: 0;
+        max-width: 100%;
+        width: 100%;
+        padding-bottom: 35px;
+        border-top: 2px solid;
+
+        .viewport--xs-only &,
+        .viewport--sm-only & {
+            padding-bottom: 10px;
+        }
+    }
+
+    .sapphire & {
+        border-color: @sapphire;
+    }
+    .ruby & {
+        border-color: @ruby;
+    }
+    .emerald & {
+        border-color: @emerald;
+    }
+    &.prompt--shadowed {
+        -webkit-box-shadow: 0 2px 1px rgba(0,0,0,.08);
+        -moz-transition: -moz-transform 150ms cubic-bezier(0.175, 0.885, 0.32, 1.0);
+        -o-transition: -o-transform 150ms cubic-bezier(0.175, 0.885, 0.32, 1.0);
+        box-shadow: 0 -2px 1px rgba(0,0,0,.08);
+        border: none;
+    }
+
+    .prompt__title {
+        padding: 14px 14px 0 14px;
+        font-family: inherit;
+        font-size: 16px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 1;
+        // Prevent running into close X
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .prompt__content,
+    .prompt__navigation {
+        padding: 9px 14px;
+        margin: 0 !important;
+    }
+
+    .prompt__navigation {
+
+        #start-tour.btn--primary,
+        #show-form.btn--secondary { // Used only to size these buttons to fit properly side by side on mobile
+            font-size: inherit;
+            line-height: inherit;
+        }
+    }
+
+    .tour-prompt__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 110000;
+        font-size: 16px;
+        font-size: 1.6rem;
+        font-weight: bold;
+
+        a {
+            &:hover,
+            &:active {
+                text-decoration: none;
+            }
+
+            display: block;
+            padding: 14px;
+        }
+    }
+
+    .btn.btn--secondary {
+        background: transparent;
+
+        &:hover {
+            .sapphire & {
+                background: @sapphire;
+            }
+            .ruby & {
+                background: @ruby;
+            }
+            .emerald & {
+                background: @emerald;
+            }
+        }
+    }
+}
+
+// Paywall Meter specific
+.prompt__headline {
+    font-size: 1.2rem;
+    font-weight: bold; 
+    display: inline-block; 
+    text-transform: uppercase;
+    margin-top: 5px;
+    
+    
+    &__counter {
+        font-size: 22px;
+        padding: 9px 0; 
+        vertical-align: middle;
+        
+        .viewport--xs-only &,
+        .viewport--sm-only & {
+            font-size: 16px;
+        }
+    }
+    
+    .viewport--xs-only &,
+    .viewport--sm-only & {
+        font-size: 1.1rem;
+        margin-top: 11px;
+    }
+}
+
+#paywallMeter {
+    .prompt__content--left {
+        text-align: right; 
+        border-right: 1px solid #e1ddd6;
+        
+        .viewport--xs-only & {
+            text-align: center;
+        }
+    }
+    
+    .prompt__content--right {
+        text-align: left;
+        
+        .viewport--xs-only & {
+            text-align: center;
+        }
+    }
+}
+
+// Coach Marks
+.coach-mark__steps {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+    z-index: 1;
+
+    font-size: @zeta-font-size;
+    line-height: 1;
+}
+
+.coach-mark__step {
+    position: relative;
+    display: inline;
+    float: left;
+    margin-left: 12px;
+    padding: 2px 4px;
+    width: @base-font-size;
+    height: @base-font-size;
+    z-index: 2;
+
+    background-color: @prompt-background;
+    border: 1px solid rgb(36,36,36);
+    border-radius: 1em;
+
+    .sapphire & {
+        border-color: @sapphire;
+    }
+    .ruby & {
+        border-color: @ruby;
+    }
+    .emerald & {
+        border-color: @emerald;
+    }
+}
+    .coach-mark__step:first-child {
+        margin-left: 0;
+    }
+    .coach-mark__step--active {
+        background-color: rgb(36,36,36);
+        color: @prompt-background;
+
+        .sapphire & {
+            background-color: @sapphire;
+        }
+        .ruby & {
+            background-color: @ruby;
+        }
+        .emerald & {
+            background-color: @emerald;
+        }
+    }
+
+.coach-mark__divider {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+
+    border-top: 1px solid rgb(36,36,36);
+
+    .sapphire & {
+        border-color: @sapphire;
+    }
+    .ruby & {
+        border-color: @ruby;
+    }
+    .emerald & {
+        border-color: @emerald;
+    }
+}

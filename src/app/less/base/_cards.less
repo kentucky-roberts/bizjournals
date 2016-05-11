@@ -1,0 +1,106 @@
+/* -------------------------------------------
+tile style
+    tiles are a pattern that yield a container,
+    the tile, and objects inside. typically the
+    objects will be an image with txt overlay.
+
+Sections that use this currently
+    Pulse specific items
+---------------------------------------------- */
+// vars
+@tile-index: 1;
+@tile-index--iterator: @tile-index + 1;
+
+.tile {
+
+    .u-position-relative;
+
+    // creates a dom object that allows block level styling
+    &:before {
+        .transition(opacity 100ms ease-out);
+
+        .u-position-absolute;
+        .u-position-top;
+        .u-position-right;
+        .u-position-bottom;
+        .u-position-left;
+        z-index: @tile-index;
+        content: ' ';
+        display: block;
+
+        // set this via the brand color? black default?
+        background-color: rgba(0, 0, 0, 0.7);
+        background-image: -webkit-linear-gradient(top, fade(@gray-darker, 10%) 0%, fade(@gray-darker, 30%) 60%, fade(@gray-darker, 70%) 100%);
+        background-image: -moz-linear-gradient(top, fade(@gray-darker, 10%) 0%, fade(@gray-darker, 30%) 60%, fade(@gray-darker, 70%) 100%);
+        background-image: -o-linear-gradient(top, fade(@gray-darker, 10%) 0%, fade(@gray-darker, 30%) 60%, fade(@gray-darker, 70%) 100%);
+        background-image: -ms-linear-gradient(top, fade(@gray-darker, 10%) 0%, fade(@gray-darker, 30%) 60%, fade(@gray-darker, 70%) 100%);
+        background-image: linear-gradient(top, fade(@gray-darker, 10%) 0%, fade(@gray-darker, 30%) 60%, fade(@gray-darker, 70%) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#ff000000', GradientType=0);
+        background-color: transparent;
+    }
+
+    *, a, .item__title, .item__title a { color: #fff; } // try and se this on a color var that will understand the bg and go high contrast to it.
+
+    [class*="__body"] {
+        position: absolute;
+        z-index: @tile-index--iterator;
+        padding: @item-vertical-padding;
+
+        [class*="__title"] {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
+        }
+    }
+
+    &.tile--top { [class*="__body"] { .u-position-top; }}
+    &.tile--right { [class*="__body"] { .u-position-right; }}
+    &.tile--bottom { [class*="__body"] { .u-position-bottom; }}
+    &.tile--left { [class*="__body"] { .u-position-left; }}
+    &.tile--full-width { [class*="__body"] { .u-position-right; .u-position-left; }}
+    &.tile--full-height { [class*="__body"] { .u-position-top; .u-position-bottom; }}
+
+    &:hover {
+        &:before {
+            .transition(opacity 100ms ease-out);
+
+            background-color: rgba(0, 0, 0, 0.4);
+            background-image: -webkit-linear-gradient(top, fade(@gray-darker, 5%) 0%, fade(@gray-darker, 25%) 70%, fade(@gray-darker, 65%) 100%);
+            background-image: -moz-linear-gradient(top, @gray-darker 0%, @gray-darker 90%, @gray-darker 100%);
+            background-image: -o-linear-gradient(top, @gray-darker 0%, @gray-darker 90%, @gray-darker 100%);
+            background-image: -ms-linear-gradient(top, @gray-darker 0%, @gray-darker 90%, @gray-darker 100%);
+            background-image: linear-gradient(top, @gray-darker 0%, @gray-darker 90%, @gray-darker 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#ff000000', GradientType=0);
+            background-color: transparent;
+        }
+
+        .sapphire &,
+        .ruby &,
+        .emerald & {
+            *, a, .item__title, .item__title a { color: #fff; }
+        }
+    }
+}
+// sets default bg color when a car is used and no image is available
+// .module[data-section-title="tile"]  {
+//     .viewport--xs &,
+//     .viewport--sm & {
+//         padding-top: 20px;
+//     }
+//
+//     .viewport--md & {
+//         padding-top: 0;
+//     }
+//
+//     .item__media {
+//         .ruby & {
+//             background-color: @ruby;
+//         }
+//
+//         .sapphire & {
+//             background-color: @sapphire;
+//         }
+//
+//         .emerald & {
+//             background-color: @emerald;
+//         }
+//     }
+// }

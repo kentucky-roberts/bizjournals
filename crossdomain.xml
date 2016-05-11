@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+
+<cross-domain-policy>
+    <allow-access-from domain="bizjournals.com"/>
+    <allow-access-from domain="www.bizjournals.com"/>
+    <allow-access-from domain="assets.bizjournals.com"/>
+    <allow-access-from domain="upstart.bizjournals.com"/>
+    <allow-access-from domain="secure.bizjournals.com"/>
+    <allow-access-from domain="merchant.bizjournals.com"/>
+    <allow-access-from domain="vids.bizjournals.com"/>
+    <allow-access-from domain="bizj.us"/>
+    <allow-access-from domain="media.bizj.us"/>
+    <allow-access-from domain="l.ooyala.com"/>
+    <allow-access-from domain="player.ooyala.com"/>
+    <allow-access-from domain="opf.ooyala.com"/>
+    <allow-access-from domain="cdn-api.ooyala.com"/>
+    <allow-access-from domain="api.ooyala.com"/>
+    <allow-access-from domain="se.ooyala.com"/>
+</cross-domain-policy>
+
+
+
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+    <allow-access-from domain="palmermotorsportsnc.com"/>
+    <allow-access-from domain="www.palmermotorsportsnc.com"/>
+    <allow-access-from domain="api.wps-inc.com"/>
+    <allow-access-from domain="www.wps-inc.com"/>
+    <allow-access-from domain="www.wpswebservices.com/"/>
+    <allow-access-from domain="api.wpswebservices.com/"/>
+    <allow-access-from domain="api.wpswebservices.com/item"/>
+</cross-domain-policy>

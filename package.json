@@ -1,0 +1,23 @@
+{
+  "name": "bizjournals",
+  "version": "1.0.0",
+  "description": "dev version of the official site for sandboxing",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-less-to-sass": "0.0.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kentucky-roberts/bizjournals.git"
+  },
+  "author": "Christopher J. Roberts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kentucky-roberts/bizjournals/issues"
+  },
+  "homepage": "https://github.com/kentucky-roberts/bizjournals#readme"
+}

@@ -1,0 +1,139 @@
+<?php
+$ctName = $this->getClickTrackType() . ' : Footer : ' ;
+if($this->getMarketCode() === 'bizjournals'){
+    $marketCode = '';
+} else {
+    $marketCode = $this->getMarketCode();
+}
+
+?>
+<footer class="footer">
+    <div class="container">
+        <div class="primary">
+
+            <div class="row">
+                <div class="xs-only__1/1 sm-only__1/1 md-only__1/1 lg-only__auto xl-only__auto pull-left">
+                    <a href="<?=$marketCode ?>/news/" class="menu-item menu-item--footer-primary menu-item--auto-width"><strong>NEWS</strong></a>
+                </div>
+                <div class="xs-only__1/1 sm-only__1/1 md-only__1/1 lg-only__auto xl-only__auto pull-left">
+                    <a href="<?=$marketCode ?>/people/" class="menu-item menu-item--footer-primary menu-item--auto-width"><strong>PEOPLE</strong></a>
+                </div>
+                <div class="xs-only__1/1 sm-only__1/1 md-only__1/1 lg-only__auto xl-only__auto pull-left">
+                    <a href="<?=$marketCode ?>/jobs/" class="menu-item menu-item--footer-primary menu-item--auto-width"><strong>JOBS</strong></a>
+                </div>
+                <div class="xs-only__1/1 sm-only__1/1 md-only__1/1 lg-only__auto xl-only__auto pull-left">
+                    <a href="<?=$marketCode ?>/calendar/" class="menu-item menu-item--footer-primary menu-item--auto-width"><strong>EVENTS</strong></a>
+                </div>
+                <div class="xs-only__1/1 sm-only__1/1 md-only__1/1 lg-only__auto xl-only__auto pull-left">
+                    <a href="<?=$marketCode ?>/about-us/" class="menu-item menu-item--footer-primary menu-item--auto-width"><strong>ABOUT US</strong></a>
+                </div>
+                <div class="xs-only__1/1 sm-only__1/1 md-only__1/1 lg-only__auto xl-only__auto pull-left">
+                    <a href="<?=$marketCode ?>/about-us/contact/" class="menu-item menu-item--footer-primary menu-item--auto-width"><strong>CONTACT</strong></a>
+                </div>
+            </div>
+        </div>
+        <div class="secondary">
+            <div class="row">
+                <div class="1/1 hidden--md hidden--lg hidden--xl menu-header">
+                    FOLLOW US
+                </div>
+            </div>
+            <div class="row xs__1/2 md__1/1">
+                <div class="md__1/3 hidden--xs hidden--sm menu-header">
+                    FOLLOW US
+                </div>
+<?php
+    if (!empty($this->fb_link)):
+?>
+                <div class="xs__1/6" style="padding-left: 0;">
+                    <a href="<?= $this->fb_link ?>" class="social-item--facebook">
+                        <i class="icon-facebook"></i>
+                        <span class="icon__hidden-text">Like on Facebook</span>
+                    </a>
+                </div>
+<?php
+    endif;
+    if (!empty($this->twitter_link)):
+?>
+                <div class="xs__1/6">
+                    <a href="<?= $this->twitter_link ?>" class="social-item--twitter">
+                        <i class="icon-twitter"></i>
+                        <span class="icon__hidden-text">Follow on Twitter</span>
+                    </a>
+                </div>
+<?php
+    endif;
+    if (!empty($this->linkedin_link)):
+?>
+                <div class="xs__1/6">
+                    <a href="<?= $this->linkedin_link ?>" class="social-item--linkedin">
+                        <i class="icon-linkedin"></i>
+                        <span class="icon__hidden-text">Follow on LinkedIn</span>
+                    </a>
+                </div>
+<?php
+    endif;
+    if (!empty($this->google_link)):
+?>
+                <div class="xs__1/6">
+                    <a href="<?= $this->google_link ?>" class="social-item--googleplus">
+                        <i class="icon-googleplus"></i>
+                        <span class="icon__hidden-text">Follow on Google +</span>
+                    </a>
+                </div>
+<?php
+    endif;
+?>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="1/1 md__2/3 item__body">
+                <small>
+                    <p>&copy; <?php echo date('Y'); ?> American City Business Journals. All rights reserved. Use of this Site constitutes acceptance of our User Agreement (updated 12/23/13) and Privacy Policy (updated 12/23/13).</p>
+                    <p>The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of American City Business Journals.</p>
+                </small>
+                <div class="row">
+                    <div class="1/1">
+                        <a href="http://acbj.com/privacy.html" class="menu-item menubar-item--auto-width pull-left menu-item--footer-secondary">User Agreement</a>
+                        <a href="http://acbj.com/privacy.html#VI" class="menu-item menubar-item--auto-width pull-left menu-item--footer-secondary">Privacy Policy</a>
+                        <a href="http://acbj.com/privacy.html#VI8" class="menu-item menubar-item--auto-width pull-left menu-item--footer-secondary">Your California Privacy Rights</a>
+                        <a href="http://acbj.com/privacy.html#VI4" class="menu-item menubar-item--auto-width pull-left menu-item--footer-secondary">Ad Choices</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- envt footer -->
+<?php if (APP_ENV != 'production'): ?>
+<div class="globalEnv <?php echo APPLICATION_ENV; ?> clearfix">
+<style>
+  /*Global Env Header*/
+.globalEnv{text-align:center;background-color:#ff0000;padding:0;}
+.globalEnv.preview{background-color:#CC7700;} /* orange */
+.globalEnv.development{background-color:#008000;} /* green */
+.globalEnv.testing{background-color:#A05210;} /* brown */
+.globalEnv.devtesting{background-color:#B758E4;} /* purple */
+.globalEnv.staging{background-color:#00DDDD;} /* cyan */
+.globalEnv span{font-size:14px;line-height:20px;color:#000;}
+</style>
+  <span><?php echo APPLICATION_ENV; ?> <?php echo isset($_SERVER['READ_ONLY']) && $_SERVER['READ_ONLY'] ? ' (read-only)' : ''; ?>
+<?php
+if (file_exists(APPLICATION_PATH . '/../.git/HEAD')):
+    $stringfromfile = file(APPLICATION_PATH . '/../.git/HEAD');
+    $firstLine = $stringfromfile[0]; //get the string from the array
+    $explodedstring = explode("/", $firstLine, 3); //separate out by the "/" in the string
+    $branchname = isset($explodedstring[2])?$explodedstring[2] : 'no branch' ; //get the one that is always the branch name
+    echo ' | '. $branchname;
+endif;
+?>
+ </span>
+<?php   if (version_compare(PHP_VERSION, '5.6.11', '<')): ?>
+    <span><br>Bizjournals code now requires PHP 5.6.11 or greater.  You are running <?php echo PHP_VERSION ?>.<br>  Please upgrade!</span>
+<?php   endif; ?>
+</div>
+<?php endif; ?>
