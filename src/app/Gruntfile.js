@@ -23,7 +23,7 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 files: {
-                    'css/bizjournals.min.css': 'less/bizjournals.less'
+                    '<%= config.dir.public %>css/bizjournals.min.css': '<%= config.dir.public %>less/bizjournals.less'
                 }
             }
         },
@@ -42,42 +42,43 @@ module.exports = function (grunt) {
                 }
             }
         },
-
-convert: {
-    files: [{
-      expand: true,
-      cwd: 'src/app',
-      src: ['less/*.less'],
-      ext: '.scss',
-      dest: 'sass/'
-    }]
-  },
-  excludes_replacements: {
-    files: [{
-      expand: true,
-      cwd: 'src/app',
-      src: ['less/*.less'],
-      ext: '.scss',
-      dest: 'sass/'
-    }],
-    options: {
-      excludes: ['default']
-    }
-  },
-  convert_within_custom_replacements: {
-    files: [{
-      expand: true,
-      cwd: 'src/app',
-      src: ['less/bizjournals.less'],
-      ext: '.scss',
-      dest: 'sass/'
-    }],
-    options: {
-      replacements: [{
-        pattern: /(\s+)\.([\w\-]*)\s*\((.*)\);/gi,
-        replacement: '$1@include $2($3)',
-        order: 2
+lessToSass: {
+  convert: {
+      files: [{
+        expand: true,
+        cwd: 'src/app',
+        src: ['less/*.less'],
+        ext: '.sass',
+        dest: 'sass/'
       }]
+    },
+    excludes_replacements: {
+      files: [{
+        expand: true,
+        cwd: 'src/app',
+        src: ['less/*.less'],
+        ext: '.scss',
+        dest: 'sass/'
+      }],
+      options: {
+        excludes: ['default']
+      }
+    },
+    convert_within_custom_replacements: {
+      files: [{
+        expand: true,
+        cwd: 'src/app',
+        src: ['less/bizjournals.less'],
+        ext: '.scss',
+        dest: 'sass/'
+      }],
+      options: {
+        replacements: [{
+          pattern: /(\s+)\.([\w\-]*)\s*\((.*)\);/gi,
+          replacement: '$1@include $2($3)',
+          order: 2
+        }]
+      }
     }
   },
   watch: {
@@ -101,11 +102,13 @@ convert: {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-less-to-sass');
 
+
   // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
   // A very basic default task.
     grunt.registerTask('default',
         [
-            'less:dist'
+            'less:dist',
+             'lessToSass:convert'
         ]
     );
 
