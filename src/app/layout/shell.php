@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Shell</title>
     <link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="src/app/css/app.css" rel="stylesheet">
   </head>
   <body>
     <?php include('bar-header.php'); ?>
@@ -29,9 +31,19 @@
     <?php include('bar-footer.php'); ?>
     <?php include('bar-sub-footer.php'); ?>
 
+    <script src="src/app/js/require.js" data-main="src/app/js/main"></script>
+<!--
+    <script src="./lib/requirejs/require.js"></script>
+    <script src="./lib/underscore/underscore.js"></script>
+    <script src="./lib/backbone/backbone.js"></script>
+
     <script src="./lib/jquery/dist/jquery.min.js"></script>
-    <script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./lib/bootstrap-sass/assets/javascripts/bootstrap-sprockets.js"></script>
+    <script src="./lib/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+
+
     <script src="./src/app/app.js"></script>
-    <script src="./src/app/app.core.js"></script>
+    <script src="./src/app/app.core.js"></script> -->
   </body>
 </html>

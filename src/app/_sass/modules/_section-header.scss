@@ -1,0 +1,31 @@
+/* Site Section Header Styles */
+
+.site-section-header__links {
+    margin-bottom:0;
+    font-size: 1.3ems;
+    font-size: 13px;
+
+    li {
+        margin-right: 0;
+        margin-left: .7em;
+
+        &:first-child { margin-left: 0; }
+
+        &:before {
+            display: inline-block;
+            padding-right: 1em;
+            color: $gray-light;
+        }
+        &:first-child:before {
+            content: "";
+            width: 0;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .viewport--xs-only &,
+    .viewport--sm-only & {
+        display: none;
+    }
+}

@@ -1,2 +1,2 @@
 #!/bin/bash
-sass --watch sass/ionic.app.scss:www/css/ionic.app.css
+sass --watch _sass/_app.scss:css/app.css

@@ -1,4 +1,4 @@
-
+@import 'bootstrap/bootstrap';
 @import 'components';
 @import 'modules';
 @import 'mixins';
@@ -9,4 +9,9 @@ html, body {
 
 body {
   color: black;
+}
+
+.top-bar-logo {
+  background-color: $ruby;
+  padding: 5px;
 }

@@ -1,0 +1,22 @@
+{
+  "name": "bizjournals",
+  "description": "See README.md",
+  "main": "Gruntfile.js",
+  "authors": [
+    "Christopher J. Roberts"
+  ],
+  "license": "BSD-2-Clause",
+  "homepage": "https://github.com/kentucky-roberts/bizjournals",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "jquery": "^3.0.0"
+  }
+}

@@ -1,0 +1,175 @@
+/*------------------------------------*
+    $TABS
+\*------------------------------------*/
+.js .tabs__content {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+.tabs__control-list {
+
+    margin: 1em 0 0 0;
+    padding: 0 0 1px;
+    list-style-type: none;
+}
+.tabs__control {
+    display: inline-block;
+    margin: 0 .75em 2px 0;
+    padding: 0;
+
+    text-transform: uppercase;
+
+    // Added .tabs__control__link and '>' to allow for dropdowns triggers.
+    // Old tabs should still work because of the '>' but should be updated to .tabs__control__link
+    > a,
+    .tabs__control__link {
+        display: block;
+        width: auto;
+        margin: 0;
+        padding: .33em 0;
+        //color: $gray-darker;
+
+        border-bottom: transparent solid 2px;
+
+
+
+        &:hover {
+            text-decoration: none;
+            //border-bottom-color: $gray-darker;
+            .ruby & { border-bottom-color: $ruby; }
+            .sapphire & { border-bottom-color: $sapphire; }
+            .emerald & { border-bottom-color: $emerald; }
+        }
+
+        &:focus {
+            outline: none; // Is this an accessibility issue?
+        }
+    }
+
+    &.active {
+        > a,
+        .tabs__control__link {
+            color: $gray-darker;
+            cursor: default;
+
+            border-bottom-color: $gray-darker;
+
+            &:hover {
+                border-bottom-color: $gray-darker;
+            }
+            /*
+            .ruby &,
+            .ruby &:hover {
+                color: $ruby;
+                border-bottom-color: $ruby;
+            }
+            .sapphire &,
+            .sapphire &:hover {
+                color: $sapphire;
+                border-bottom-color: $sapphire;
+            }
+            .emerald &,
+            .emerald &:hover {
+                color: $emerald;
+                border-bottom-color: $emerald;
+            }
+
+            &:hover {
+
+
+            }
+            */
+        }
+    }
+}
+
+.tabs__control-list--in-section-header.tabs__control-list--in-section-header {
+    margin-bottom: -1px;
+
+    .tabs__control {
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: none;
+
+        margin-right: 0;
+        padding-right: 1em;
+
+        .viewport--sm & {
+            font-size: 16px;
+        }
+        .viewport--lg & {
+            font-size: 17px;
+        }
+        .viewport--xl & {
+            font-size: 18px;
+        }
+    }
+
+}
+/*------------------------------------*
+    $directory-tabs
+
+    Can have links in a list for site section
+    Should have priority plus applied to it
+    Adopted from Search page tabs
+    Currently used on 'www.bizjournals.com/{market}/datacenter/companies/{channel_name}'  === Business Directory Categories Page
+\*------------------------------------*/
+$directory-tabs-divider-height: 1em;
+$directory-tabs-divider-spacing: 1em;
+.directory__tabs.directory__tabs {
+    font-weight: normal;
+
+    .tabs__control {
+        font-weight: normal;
+        text-transform: none;
+        margin-right: 0;
+        padding-right: 1em;
+
+        font-size: 12px;
+
+        .viewport--sm & {
+            font-size: 13px;
+        }
+        .viewport--lg & {
+            font-size: 14px;
+        }
+        .viewport--xl & {
+            font-size: 15px;
+        }
+    }
+
+}
+
+.directory__tabs--item {
+    display: table-cell;
+
+    &:not(:first-child):not(.priority-plus__whitespace) {
+        padding-left: $directory-tabs-divider-spacing;
+        //padding-left: ~"calc(${directory-tabs-divider-spacing} + 1px)";
+    }
+}
+.directory__tabs--link {
+    display: block;
+    position: relative;
+    width: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    line-height: 1;
+
+    .directory__tabs--item:not(:first-child):not(.priority-plus__whitespace) &:before {
+        content: " ";
+        display: block;
+        position: absolute;
+
+        width: 1px;
+        height: $directory-tabs-divider-height;
+        top: 50%;
+        margin-top: -($directory-tabs-divider-height/2);
+        left: -$directory-tabs-divider-spacing;
+        //left: ~"calc(-${directory-tabs-divider-spacing}/2 - 1px)";
+
+       // background: darken($border-color, 15%);
+    }
+}
