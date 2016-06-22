@@ -11,6 +11,7 @@
   <body>
     <?php include('bar-header.php'); ?>
     <?php include('bar-subheader.php'); ?>
+    <?php include('masthead.php'); ?>
 
     <div class="container">
       <div class="row">

@@ -1,0 +1,25 @@
+<?php
+    //$marketAbbrev   =   $this->getMarketAbbrev();
+    $market         =   $this->getMarketCode();
+    $ctName         =   $this->getClickTrackType() . ' : Data Center Companies : ';
+?>
+<!-- Add-Your-Company Promo module -->
+<div class="module module--stacked module--ruled module--padded striped--champagne">
+    <div class="module__header module__header--ruled">
+        <h2 class="module__title">
+            Add <strong>Your Company</strong>
+        </h2>
+    </div>
+    <div class="module__body">
+        <div class="row">
+            <p>
+                Place your business in <?= $market ?>'s B2B business directory and reach newcustomers searching for your product and services today.
+            </p>
+            <p>
+                <a href="javascript:void(0);" class="btn btn--small btn--primary" data-ct="<?= $ctName . 'Add Your Company' ?>">
+                    Add Your Company
+                </a>
+            </p>
+        </div>
+    </div>
+</div><!-- End Add-Your-Company Promo module -->

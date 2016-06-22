@@ -1,0 +1,41 @@
+<?php
+    $market = $this->getMarketCode()
+?>
+
+<div class="priority-plus">
+    <div class="priority-plus__mask" style="display: block;">
+        <ul class="priority-plus__items tabs__control-list--in-section-header directory__tabs">
+
+            <?php foreach ( $this->channels as $channel ) : ?>
+                <li class="tabs__control directory__tabs--item priority-plus__item" role="presentation">
+                    <a class="tabs__control__link directory__tabs--link ct" ct="OPT: Datacenter Channel Tab Links" href="<?= $market ?>/datacenter/companies/<?= $channel['channel_code']; ?>">
+                        <?= $channel['channel_name'] ?>
+                    </a>
+                </li>
+            <?php endforeach ?>
+
+            <li class="tabs__control tabs__control--light directory__tabs--item priority-plus__item--overflow-trigger">
+                <div class="dropdown js-init" data-init="app/dropdown" style="display: inline-block;">
+                    <a href="javascript:void(0);" class="dropdown__trigger no-focus directory__tabs--link" style="margin-right: 0;">More</a>
+
+                    <div class="dropdown__target dropdown__target--padded dropdown__target--right">
+                        <div class="menu-container">
+                            <ul class="menu menu--submenu">
+                                <?php foreach ( $this->channels as $channel ) : ?>
+                                    <li class="priority-plus__overflow-item directory__tabs--item">
+                                        <a href="<?= $market ?>/datacenter/companies/<?= $channel['channel_code']; ?>" class="menu-item submenu-item directory__tabs--link">
+                                            <?= $channel['channel_name'] ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach ?>
+                            </ul>
+                        </div><!-- /.menu-container -->
+
+                    </div><!-- /.dropdown__target -->
+
+                </div><!-- /.dropdown -->
+            </li>
+            <li class="priority-plus__whitespace"></li>
+        </ul>
+    </div><!-- /.priority-plus__mask -->
+</div><!-- /.priority-plus -->

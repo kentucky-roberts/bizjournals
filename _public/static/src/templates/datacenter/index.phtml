@@ -1,0 +1,307 @@
+<?php
+$market = $this->getMarketCode();
+$leadins  = $this->params['leadin_data'];
+$leads    = $this->params['leads'];
+$ctName   = $this->getClickTrackType() . ' : Data Center : ';
+$bolImage = isset($this->params['bol_image']) && !empty($this->params['bol_image']) ? $this->cdnUrl($this->params['bol_image']) : $this->cdnUrl('https://www.bizjournals.com/lib/img/' . $this->getMarketCode() . '/bookoflists.gif');
+?>
+<!-- GPT Ad = T1 -->
+<div class="ad-container ad-container--contrasted ad-container--stripe hidden--print">
+    <?= $this->gpt('t1', '[[320,50],[728,90],[970,66],[970,90],[970,250]]',
+        '[[[728,90],[970,66],[970,90],[970,250]],[320,50]]') ?>
+</div>
+
+<?= $this->partial('common-partials/components/site-section-header.phtml') ?>
+<?= $this->partial('common-partials/components/site-section-directory.phtml'); ?>
+<!-- Section Chunk -->
+<section class="chunk">
+    <!-- Container layout - default set to normal or override to variant. IE: container-\-full-width -->
+    <div class="container">
+        <div class="module module--stacked">
+            <div class="module__body">
+                <div class="primary">
+                    <div class="row">
+                        <div class="1/1 sm__1/2 md__1/1 lg__1/2">
+                            <!-- This weeks List module -->
+                            <div class="module">
+                                <div class="module__header">
+                                    <h2 class="module__title">
+                                        <img src="<?= $this->cdnUrl('static/img/the-list-logo-' . $this->getMarket()->getAttribute('color_name') . '.svg') ?>" alt="The List" height="24" onError="this.onerror=null;this.src=this.src.replace('.svg','.png');">
+                                    </h2>
+                                </div>
+                                <div class="module__body">
+                                    <?php
+                                    if (isset($this->params['this_weeks_list'])):
+                                        $list          = $this->params['this_weeks_list'];
+                                        $formattedDate = date("M d, Y", strtotime($list['date']));
+                                        ?>
+                                        <a href="<?= $list['list_url'] ?>" class="item">
+                                            <div class="item__body">
+                                                <div class="meta">
+                                                    <span
+                                                        class="meta-item text--secondary"><?= $formattedDate; ?></span>
+                                                </div>
+                                                <h3 class="item__title">
+                                                    <strong><?= $list['title'] ?></strong></h3>
+                                                <?php
+                                                if ($list['is_ranked'] && !empty($list['ranked_by'])):
+                                                    ?>
+                                                    <div class="item__subhead">Ranked by <?= $list['ranked_by'] ?></div>
+                                                    <?php
+                                                endif;
+                                                ?>
+                                            </div>
+                                        </a>
+                                        <div class="table-teaser">
+                                            <table class="table table--the-list">
+                                                <thead>
+                                                <tr>
+                                                    <?php
+                                                    foreach ($list['preview_header'] as $idx => $list_header):
+                                                        ?>
+                                                        <th><?= (empty($this->params['is_ranked']) && empty($idx) ? '' : $list_header) ?></th>
+                                                        <?php
+                                                    endforeach;
+                                                    ?>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php
+                                                foreach ($list['preview_rows'] as $list_data):
+                                                    ?>
+                                                    <tr>
+                                                        <td class="pinstripe-number-fill">
+                                                            <?php
+                                                            if ($list['is_ranked']):
+                                                                ?>
+                                                                <span
+                                                                    class="pinstripe-number pinstripe-number--solid pinstripe-number--large">
+                                                        <?= $list_data[0]; ?>
+                                                    </span>
+                                                                <?php
+                                                            else:
+                                                                ?>
+                                                                <span
+                                                                    class="pinstripe-number pinstripe-number--solid pinstripe-number--large">
+                                                        n/a
+                                                    </span>
+                                                                <?php
+                                                            endif;
+                                                            ?>
+                                                        </td>
+                                                        <td><strong><?= $list_data[1]; ?></strong></td>
+                                                        <td><?= $list_data[2]; ?></td>
+                                                    </tr>
+                                                    <?php
+                                                endforeach;
+                                                ?>
+                                                </tbody>
+                                            </table>
+                                            <a href="<?= $list['list_url'] ?>" class="btn btn--default table-teaser__cta" data-ct="<?= $ctName . 'This Week\'s List' ?>">
+                                                View <strong>This Week&apos;s List</strong>
+                                            </a>
+                                        </div>
+                                        <?php
+                                    else:
+                                        ?>
+                                        <div class="alert alert--info">
+                                            There is no Weekly List available. Please check back again shortly for
+                                            updates.
+                                        </div>
+                                        <?php
+                                    endif;
+                                    ?>
+                                </div>
+                            </div><!-- End This weeks module -->
+                        </div>
+                        <div class="1/1 sm__1/2 md__1/1 lg__1/2">
+                            <br class="hidden--xs hidden--md">
+                            <br class="hidden--xs hidden--md">
+
+                            <div class="module">
+                                <div class="items-container ct" data-ct="OTP : Data Center : List Headlines">
+                                    <?php
+                                    if (isset($this->params['latest_lists'])):
+                                        $lists = $this->params['latest_lists'];
+                                        foreach ($lists as $list):
+                                            $formattedDate = date("M d, Y", strtotime($list['date']));
+                                            ?>
+
+                                            <a href="<?= $list['list_url'] ?>" class="item item--flag">
+                                                <div class="meta">
+                                                    <span class="meta-item"><?= $formattedDate; ?></span>
+                                                </div>
+                                                <h3 class="item__title item__title--smaller">
+                                                    <strong><?= $list['title'] ?></strong>
+                                                </h3>
+                                                <?php
+                                                if (!empty($list['ranked_by'])):
+                                                    ?>
+                                                    <div class="item__subhead">Ranked by <?= $list['ranked_by'] ?></div>
+                                                    <?php
+                                                endif;
+                                                ?>
+                                            </a>
+
+                                            <?php
+                                        endforeach;
+                                    endif;
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix hidden--md hidden--lg hidden--xl">
+                        <a href="<?= $this->getMarketCode() ?>/datacenter/lists/all" class="btn btn--primary u-float-right ct" data-ct="OTP : Data Center : Center : View All Lists">See all Lists
+                            <i class="icon-angle-right"></i></a>
+                        <br><br><br>
+                    </div>
+                </div>
+                <div class="secondary">
+                    <div class="module module--stacked">
+                        <div class="xs-only__expander sm-only__expander">
+                            <div class="ad-container ad-container--stripe hidden--print">
+                                <?= $this->gpt('c1', '[[300,250],[320,50]]', '[[[300,250]],[[300,250],[320,50]]]') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BOL Promo module -->
+                    <div class="module module--ruled module--padded striped--champagne">
+                        <div class="module__header module__header--ruled">
+                            <h2 class="module__title">
+                                The <strong>Book of Lists</strong>
+                            </h2>
+                        </div>
+                        <div class="module__body">
+                            <div class="row">
+                                <div class="xs__1/1 md__2/3">
+                                    <?= $this->getMainJournalName(); ?> Book of Lists provides you with listings
+                                    hundreds of the hottest area companies in their fields, by ranking.
+                                </div>
+                                <div class="xs__1/1 md__1/3 hidden--xs hidden--sm">
+                                    <a href="<?= $this->getMarketCode() ?>/mybookoflists/" data-ct="<?= $ctName . 'MyBookofLists' ?>">
+                                        <img class="pull-right" src="<?= $bolImage ?>" border="0" width="100%"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <p>
+                                <a href="commerce/bookoflists/view?market_code=<?= $this->getMarketCode() ?>"
+                                    class="btn btn--small" data-ct="<?= $ctName . 'Purchase Book of Lists' ?>">
+                                    Print Edition
+                                </a>
+                                <a href="<?= $this->getMarketCode() ?>/mybookoflists/" class="btn btn--small"
+                                    data-ct="<?= $ctName . 'MyBookofLists' ?>">
+                                    Build Your <span class="hidden--xs">Own</span> Download
+                                </a>
+                            </p>
+                        </div>
+                    </div><!-- End BOL Promo module -->
+
+                </div>
+            </div>
+            <div class="hidden--xs hidden--sm">
+                <hr>
+                <a href="<?= $this->getMarketCode() ?>/datacenter/lists/all" class="btn btn--primary ct" data-ct="OTP : Data Center : Center : View All Lists">See all Lists
+                    <i class="icon-angle-right"></i>
+                </a>
+            </div>
+        </div>
+        <?php if (!empty($leadins)): ?>
+            <!-- Primary/Secondary container -->
+            <div class="module module--stacked">
+                <!-- Primary -->
+                <div class="primary">
+
+                    <div class="module module--ruled">
+                        <div class="module__header module__header--ruled">
+                            <h2 class="module__title"><strong>Data Features</strong></h2>
+                        </div>
+                        <div class="module__body ct" data-ct="OTP : Data Center : Center : Data Feature Headlines">
+                            <?php
+
+                            foreach ($leadins as $leadin) {
+                                {
+                                    ?>
+                                    <a href="<?= $leadin['url'] ?>" class="item item--flag">
+                                        <div class="meta">
+                                            <span class="meta-item"><?= $leadin['dateTime'] ?></span>
+                                        </div>
+                                        <h3 class="item__title"><?= $leadin['headline'] ?></h3>
+
+                                        <p class="item__teaser"><?= $leadin['teaser'] ?></p>
+                                    </a>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+
+                </div><!-- End Primary -->
+                <!-- Secondary -->
+
+                <!-- End Secondary -->
+            </div><!-- End Primary/Secondary container -->
+        <?php endif; ?>
+        <!-- Primary/Secondary container -->
+        <div class="module module--stacked">
+            <!-- Primary -->
+            <div class="primary">
+                <div class="module module--ruled">
+                    <div class="module__header module__header--ruled">
+                        <h2 class="module__title"><strong>Public Records Leads</strong></h2>
+                    </div>
+                    <div class="module__body ct" data-ct="OTP : Data Center : Center : Public Records Leads Headlines">
+                        <?php
+                        if (!empty($leads)) {
+                            foreach ($leads as $lead) {
+                                {
+                                    ?>
+                                    <a href="<?= $lead->getUrl() ?>" class="item item--flag">
+                                        <div class="meta">
+                                            <span class="meta-item"><?= $lead->formattedDate; ?></span>
+                                        </div>
+                                        <h3 class="item__title"><?= $lead->getTitle(); ?></h3>
+                                    </a>
+                                    <?php
+                                }
+                            }
+                        }
+                        ?>
+                    </div>
+                    <div class="module__footer">
+                        <a href="<?= $this->url . $this->getMarketCode() ?>/newssearch?q=leads" class="btn btn--primary ct" data-ct="OTP : Data Center : Center : View All Leads">See all Leads
+                            <i class="icon-angle-right"></i></a>
+                    </div>
+                </div>
+                <?php // echo Core_Component_Plugin_SectionFront_FeatureContent::run([], $this);
+                ?>
+            </div><!-- End Primary -->
+            <!-- Secondary -->
+            <div class="secondary">
+                <div class="module module--ruled">
+                    <div class="module__header module__header--ruled module--stacked">
+                        <h2 class="module__title module__title--ruled"><strong>Download Leads</strong></h2>
+                    </div>
+                    <div class="module__body">
+                        <p>
+                            <strong>New Business Leads</strong><br>
+                            Consist of new corporate filings, licenses and trade name registrations.
+                        </p>
+
+                        <p>
+                            <strong>Real Estate Leads</strong><br>
+                            Consist of commercial and residential real estate transactions and permits.
+                        </p>
+                        <a href="<?= $this->getMarketCode() ?>/datacenter/leads" class="btn btn--primary ct" data-ct="OTP : Data Center : Center : Download Leads">Download Leads</a>
+                    </div>
+                </div>
+            </div><!-- End Secondary -->
+        </div><!-- End Primary/Secondary container -->
+    </div><!-- End Container Layout -->
+</section><!-- End Section Chunk -->
+
+<!-- GPT Ad = B1 -->
+<div class="ad-container ad-container--contrasted ad-container--stripe hidden--print">
+    <?= $this->gpt('b1', '[[320,50],[728,90]]', '[[[728,90]],[[320,50]]]') ?>
+</div>

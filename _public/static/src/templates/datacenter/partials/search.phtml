@@ -1,0 +1,14 @@
+<form id="searchQuery_form" enctype="application/x-www-form-urlencoded" action="<?= ($this->getMarketCode() != 'bizjournals') ? $this->getMarketCode() . '/search' : '' . '/search';?>" class="" method="get" charset="utf-8">
+    <input type="hidden" name="db" value="" id="searchQuery_db">
+    <input type="hidden" name="de" value="" id="searchQuery_de">
+    <input type="hidden" name="s" value="2" id="searchQuery_s">
+    <input type="hidden" name="pl" value="1" id="searchQuery_pl">
+    <div class="form-item form-item--group" style="margin-top: 0;">
+        <input type="text" id="searchQuery_q" value="<?= htmlspecialchars($this->getRequest()->getParam('q')) ?>" name="q" class="form-item__control form-item--group__add-on" style="border-right: medium none;" placeholder="Search for Companies">
+        <span class="form-item--group__add-on form-item--group__add-on--btn">
+            <button name="gosearch" id="searchQuery_go-search" type="submit" class="btn btn--primary">
+                <i class="icon-search"></i><span class="hidden--xs"> Search</span>
+            </button>
+        </span>
+    </div><!-- /.form-item -->
+</form>

@@ -1,0 +1,19 @@
+<?php
+//    $marketAbbrev = $this->getMarketAbbrev();
+    $market = $this->getMarketCode();
+    $ctName = $this->getClickTrackType() . ' : Data Center Companies : ';
+?>
+<div class="module module--stacked">
+    <div class="module__header">
+        <h3 class="module__title"><strong>Browse</strong> by industry</h3>
+    </div><!-- /.module__header -->
+    <div class="module__body">
+
+        <ul class="row link-list row--default-gutters row--has-2-cols@sm-only row--has-3-cols@md">
+            <?php foreach ( $this->channels as $channel ) : ?>
+                <li class="sm__1/2 md__1/3"><a href="<?= $market ?>/datacenter/companies/<?= $channel['channel_code'] ?>"><?= $channel['channel_name'] ?></a></li>
+            <?php endforeach ?>
+        </ul>
+
+    </div><!-- /.module__body -->
+</div><!-- /.module -->

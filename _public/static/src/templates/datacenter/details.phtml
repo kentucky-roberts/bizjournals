@@ -1,0 +1,82 @@
+<?php
+    $market = $this->getMarketCode();
+    // echo "line 3". ' in '."companies.phtml".PHP_EOL;
+    // die(print_r( $this->channels ));
+    $ctName   = $this->getClickTrackType() . ' : Data Center Companies : ';
+    $bolImage = isset($this->params['bol_image']) && !empty($this->params['bol_image']) ? $this->cdnUrl($this->params['bol_image']) : $this->cdnUrl('https://www.bizjournals.com/lib/img/' . $this->getMarketCode() . '/bookoflists.gif');
+?>
+<!-- GPT Ad = T1 -->
+<div class="ad-container ad-container--contrasted ad-container--stripe hidden--print">
+    <?= $this->gpt('t1', '[[320,50],[728,90],[970,66],[970,90],[970,250]]',
+        '[[[728,90],[970,66],[970,90],[970,250]],[320,50]]') ?>
+</div>
+
+<?= $this->partial('default/datacenter/partials/site-section-header-categories.phtml',
+    array(
+        'channels' => $this->channels,
+        'ctName'   => $ctName
+    ))
+?>
+
+<!-- Section Chunk -->
+<section class="chunk">
+    <!-- Container layout - default set to normal or override to variant. IE: container-\-full-width -->
+    <div class="container">
+        <div class="primary">
+
+            <div class="module module--stacked module--ruled">
+                <div class="module__header module__header--ruled">
+                    <h2 class="module__title"><strong>Search</strong> Companies</h2>
+                </div><!-- /.module__header -->
+                <div class="module__body">
+                    <div class="row">
+                        <div class="1/1">
+
+                            <?= $this->partial('default/datacenter/partials/search.phtml',
+                                array(
+                                    'channels' => $this->channels,
+                                    'ctName'   => $ctName
+                                ))
+                            ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?= $this->partial('default/datacenter/partials/module-browse-by-industry.phtml',
+                array(
+                    'channels' => $this->channels,
+                    'ctName'   => $ctName
+                ))
+            ?>
+
+        </div><!-- /.primary -->
+        <div class="secondary">
+
+            <div class="module module--stacked">
+                <div class="ad-container ad-container--stripe hidden--print">
+                    <?= $this->gpt('c1', '[[300,250],[320,50]]', '[[[300,250]],[[300,250],[320,50]]]') ?>
+                </div>
+            </div><!-- /.module module--stacked -->
+
+            <!-- .module .module--stacked -->
+            <?= $this->partial('default/datacenter/partials/module-add-your-company.phtml') ?>
+            <!-- /.module .module--stacked -->
+
+            <div class="module module--stacked hidden--xs">
+                <div class="xs-only__expander sm-only__expander">
+                    <div class="ad-container ad-container--stripe hidden--print">
+                        <?= $this->gpt('c2', '[[300,250],[320,50]]', '[[[300,250]],[[300,250],[320,50]]]') ?>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- End Secondary -->
+    </div><!-- End Container Layout -->
+</section><!-- End Section Chunk -->
+
+<!-- GPT Ad = B1 -->
+<div class="ad-container ad-container--contrasted ad-container--stripe hidden--print">
+    <?= $this->gpt('b1', '[[320,50],[728,90]]', '[[[728,90]],[[320,50]]]') ?>
+</div>

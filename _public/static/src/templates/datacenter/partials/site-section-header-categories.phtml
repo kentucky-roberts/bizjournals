@@ -1,0 +1,19 @@
+<div class="site-section-header site-section-header--v2 has-3-sponsor-logos hidden--print" data-count="1">
+    <div class="container">
+        <div class="site-section-header__container">
+            <h1 class="site-section-header__title site-section-header__title--page-title"><strong>Business Directory</strong></h1>
+
+            <div class="module">
+                <div class="module__body">
+                    <ul class="row link-list row--default-gutters row--has-2-cols@sm-only row--has-3-cols@md">
+                        <?php foreach ( $this->channels as $channel ) : ?>
+                            <li class="sm__1/2 md__1/3"><a href="#"><?= $channel['channel_name'] ?></a></li>
+                        <?php endforeach ?>
+                    </ul>
+                </div><!-- /.module__body -->
+            </div><!-- /.module -->
+
+        </div>
+    </div>
+</div>
+

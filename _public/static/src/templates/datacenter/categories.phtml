@@ -1,0 +1,85 @@
+<?php
+// echo "line 2". ' in '."channel.phtml".'<br>';
+// foreach ($this->channels as $channel){
+//   echo 'channel_id = '.$channel['channel_id'].' channel_name = '.$channel['channel_name']. 'channel_code = '.$channel['channel_code'].'<br>';
+// }
+$market = $this->getMarketCode();
+$ctName   = $this->getClickTrackType() . ' : Data Center Channels : ';
+$bolImage = isset($this->params['bol_image']) && !empty($this->params['bol_image']) ? $this->cdnUrl($this->params['bol_image']) : $this->cdnUrl('https://www.bizjournals.com/lib/img/' . $this->getMarketCode() . '/bookoflists.gif');
+?>
+<!-- GPT Ad = T1 -->
+<div class="ad-container ad-container--contrasted ad-container--stripe hidden--print">
+    <?= $this->gpt('t1', '[[320,50],[728,90],[970,66],[970,90],[970,250]]',
+        '[[[728,90],[970,66],[970,90],[970,250]],[320,50]]') ?>
+</div>
+
+<div class="site-section-header site-section-header hidden--print" data-count="1">
+    <div class="container">
+
+        <div class="site-section-header__container">
+            <h1 class="site-section-header__title site-section-header__title--page-title"><strong>Business Directory</strong></h1>
+        </div>
+
+            <?= $this->partial('default/datacenter/partials/tabs-by-channel.phtml',
+                array(
+                    'channels' => $this->channels,
+                    'ctName'   => $ctName
+                ))
+            ?>
+
+    </div>
+</div>
+
+
+<!-- Section Chunk -->
+<section class="chunk">
+
+    <div class="container">
+        <div class="primary">
+
+            <div class="module module--stacked">
+                <div class="module__body">
+                    <div class="row">
+                        <?= $this->partial('default/datacenter/partials/tabs-by-letter.phtml',
+                            array(
+                                'channels' => $this->channels,
+                                'ctName'   => $ctName
+                            ))
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.primary -->
+        <div class="secondary">
+
+            <div class="module module--stacked">
+                <div class="ad-container ad-container--stripe hidden--print">
+                    <?= $this->gpt('c1', '[[300,250],[320,50]]', '[[[300,250]],[[300,250],[320,50]]]') ?>
+                </div>
+            </div><!-- /.module module--stacked -->
+
+            <!-- .module .module--stacked -->
+            <?= $this->partial('default/datacenter/partials/module-add-your-company.phtml') ?>
+            <!-- /.module .module--stacked -->
+
+            <div class="module module--stacked hidden--xs">
+                <div class="xs-only__expander sm-only__expander">
+                    <div class="ad-container ad-container--stripe hidden--print">
+                        <?= $this->gpt('c2', '[[300,250],[320,50]]', '[[[300,250]],[[300,250],[320,50]]]') ?>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.secondary -->
+    </div><!-- /.container -->
+</section><!-- /.chunk -->
+
+
+<div id="datacenter-popovers-container"></div>
+
+
+<!-- GPT Ad = B1 -->
+<div class="ad-container ad-container--contrasted ad-container--stripe hidden--print">
+    <?= $this->gpt('b1', '[[320,50],[728,90]]', '[[[728,90]],[[320,50]]]') ?>
+</div>
