@@ -12,4 +12,10 @@ requirejs.config({
 
 // Start loading the main app file. Put all of
 // your application logic in there.
-requirejs(['src/app/js/main']);
+
+// we can do it like this
+//requirejs(['src/app/js/main']);
+
+
+// or like dat, because we entered the src/app directory above... no need to keep using the super-long name brah.
+requirejs(['js/main']);

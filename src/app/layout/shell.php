@@ -31,7 +31,7 @@
     <?php include('bar-footer.php'); ?>
     <?php include('bar-sub-footer.php'); ?>
 
-    <script src="src/app/js/require.js" data-main="src/app/js/main"></script>
+    <script src="src/app/lib/require.js" data-main="src/app/js/main"></script>
 <!--
     <script src="./lib/requirejs/require.js"></script>
     <script src="./lib/underscore/underscore.js"></script>
