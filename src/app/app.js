@@ -4,9 +4,17 @@
 // except for 'app' ones, which are in a sibling
 // directory.
 requirejs.config({
+
     baseUrl: 'lib',
+
+    // Prevent caching during dev
+    urlArgs: "bust=" + (new Date()).getTime(),
+
     paths: {
-        app: 'src/app'
+        app: 'src/app',
+        jquery: 'empty:', // jquery is already loaded
+        underscore: 'lib/underscore',
+        backbone: 'lib/backbone'
     }
 });
 
@@ -15,7 +23,5 @@ requirejs.config({
 
 // we can do it like this
 //requirejs(['src/app/js/main']);
-
-
-// or like dat, because we entered the src/app directory above... no need to keep using the super-long name brah.
+// or like dat, because we entered the src/app directory above... no need to keep using the super-long name.
 requirejs(['js/main']);

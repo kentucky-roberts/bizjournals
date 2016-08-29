@@ -1,0 +1,333 @@
+{
+    "page_count": 4920,
+    "page_size": 25,
+    "total_items": 122986,
+    "_links": {
+        "self": {
+            "href": "http://hub.dev.bizjournals.local/api/companies?page=1"
+        },
+        "first": {
+            "href": "http://hub.dev.bizjournals.local/api/companies"
+        },
+        "last": {
+            "href": "http://hub.dev.bizjournals.local/api/companies?page=4920"
+        },
+        "next": {
+            "href": "http://hub.dev.bizjournals.local/api/companies?page=2"
+        }
+    },
+    "_embedded": {
+        "entries": [{
+            "companyName": "Brock and Co. CPAs PC",
+            "address1": "1930 17th St.",
+            "address2": "Suite 200",
+            "city": "Boulder",
+            "country": "US",
+            "state": "Colorado",
+            "zipCode": "80302",
+            "phoneNumber": "3034442971",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38470,
+            "logo": "http://placehold.it/50x50",
+            "image": "http://placehold.it/160x90",
+            "featured": 1,
+            "featuredExpires": "2016-07-28 15:56:11",
+            "promoText": "Mention the San Fransisco Business Times and get 10% off your first catered event.",
+            "description": "This is the company description, which will be about 250 characters",
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "Eide Bailly LLP",
+            "address1": "440 Indiana St.",
+            "address2": "Suite 200",
+            "city": "Golden",
+            "country": "US",
+            "state": "Colorado",
+            "zipCode": "80401",
+            "phoneNumber": "3039862454",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38468,
+            "logo": "http://placehold.it/50x50",
+            "image": "http://placehold.it/350x200",
+            "featured": 1,
+            "featuredExpires": "2016-09-28 15:56:59",
+            "promoText": "Mention the San Fransisco Business Times and get 10% off your first catered event.",
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "BKD, LLP",
+            "address1": "Hammons Twr 901 E St Louis St Ste 1800",
+            "address2": null,
+            "city": "Springfield",
+            "country": "US",
+            "state": "Missouri",
+            "zipCode": "65806",
+            "phoneNumber": "4178317283",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38467,
+            "logo": "http://placehold.it/50x50",
+            "image": "http://placehold.it/350x200",
+            "featured": 1,
+            "featuredExpires": "2016-09-28 15:57:10",
+            "promoText": "We're Mention the San Fransisco Business Times and get 10% off your first catered event. best company or all time",
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "CBIZ & Mayer Hoffman McCann PC",
+            "address1": "820 N. Main",
+            "address2": null,
+            "city": "Wichita",
+            "country": "US",
+            "state": "Kansas",
+            "zipCode": "67203",
+            "phoneNumber": "3162655600",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38466,
+            "logo": "http://placehold.it/50x50",
+            "image": "http://placehold.it/350x200",
+            "featured": 1,
+            "featuredExpires": "2016-09-28 15:57:16",
+            "promoText": "Mention the San Fransisco Business Times and get 10% off your first catered event.",
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "Crowe GHP Horwath",
+            "address1": "1801 California St.",
+            "address2": "#2200",
+            "city": "Denver",
+            "country": null,
+            "state": "Colorado",
+            "zipCode": "80202",
+            "phoneNumber": "3038315000",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38464,
+            "logo": "http://placehold.it/50x50",
+            "image": "http://placehold.it/350x200",
+            "featured": 1,
+            "featuredExpires": "2016-09-28 15:57:23",
+            "promoText": "Mention the San Fransisco Business Times and get 10% off your first catered event.",
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "CliftonLarsonAllen LLP",
+            "address1": "300 Crown Colony Drive",
+            "address2": null,
+            "city": "Quincy",
+            "country": null,
+            "state": "Massachusetts",
+            "zipCode": "02169",
+            "phoneNumber": "6179848100",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38462,
+            "logo": null,
+            "image": null,
+            "featured": 0,
+            "featuredExpires": null,
+            "promoText": null,
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "EY (Ernst & Young LLP)",
+            "address1": "370 17th St.",
+            "address2": "#3300",
+            "city": "Denver",
+            "country": null,
+            "state": "Colorado",
+            "zipCode": "80202",
+            "phoneNumber": "7209314000",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38461,
+            "logo": null,
+            "image": null,
+            "featured": 0,
+            "featuredExpires": null,
+            "promoText": null,
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "PwC",
+            "address1": "1075 Peachtree St. N.E.",
+            "address2": null,
+            "city": "Atlanta",
+            "country": null,
+            "state": "Georgia",
+            "zipCode": "30309",
+            "phoneNumber": "6784191000",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38460,
+            "logo": null,
+            "image": null,
+            "featured": 0,
+            "featuredExpires": null,
+            "promoText": null,
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "Deloitte LLP",
+            "address1": "550 S. Tryon St.",
+            "address2": "Suite 2500",
+            "city": "Charlotte",
+            "country": "US",
+            "state": "North Carolina",
+            "zipCode": "28202",
+            "phoneNumber": "7048871500",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38459,
+            "logo": null,
+            "image": null,
+            "featured": 0,
+            "featuredExpires": null,
+            "promoText": null,
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }, {
+            "companyName": "EKS&H LLLP",
+            "address1": "7979 E. Tufts Ave.",
+            "address2": "#400",
+            "city": "Denver",
+            "country": null,
+            "state": "Colorado",
+            "zipCode": "80237",
+            "phoneNumber": "3037409400",
+            "phoneCountryCode": "1",
+            "website": "www.website.com",
+            "email": "email@website.com",
+            "fax": null,
+            "sourceId": 38458,
+            "logo": null,
+            "image": null,
+            "featured": 0,
+            "featuredExpires": null,
+            "promoText": null,
+            "_meta": {
+                "rooms": 1195,
+                "price": "199 to 289",
+                "sf": 10700,
+                "rooms": 59,
+                "renovated": 2014
+            },
+            "_links": {
+                "self": {
+                    "href": "http://hub.dev.bizjournals.local/api/company/15435"
+                }
+            }
+        }]
+    }
+}

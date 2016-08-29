@@ -27,6 +27,12 @@
     font-weight: 200;
   }
 
+  .link-scrolling {
+    padding-right:15px;
+    padding-left:15px;
+  }
+
+
 </style>
 
 
@@ -43,6 +49,24 @@
         <img src="http://placehold.it/300x300">
         <img src="http://placehold.it/300x300">
         <img src="http://placehold.it/300x300">
+      </div>
+
+    <h2>Scroll-X-Axis Panel <small>300x300</small></h2>
+      <div class="my-overflow-x">
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
+        <a href="#" class="link-scrolling">Link Scrolling</a>
       </div>
 
       <h2>Scroll-X-Axis Panel <small>200x200</small></h2>

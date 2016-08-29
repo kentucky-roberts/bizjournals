@@ -1,0 +1,85 @@
+/*------------------------------------*
+    $BUTTON PSUEDO STATES (Modified from Bootstrap)
+
+    Easily pump out default styles, as well as :hover, :focus, :active,
+    and disabled options for all buttons
+\*------------------------------------*/
+
+.btn-pseudo-states($text-color; $background-color; $border-color; $is-flat; $background-color--hover: darken($background-color, 5%); $border-color--hover: darken($border-color, 5%); $background-color--disabled: transparent; $border-color--disabled: $gray-lighter) {
+    border-color: $border-color;
+
+    & when ($is-flat = true) {
+        background: $background-color;
+        text-shadow: none;
+    }
+
+    & when not ($is-flat = true) {
+        #gradient > .vertical(lighten($background-color, 10%),$background-color);
+    }
+
+    
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        color: $text-color;
+        border-color: $border-color--hover;
+
+        & when ($is-flat = true) {
+            background: $background-color--hover;
+        }
+
+        & when not ($is-flat = true) {
+            #gradient > .vertical(lighten($background-color, 5%), darken($background-color, 5%));
+        }
+
+
+    }
+
+    // TODO: Why is this here? Does it need to be? - Ryan
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+          background-color: $background-color;
+              border-color: $border-color;
+
+            & when (lightness($text-color) >= 20%) {
+                color: lighten($text-color, 10%);
+                color: fade($text-color, 10%);
+            }
+        }
+    }
+
+    &.disabled.disabled,
+    &[disabled][disabled],
+    fieldset[disabled][disabled] & {
+        & when ($background-color--disabled = transparent) {
+            color: $gray-lighter;
+        }
+        & when not ($background-color--disabled = transparent) {
+            color: $text-color;
+        }
+
+        cursor: not-allowed;
+        background-color: $background-color--disabled;
+        border-color: $border-color--disabled;
+    }
+}
+.disable-filter-gradient() {
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+.text-shadow-inset ($color) when (lightness($color) >= 50%) {
+    // Lighter text, dark shadow above
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);
+}
+.text-shadow-inset ($color) when (lightness($color) < 50%) {
+    // Darker text, light shadow beneath
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}

@@ -1,0 +1,136 @@
+
+
+
+
+/*------------------------------------*
+    $COLORS
+\*------------------------------------*/
+$white:                 #fff!default;
+$black:                 #000!default;
+
+$sapphire:              #1F3A7D!default;
+$ruby:                  #ab3032!default;
+$emerald:               #005B26!default;
+/*
+$link-color-sapphire:   lighten(desaturate($sapphire, 11.85%), 12.57%);
+$link-color-ruby:       lighten(desaturate($ruby, 0.75%), 8.2%);
+$link-color-emerald:    lighten(desaturate($emerald, 11.85%), 12.57%);
+*/
+$link-color-sapphire:   #254F9C!default;
+$link-color-ruby:       #B82C2E!default;
+$link-color-emerald:    #16703C!default;
+
+$champagne:             #f8f5ef!default;
+$champagne-light:       mix($champagne, $white, 75%);
+$champagne-x-light:     #FDFCFB!default;
+$champagne-dark:        #EDEAE4!default;
+
+$gray-base:             #000!default;
+$gray-darker:           lighten($gray-base, 13.5%); // #222
+$gray-dark:             lighten($gray-base, 20%);   // #333
+$gray:                  lighten($gray-base, 33.5%); // #555
+$gray-light:            lighten($gray-base, 46.7%); // #777
+$gray-lighter:          lighten($gray-base, 66.667%); // #aaa
+$gray-lightest:         lighten($gray-base, 93.5%); // #eee
+
+$sponsored:             #f1f1f1!default; // IE: deloitte gray bg
+
+$body__background: $white!default;
+
+$text-color: $gray-darker!default;
+$border-color: $gray-lightest!default;
+
+// social media color schemes
+$facebook-brand-color: #3b5998!default;
+$linkedin-brand-color: #007bb5!default;
+$twitter-brand-color: #2ba9e1!default;
+$googleplus-brand-color: #b62c25!default;
+$email-color: #538A31!default;
+$sms-color: darken(#538A31, 10%)!default;
+
+
+$breaking-news-color: #B73D41!default;
+
+$newsleads-brand-color: #4F8EB0!default;
+
+
+// alert colors
+$error-state: #b62c25;
+$success-state: #25b628;
+$warning-state: #d1a01f;
+
+//## Define colors for form feedback states and, by default, alerts. (BOOTSTRAP)
+$state--success__text-color:             #3c763d;
+$state--success__bg-color:               #dff0d8;
+$state--success__border-color:           darken(spin($state--success__bg-color, -10), 5%);
+
+$state--info__text-color:                #31708f;
+$state--info__bg-color:                  #d9edf7;
+$state--info__border-color:              darken(spin($state--info__bg-color, -10), 7%);
+
+$state--warning__text-color:             #8a6d3b;
+$state--warning__bg-color:               #fcf8e3;
+$state--warning__border-color:           darken(spin($state--warning__bg-color, -10), 5%);
+
+$state--danger__text-color:              $white;
+$state--danger__bg-color:                #b62c25;
+$state--danger__border-color:            darken(spin($state--danger__bg-color, -10), 5%);
+
+$state--error__text-color:              $state--danger__text-color;
+$state--error__bg-color:                $state--danger__bg-color;
+$state--error__border-color:            $state--danger__border-color;
+
+//## Define alert colors, border-color radius, and padding. (BOOTSTRAP)
+$alert--success__bg-color:            $state--success__bg-color;
+$alert--success__text-color:          $state--success__text-color;
+$alert--success__border-color:        $state--success__border-color;
+
+$alert--info__bg-color:               $state--info__bg-color;
+$alert--info__text-color:             $state--info__text-color;
+$alert--info__border-color:           $state--info__border-color;
+
+$alert--warning__bg-color:            $state--warning__bg-color;
+$alert--warning__text-color:          $state--warning__text-color;
+$alert--warning__border-color:        $state--warning__border-color;
+
+$alert--danger__bg-color:             $state--danger__bg-color;
+$alert--danger__text-color:           $state--danger__text-color;
+$alert--danger__border-color:         $state--danger__border-color;
+
+$alert--error__bg-color:             $state--error__bg-color;
+$alert--error__text-color:           $state--error__text-color;
+$alert--error__border-color:         $state--error__border-color;
+
+$alert__font-family:                 $font-family;
+
+
+
+/*------------------------------------*
+    $BUTTONS
+\*------------------------------------*/
+$btn__padding-vertical: .5em;
+$btn__padding-horizontal: .8em;
+$btn__border-radius: 2px;
+$btn__is-flat: true;
+$btn__text-color: $gray;
+$btn__background-color: #dddddd;
+$btn__background-color--hover: darken($btn__background-color, 5%);
+$btn__border-color: #ccc;
+$btn__font-size: 15px;
+$btn__font-family: $sans-serif;
+$btn__font-weight: normal;
+$btn__box-shadow: ~"inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)";
+
+$btn--primary__border-radius: $btn__border-radius;
+
+$btn--primary__text-color: $white;
+$btn--primary__background-color: $sapphire;
+$btn--primary__border-color: darken($btn--primary__background-color, 5%);
+$btn--secondary__text-color: $white;
+$btn--secondary__background-color: $gray-light;
+$btn--secondary__border-color: darken($gray-light, 5%);
+$btn--secondary__border-color: #6a6a6a;
+
+$btn--large__font-size: 18px;
+$btn--small__font-size: 12px;
+$btn--xsmall__font-size: 1.0rem;
