@@ -5815,6 +5815,63 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+/*------------------------------------*
+    $COLORS
+\*------------------------------------*/
+/*
+// Typeography
+//
+*/
+/*------------------------------------*
+    $BUTTONS
+\*------------------------------------*/
+/* $btn__box-shadow: ~"inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)"; */
+/*------------------------------------*
+    $GRAPHIK
+    So, where's the italic?
+\*------------------------------------*/
+@font-face {
+  font-family: 'Graphik Web';
+  src: url("../../fonts/Graphik/Graphik%20Web-Regular.eot");
+  src: url("../../fonts/Graphik/Graphik%20Web-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/Graphik/Graphik%20Web-Regular.woff2") format("woff2"), url("../../fonts/Graphik/Graphik%20Web-Regular.woff") format("woff"), url("../../fonts/Graphik/Graphik%20Web-Regular.ttf") format("truetype"), url("../../fonts/Graphik/Graphik%20Web-Regular.svg#Graphik%20Web") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+@font-face {
+  font-family: 'Graphik Web';
+  src: url("../../fonts/Graphik/Graphik%20Web-Semibold.eot");
+  src: url("../../fonts/Graphik/Graphik%20Web-Semibold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Graphik/Graphik%20Web-Semibold.woff2") format("woff2"), url("../../fonts/Graphik/Graphik%20Web-Semibold.woff") format("woff"), url("../../fonts/Graphik/Graphik%20Web-Semibold.ttf") format("truetype"), url("../../fonts/Graphik/Graphik%20Web-Semibold.svg#Graphik%20Web") format("svg");
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal; }
+@font-face {
+  font-family: 'Acta';
+  font-weight: normal;
+  src: url("../../fonts/Acta/acta-book-webfont.eot");
+  src: url("../../fonts/Acta/acta-book-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Acta/acta-book-webfont.woff") format("woff"), url("../../fonts/Acta/acta-book-webfont.ttf") format("truetype"), url("../../fonts/Acta/acta-book-webfont.svg#actabook") format("svg"); }
+@font-face {
+  font-family: 'Acta';
+  font-weight: normal;
+  font-style: italic;
+  src: url("../../fonts/Acta/acta-bookitalic-webfont.eot");
+  src: url("../../fonts/Acta/acta-bookitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Acta/acta-bookitalic-webfont.woff") format("woff"), url("../../fonts/Acta/acta-bookitalic-webfont.ttf") format("truetype"), url("../../fonts/Acta/acta-bookitalic-webfont.svg#actabook") format("svg"); }
+@font-face {
+  font-family: 'Acta';
+  font-weight: bold;
+  src: url("../../fonts/Acta/acta-bold-webfont.eot");
+  src: url("../../fonts/Acta/acta-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Acta/acta-bold-webfont.woff") format("woff"), url("../../fonts/Acta/acta-bold-webfont.ttf") format("truetype"), url("../../fonts/Acta/acta-bold-webfont.svg#actabook") format("svg"); }
+@font-face {
+  font-family: 'Acta';
+  font-weight: bold;
+  font-style: italic;
+  src: url("../../fonts/Acta/acta-bolditalic-webfont.eot");
+  src: url("../../fonts/Acta/acta-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Acta/acta-bolditalic-webfont.woff") format("woff"), url("../../fonts/Acta/acta-bolditalic-webfont.ttf") format("truetype"), url("../../fonts/Acta/acta-bolditalic-webfont.svg#actabook") format("svg"); }
+@font-face {
+  font-family: 'Acta';
+  font-weight: 800;
+  font-style: italic;
+  src: url("../../fonts/Acta/acta-bolditalic-webfont.eot");
+  src: url("../../fonts/Acta/acta-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Acta/acta-bolditalic-webfont.woff") format("woff"), url("../../fonts/Acta/acta-bolditalic-webfont.ttf") format("truetype"), url("../../fonts/Acta/acta-bolditalic-webfont.svg#actabook") format("svg"); }
 .my-overflow-x {
   white-space: nowrap;
   overflow-y: hidden;
@@ -5992,8 +6049,41 @@ html, body {
   background-color: #ffffff; }
 
 body {
-  color: black; }
+  background-color: #eee;
+  color: #555;
+  font-size: 18px;
+  font-family: Acta, Georgia, "Times New Roman", serif; }
 
+header {
+  background-color: #ffffff; }
+
+.navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #eee;
+  -webkit-display: -webkit-box;
+  -webkit-display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .navigation li {
+    padding: 1em; }
+
+@media screen and (max-width: 430px) {
+  .navigation {
+    -webkit-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .navigation li {
+      text-align: center; } }
 .top-bar-logo {
   background-color: #ab3032;
   padding: 5px; }
@@ -6072,6 +6162,53 @@ body {
   -webkit-order: 1;
   order: 1; }
 
+/*
+** These styles have been added to --> 'app/less/components/_overflow-scroll-x-axsis.less'
+** Leaving styles here because I think it may be handy some day
+*/
+.my-overflow-x {
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  margin: 0 auto;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #eeeeee;
+  background: #ffffff; }
+
+img.my-overflow-x {
+  margin: 5px 5px 5px 5px; }
+
+ul.scrolling-links {
+  max-width: 840px;
+  width: 100%;
+  height: 100%;
+  margin: auto 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center; }
+  ul.scrolling-links li.scrolling-link {
+    /*background-color: red;*/ }
+    ul.scrolling-links li.scrolling-link a {
+      font-size: 12px;
+      padding-right: 15px;
+      padding-left: 15px; }
+    ul.scrolling-links li.scrolling-link:after {
+      /*padding: 0 15px 0 15px;*/
+      content: " | "; }
+  ul.scrolling-links li.scrolling-link:first-child a {
+    padding-left: 0; }
+  ul.scrolling-links li.scrolling-link:last-child:after {
+    content: " "; }
+
+/* scrolling-links */
 .docs_container {
   position: relative;
   display: -webkit-box;

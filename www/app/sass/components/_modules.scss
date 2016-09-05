@@ -1,0 +1,248 @@
+/*------------------------------------*
+    $MODULES
+\*------------------------------------*/
+.module {
+    font-family: "Graphik";
+    @include clear-floats();
+    margin-bottom: $module__spacing;
+
+    @include font-size(14px);
+    font-family: $sans-serif;
+
+    &.module--inline-padded {
+        display: inline-block;
+        padding: 0 1em 1em;
+    }
+}
+.module__header {
+    position: relative;
+    padding: .25em 0 1.4em;
+}
+
+.module__header--full-ruled {
+    /* DO NOT use with module__header--ruled */
+    border-bottom: 2px solid #ddd;
+    border-top: 2px solid #ddd;
+    padding: .75em 0;
+    margin-bottom: 1.72em;
+
+    h2 {
+        color: #777;
+        font-weight: normal;
+        margin: 0;
+    }
+}
+.module__header--gray-bottom {
+    @include padding-bottom(7px);
+    margin-bottom:  0.5em;
+    border-bottom: rgba($gray-light, (33/100)) solid 2px;
+}
+.module__header--interactive {
+    cursor: pointer;
+}
+.module__body .module__title--large {
+    margin: 1em 0 .5em;
+    font-size: 1.5em;
+    text-transform: none;
+}
+.module__body,
+.module__footer {
+    position: relative;
+    @include clearfix();
+}
+.module__footer {
+    margin-top: .625em;
+    padding-top: .625em;
+}
+.module__footer--sponsored {
+    margin-top: 0;
+    border-top: none !important; // .module--ruled has it set up more specifically
+    border-bottom: 1px solid $gray-lightest;
+}
+.module--ruled {
+    position: relative;
+
+    .module__header {
+        padding-top: .625em;
+    }
+
+    // when module is ruled, footer gets a light gray top border and some spacing
+    .module__footer {
+        border-top: 1px solid $gray-lightest;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        top: 0;
+
+        .ruby & {
+            background-color: $ruby;
+        }
+        .sapphire & {
+            background-color: $sapphire;
+        }
+        .emerald & {
+            background-color: $emerald;
+        }
+    }
+}
+.module__footer--ruled {
+    border-top: 1px solid $gray-lightest;
+}
+
+
+.item--border--bottom {
+    border-top: 1px solid $gray-lightest;
+    margin-top:10px;
+
+}
+// TODO: finsh the thought of how stacked objects maintain consistent space
+.module--stacked + .module--stacked {
+    margin-top: 3em;
+}
+
+.module--padded {
+    .module__header {
+        padding-right: .75em;
+        padding-left: .75em;
+    }
+    .module__body {
+        padding-right: .75em;
+        padding-left: .75em;
+    }
+}
+
+.module--x-padded {
+    .module__header, .module__body {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+    .module__header {
+        padding-top: 1.5em;
+        padding-bottom: 0;
+    }
+    .module__body {
+        padding-bottom: 1.5em;
+    }
+}
+
+.striped--champagne {
+    position: relative;
+    background-color: $champagne;
+
+    &--x-light {
+        background-color: $champagne-x-light;
+    }
+
+    &--light {
+        background-color: $champagne-light;
+    }
+
+    &--dark {
+        background-color: $champagne-dark;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+        @include striped();
+        opacity: .5;
+    }
+
+}
+
+.champagne {
+    position: relative;
+    background-color: $champagne;
+
+    &--x-light {
+        background-color: $champagne-x-light;
+    }
+
+    &--light {
+        background-color: $champagne-light;
+    }
+
+    &--dark {
+        background-color: $champagne-dark;
+    }
+
+}
+
+.module__nominations {
+    height: 100%;
+
+    button {
+        float: right;
+    }
+}
+
+.float--right {
+    text-align: right!important;
+    float: right!important;
+}
+
+.module__title--nominate {
+    margin-top: 2px;
+    margin-top: 0.2rem;
+    font-family: Acta, Georgia, 'Times New Roman', serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+    font-size: 2rem;
+    text-transform: none;
+    -webkit-font-feature-settings: "liga";
+    webkit-font-feature-settings: "liga";
+    color: #333;
+}
+
+img.item__media--image {
+    border: 2px solid $champagne;
+    background-color:white;
+    padding: 5px;
+}
+
+.agent--info {
+    font-size: 12px;
+    font-size: 1.2rem;
+}
+
+.module__footer--padded {
+    padding: .75em;
+}
+
+.module__footer--with-border {
+    border-top: 1px solid #eeeeee;
+}
+
+.module__footer--without-border {
+    border-top: 0 solid #eeeeee;
+}
+
+.module__body--centered {
+    text-align: center;
+}
+
+.module__body--cta-text {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.module__body--cta-button {
+    margin-top: 0;
+}
+
+.module--centered {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}

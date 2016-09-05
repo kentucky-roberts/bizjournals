@@ -1,0 +1,372 @@
+/*------------------------------------*
+    $TABLES
+\*------------------------------------*/
+// used for wrapper elements to set positioning for a table and other content
+.table-container {
+    max-height: 480px;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    border-bottom: $border-color solid 2px;
+}
+.table {
+    position: relative;
+    width: 100%;
+    margin-top: 1em;
+
+    font-family: $sans-serif;
+    font-size: 13px;
+
+    tr {
+        width: 100%;
+
+        &:nth-child(even){
+            background: lighten($champagne, 2.5%);
+        }
+    }
+
+    th,
+    td {
+        padding: 5px;
+        border: 1px solid $border-color;
+
+        .centered&{
+            text-align: center;
+        }
+    }
+
+    th {
+        position: relative;
+        padding-right: 1.5em;
+
+        font-weight: bold;
+        text-transform: capitalize;
+        text-align: left;
+
+        background: $champagne;
+    }
+
+    tbody td {
+        vertical-align: top;
+    }
+}
+
+// setup for an embargoed or paywalled table content container
+.table-teaser {
+    position: relative;
+    overflow: hidden;
+//
+    // min-height: 140px;
+    // max-height: 240px;
+//
+    // table {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     right: 0;
+    // }
+
+    .table-teaser__cta {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        box-shadow: 0 -2px 4px fade($gray, 33.3%);
+    }
+}
+
+// the list table specific styles
+.table--the-list {
+    $the-list-min-column-width: 80px !default;
+    $the-list-max-column-width: 320px !default;
+
+    &.table--the-list {
+        tr {
+            border: $border-color solid 1px;
+            border-top: none;
+        }
+
+        td {
+            border: none;
+        }
+    }
+    &.table--the-list thead th {
+        min-width: $the-list-min-column-width;
+        max-width: $the-list-max-column-width;
+        padding-left: 1em;
+        vertical-align: middle;
+    }
+
+    &.table--the-list tr {
+        border-right: $border-color solid 1px;
+        border-left: $border-color solid 1px;
+    }
+    &.table--the-list td {
+        min-width: $the-list-min-column-width;
+        max-width: $the-list-max-column-width;
+
+    }
+    & tbody td {
+        padding: 1em;
+    }
+    &.table--the-list thead th:first-child,
+    &.table--the-list td:first-child {
+        min-width: 0;
+        max-width: 60px;
+        width: 60px;
+    }
+}
+.table--the-list--detail {
+    thead {
+        //
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+
+        .ruby & { border-bottom-color: $ruby; }
+        .sapphire & { border-bottom-color: $sapphire; }
+        .emerald & { border-bottom-color: $emerald; }
+    }
+}
+// feeble attempt to do somehting :() - Quack!
+// .table--has-footnotes {
+//     & + .promo--wide.promo--embargo {
+//         margin-top: -1.25em;
+//     }
+// }
+
+// tablesaw styles for Bizj
+.tablesaw {
+    margin-top: 0;
+}
+.tablesaw-bar {
+    float: left;
+    display: block;
+    width: 100%;
+    z-index: 1;
+    padding: 0 12px;
+    background: #EDEAE4 !important;
+}
+.tablesaw-advance .tablesaw-nav-btn.tablesaw-nav-btn {
+    margin-top: .875em;
+}
+// Overrule tablesaw code that hides these cells
+.table--responsive tbody .tablesaw-cell-hidden {
+    .viewport--xs-only &,
+    .viewport--sm-only & {
+        display: block;
+    }
+}
+// Hide the minimap and controls since we're not using the swiping at these sizes
+.tablesaw-advance,
+.tablesaw-advance.minimap {
+    .viewport--xs-only &,
+    .viewport--sm-only & {
+        display: none !important;
+    }
+}
+//  ---------------END TABLESAW HACKS ======-========-00-=-====-00099u86976
+
+// responsive table with table sorter included
+.table--responsive {
+    th {
+
+        &.tablesorter__header:hover { /* For table sorter */
+            cursor: pointer;
+            background: darken($champagne, 4%);
+        }
+
+        &.tablesorter__header--up,
+        &.tablesorter__header--down {
+            background: darken($champagne, 4%);
+        }
+
+        &.tablesorter__header--up:after,
+        &.tablesorter__header--down:after {
+            position: absolute;
+            top: 50%;
+            right: .5em;
+            margin-top: -.5em;
+            font-family: "bizj-icons";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
+            display: inline-block;
+            text-decoration: inherit;
+            /* For safety - reset parent styles, that can break glyph codes*/
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1em;
+        }
+
+        &.tablesorter__header--up:after {
+            display: inline;
+            content: ' \e80d';
+        }
+
+        &.tablesorter__header--down:after {
+            display: inline;
+            content: ' \e80c';
+        }
+    }
+    .viewport--xs-only &.tablesorter,
+    .viewport--sm-only &.tablesorter,
+    .viewport--xs-only &.table--sortable,
+    .viewport--sm-only &.table--sortable {
+        thead {
+            // Inserts the 'Sort' menu
+            border-color: $white;
+
+            &:before {
+                content: 'Sort Options';
+
+                position: absolute;
+                min-width: 25%;
+                bottom: 100%;
+                //right: $buffer--phone-ish;
+                right: 0;
+                padding: .5em .25em;
+
+                text-align: center;
+                line-height: 1;
+                color: $white;
+
+                border-bottom: 1px solid $white;
+
+                .ruby& {
+                    background: $ruby;
+                }
+                .sapphire& {
+                    background: $sapphire;
+                }
+                .emerald& {
+                    background: $emerald;
+                }
+            }
+
+            &:hover,
+            &.active {
+                &:before {
+                    cursor: pointer;
+                }
+            }
+
+            &.is-active {
+                tr {
+                    display: block;
+                    width: 100%;
+                    position: relative;
+                    top: 0;
+                    right: 0;
+
+                    border-color: $white;
+                }
+
+                th,
+                td {
+                    display: block;
+
+                    font-weight: normal;
+
+                    background: $champagne;
+                    border: none;
+                    border-bottom: $white solid 1px;
+
+
+                }
+
+                th {
+                    &:hover {
+                        background: darken($champagne, 4%);
+                    }
+                }
+
+                .tablesorter__header--up,
+                .tablesorter__header--down {
+                    font-weight: bold;
+                    background: darken($champagne, 4%);
+
+                    &:after {
+                        position: static;
+                        display: inline;
+                        right: auto;
+                    }
+                }
+            }
+        }
+    }
+    .viewport--xs-only &,
+    .viewport--sm-only & {
+        margin-top: ($vertical-rhythm * 2); // Makes room for the 'sort options' button
+
+        thead {
+            th,
+            td {
+                display: none;
+            }
+        }
+
+        th,
+        td {
+            padding-right: $buffer--phone-ish;
+            padding-left: $buffer--phone-ish;
+        }
+
+        tr {
+            border-bottom: $border-color solid 1px;
+
+            &:first-child {
+                border-top: $border-color solid 1px;
+            }
+        }
+
+        td {
+            display: block;
+            padding-top: 1em;
+
+            border: none;
+
+            &:last-child {
+                padding-bottom: 1em;
+            }
+
+            &:before {
+                content: attr(title);
+                display: block;
+                font-weight: bold;
+                text-transform: capitalize;
+            }
+
+            h3 {
+                text-transform: capitalize;
+            }
+
+            &[title="rank"] {
+                display: block;
+                float: left;
+                width: 10%;
+                text-align: center;
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .viewport--sm-only & {
+        th,
+        td {
+            padding-right: $buffer--phone-ish--large;
+            padding-left: $buffer--phone-ish--large;
+        }
+        /*
+        thead {
+            &:before {
+                right: $buffer--phone-ish--large;
+            }
+        }
+        */
+    }
+
+}

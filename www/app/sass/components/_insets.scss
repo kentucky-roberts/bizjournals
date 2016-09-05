@@ -1,0 +1,60 @@
+/*------------------------------------*
+    $INSETS
+
+    .inset--minor
+    Used initially for story assets
+    xs,sm: floated right, half-width.
+    md,lg,xl: floated left, a narrow pixel-specific column
+
+    .inset--major
+    Used initially for promos and other items not specifically attached to the article
+    xs,sm: full-width.
+    md,lg,xl: floated right, 300px wide to match island ad width
+\*------------------------------------*/
+.inset {
+}
+.inset--minor {
+    float: right;
+    clear: right;
+    width: 50%;
+    @include margin-left($gutter--phone-ish);
+
+    .viewport--md & {
+        float: left;
+        clear: left;
+        width: 220px;
+        margin-left: 0;
+        @include margin-right($gutter--tablet-ish);
+    }
+
+    .viewport--lg & {
+        @include margin-right($gutter--desktop-ish);
+    }
+}
+
+.inset--major {
+    .viewport--md & {
+        width: 300px;
+        float: right;
+        clear: right;
+        @include margin-left($gutter--tablet-ish);
+    }
+    .viewport--lg & {
+        @include margin-left($gutter--desktop-ish);
+    }
+    .viewport--xl & {
+        @include margin-left($gutter--desktop-ish--large);
+    }
+}
+.inset--minor + .inset--minor,
+.inset--major + .inset--major {
+    margin-top: 1em;
+}
+.inset--minor + .inset--major,
+.inset--major + .inset--minor {
+    margin-top: 1em;
+
+    .viewport--md & {
+        margin-top: 0;
+    }
+}

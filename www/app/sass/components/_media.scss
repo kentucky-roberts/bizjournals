@@ -1,0 +1,207 @@
+/*------------------------------------*
+    $MEDIA
+\*------------------------------------*/
+.media {
+}
+.media__media {
+    position: relative;
+}
+
+.media__img:extend(.img--block) {}
+
+.media__body {
+    /*
+    .media--featured--landscape & {
+        .viewport--xs-only &,
+        .viewport--sm-only & {
+            padding-right: $buffer--phone-ish--large;
+            padding-left: $buffer--phone-ish--large;
+        }
+    }
+    */
+
+}
+.media__caption,
+.media__byline {
+    font-size: 12px;
+    font-family: $sans-serif;
+    color: $gray-light;
+}
+.media__byline {
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-top: .5em;
+
+    & + .media__caption {
+        margin-top: -.5em;
+    }
+}
+
+.media-prompt {
+    display: inline-block;
+    position: absolute;
+    color: rgba($white, (75/100));
+    background-color: rgba($black, (50/100));
+    //border-bottom: $white solid 2px;
+
+    //opacity: .90;
+    @include transition(all 100ms ease-out);
+
+    //.branded($background: true; $text: false) !default;
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+        display: block;
+        /*
+        .csstransforms3d.csstransitions & {
+            //.transition(transform 100ms ease-out);
+        }
+        */
+    }
+
+    &:hover,
+    a:hover & {
+        text-decoration: none;
+        //opacity: 1;
+        color: $white;
+        .branded($background: true; $text: false) !default;
+        @include transition(all 100ms ease-out);
+    }
+}
+.media-prompt--enlarge {
+    top: 0;
+    right: 0;
+    padding: .25em .25em;
+
+    a:hover & {
+        [class^="icon-"],
+        [class*=" icon-"] {
+            .csstransforms3d.csstransitions & {
+                @include scale(1.2);
+                //.transition(transform 100ms ease-out);
+            }
+        }
+    }
+}
+.media-prompt--slideshow {
+    bottom: 1em;
+    left: 0;
+    padding: .75em 1em .625em 54px;
+
+    opacity: .9;
+
+    color: $white;
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+        position: absolute;
+        top: 50%;
+        left: 2px;
+        margin-top: -16px;
+
+        font-size: 32px;
+        line-height: 1;
+    }
+
+    .branded($background: true; $text: false) !default;
+
+    &:hover,
+    a:hover & {
+        opacity: 1;
+        .branded($background: true; $text: false) !default;
+    }
+    
+    &--small-embed {
+        padding: 1em 1em 1em 54px;
+    }
+}
+.media-prompt__title {
+    &:extend(.item__title--small);
+
+    display: block;
+    line-height: 1.2;
+
+    small {
+        font-size: 12px;
+        font-weight: normal;
+    }
+}
+
+.media-prompt--overlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%; //needed to center items within overlay
+
+    // helps to remove fuzziness caused by half pixel rendering
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    // opacity: .9;
+
+    .ruby &,
+    .sapphire &,
+    .emerald & {
+        // background: $gray-darker;
+        background-color: rgba(51,51,51,.7);
+    }
+
+    &:hover {
+        // opacity: 6; // A bit higher than the original value
+        background-color: rgba(51,51,51,.8);
+    }
+
+    *,
+    .media-prompt__title {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+        @include font-size(18px);
+
+        // opacity: 1;
+    }
+}
+.media--featured {
+    margin-top: unquote("calc((1em + 1px) * -1)");
+
+    .viewport--md & {
+        margin-top: 0;
+    }
+}
+.media--featured-video {
+    margin-top: unquote("calc((1em + 1px) * -1)");
+    margin-bottom: $vertical-rhythm;
+    border-bottom: $border-color solid 1px;
+}
+/*
+Keep the video player controls from being cropped out.
+Ideally, would be targeting the .media__video-player div,
+but the viewscript for the player component appears to be pulling from the old site,
+so for now we'll hook onto the same hardcoded #artassetmplayerwrapper > .innerWrapper selector
+used inside the player component itself, to be sure we override its hard-coded px height.
+*/
+.media__video-player,
+#artassetmplayerwrapper > div,
+#artassetmplayerwrapper > .innerWrapper {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    z-index: 1;
+}
+
+.media--ruled {
+    margin-top: 1em !important; // le sigh... to much specificity in here
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+}
+
+
+

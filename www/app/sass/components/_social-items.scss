@@ -1,0 +1,45 @@
+/*------------------------------------*
+    $SOCIAL ITEMS
+
+    Initially used as the <a> in each sharing tool,
+    and the <label> on each account signup integration option
+\*------------------------------------*/
+/*
+[class*="social-item--"] {
+    display: inline-block;
+    padding: .5em .375em;
+
+    line-height: 1;
+
+    color: $white;
+    font-family: $sans-serif;
+
+    //.transition(background .3s ease-in-out);
+    
+    i {
+        font-size: 16px;
+    }
+}
+*/
+
+@mixin generate-social-item($name; $color){
+    .icon-#{$name}.icon-#{$name} {
+        font-size: 16px;
+        color: $color;
+    }
+}
+
+@include generate-social-item(facebook, $facebook-brand-color);
+@include generate-social-item(linkedin, $linkedin-brand-color);
+@include generate-social-item(twitter, $twitter-brand-color);
+@include generate-social-item(googleplus, $googleplus-brand-color);
+@include generate-social-item(email, $email-color);
+@include generate-social-item(print, $gray);
+@include generate-social-item(docs, $gray);
+@include generate-social-item(star, $gray);
+/*
+.social-item--solid,
+.social-item--solid:hover {
+    color: $white;
+}
+*/

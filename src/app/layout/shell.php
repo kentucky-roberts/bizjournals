@@ -3,11 +3,39 @@ $message = "hello from php";
 $title = "Home";
 $pageSubtitle = "Default Subtitle";
 $pageText = "This is some default page text";
+
+
+/*
+//  Get Channel Data
+//
+ */
+$curl2 = curl_init();
+// Set some options - we are passing in a useragent too here
+curl_setopt_array($curl2, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => 'http://localhost:8888/bizjournals/api/channels.json',
+    CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+));
+// Send the request & save response to $resp
+$resp2 = curl_exec($curl2);
+// Close request to clear up some resources
+curl_close($curl2);
+// decode JSON
+$c = json_decode($resp2, true);
+
+$embeded = $c;
+//var_dump($resp2);
+
+
+
+
+
+
 // Get cURL resource
 $curl = curl_init();
 // Set some options - we are passing in a useragent too here
 curl_setopt_array($curl, array(
-    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_RETURNTRANSFER => 2,
     CURLOPT_URL => 'http://localhost:8888/bizjournals/api/datasets.json',
     CURLOPT_USERAGENT => 'Codular Sample cURL Request'
 ));
@@ -16,27 +44,28 @@ $resp = curl_exec($curl);
 // Close request to clear up some resources
 curl_close($curl);
 // decode JSON
-$json = json_decode($resp, true);
+$datasets = json_decode($resp, true);
+var_dump($datasets);
 // get the data
-$companyName = $json['_embedded']['entries'][0]['companyName'];
-$description = $json['_embedded']['entries'][0]['description'];
-$promoText = $json['_embedded']['entries'][0]['promoText'];
-$logo = $json['_embedded']['entries'][0]['logo'];
-$image = $json['_embedded']['entries'][0]['image'];
-$featured = $json['_embedded']['entries'][0]['featured'];
-$featuredExpires = $json['_embedded']['entries'][0]['featuredExpires'];
+$companyName = $datasets['_embedded']['entries'][0]['companyName'];
+$description = $datasets['_embedded']['entries'][0]['description'];
+$promoText = $datasets['_embedded']['entries'][0]['promoText'];
+$logo = $datasets['_embedded']['entries'][0]['logo'];
+$image = $datasets['_embedded']['entries'][0]['image'];
+$featured = $datasets['_embedded']['entries'][0]['featured'];
+$featuredExpires = $datasets['_embedded']['entries'][0]['featuredExpires'];
 
-$meta = $json['_embedded']['entries'][0]['_meta'];
+$meta = $datasets['_embedded']['entries'][0]['_meta'];
 
 // get pagination info to work with AIP
-$pageSize = $json['page_size'];
-$pageCount = $json['page_count'];
-$totalItems = $json['total_items'];
-$_links = $json['_links'];
-$_linkSelf = $json['_links']['self']['href'];
-$_linkFirst = $json['_links']['first']['href'];
-$_linkLast = $json['_links']['last']['href'];
-$_linkNext = $json['_links']['next']['href'];
+$pageSize = $datasets['page_size'];
+$pageCount = $datasets['page_count'];
+$totalItems = $datasets['total_items'];
+$_links = $datasets['_links'];
+$_linkSelf = $datasets['_links']['self']['href'];
+$_linkFirst = $datasets['_links']['first']['href'];
+$_linkLast = $datasets['_links']['last']['href'];
+$_linkNext = $datasets['_links']['next']['href'];
 $totalPages_25ItemsEachPage = 4920;
 
 
@@ -46,8 +75,6 @@ $sponsoredByLabel = '';
 $sponsoredByPosition = 'logo';
 $title = 'San Francisco Business Meeting Guide';
 $headerDescription = 'Your comprehensive guide to the people, places and services essential to organizing a successful meeting or event in the Bay Area';
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,20 +113,29 @@ $headerDescription = 'Your comprehensive guide to the people, places and service
     <!-- global header -->
     <?php include('bar-header.php'); ?>
     <?php //include('hero-header.php'); ?>
+    <?php include('flex/flex-header-nav.php'); ?>
 
     <div class="hero-unit">
         <div class="container">
             <div class="row">
                 <h1><?php echo $title; ?></h1>
                 <h2><?php echo $headerDescription; ?></h2>
-                <ul id="fruits">
-                    <li class="apple">Apple</li>
-                    <li class="orange">Orange</li>
-                    <li class="pear">Pear</li>
-                </ul>
             </div>
         </div>
     </div><!--/.hero-unit-->
+
+    <div class="container">
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-default">Dropup</button>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <!-- Dropdown menu links -->
+          </ul>
+        </div>
+    </div>
 
     <div class="container">
         <?php include('sub-hero-three.php'); ?>
@@ -246,11 +282,11 @@ $headerDescription = 'Your comprehensive guide to the people, places and service
         </div>
 
 
-        <h1>Company Name: <?php echo $companyName; ?></h1>
+        <h1>Company Name: <?= $companyName; ?></h1>
         <div class="row">
             <div class="col-xs-12">
-                <p class="lead"><strong>promoText:</strong> <?php echo $promoText; ?></p>
-                <p><strong>description:</strong> <?php echo $description; ?></p>
+                <p class="lead"><strong>promoText:</strong> <?= $promoText; ?></p>
+                <p><strong>description:</strong> <?= $description; ?></p>
                 <p class="well">
                     <?php echo $meta; ?>
                 </p>
@@ -305,7 +341,9 @@ $headerDescription = 'Your comprehensive guide to the people, places and service
 
         <?php include("src/app/modules/components/pagination/flex-pagination.php"); ?>
 
-        <?php include("src/app/modules/directories-module.php"); ?>
+        <div class="container">
+            <?php include("src/app/modules/directories/directories-module.php"); ?>
+        </div>
 
         <div class="container">
             <?php include("src/app/modules/forms/index.php"); ?>
@@ -331,6 +369,12 @@ $headerDescription = 'Your comprehensive guide to the people, places and service
             <?php include("src/app/modules/docs/scroll-x-axis/image-overflow-x-axis.php"); ?>
         </div><!--/.container -->
 
+        <div class="container">
+            <?php include('src/app/modules/full-screen/panel-demo.php'); ?>
+        </div><!--/.container -->
+
+
+
 
 
     </div>
@@ -341,48 +385,23 @@ $headerDescription = 'Your comprehensive guide to the people, places and service
     <?php // include('bar-pre-footer.php'); ?>
     <?php // include('bar-footer.php'); ?>
     <?php // include('bar-sub-footer.php'); ?>
-
-    <!--<script src="src/app/lib/require.js" data-main="src/app/js/main"></script>
+<!--
+    <script src="src/app/lib/require.js" data-main="src/app/js/main"></script>
     <script src="./lib/requirejs/require.js"></script>
     <script src="./lib/underscore/underscore.js"></script>
-    <script src="./lib/backbone/backbone.js"></script>-->
+    <script src="./lib/backbone/backbone.js"></script> -->
 
     <script src="./lib/jquery/jquery.min.js"></script>
     <script src="./lib/bootstrap-sass/assets/javascripts/bootstrap-sprockets.js"></script>
     <script src="./lib/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-    <script src="./lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="./node_modules/request/index.js"></script>
     <script src="./node_modules/resolve/index.js"></script>
     <script src="./node_modules/cheerio/index.js"></script>
     <script src="./node_modules/url-parse/index.js"></script>
     <script src="./node_modules/zeroclipboard/dist/ZeroClipboard.js"></script>
-    <script>
-//     var request = require('request');
-// var cheerio = require('cheerio');
-// var fs = require('fs');
-
-// request("https://www.reddit.com", function(error, response, body) {
-//   if(error) {
-//     console.log("Error: " + error);
-//   }
-//   console.log("Status code: " + response.statusCode);
-
-//   var $ = cheerio.load(body);
-
-//   $('div#siteTable > div.link').each(function( index ) {
-//     var title = $(this).find('p.title > a.title').text().trim();
-//     var score = $(this).find('div.score.unvoted').text().trim();
-//     var user = $(this).find('a.author').text().trim();
-//     console.log("Title: " + title);
-//     console.log("Score: " + score);
-//     console.log("User: " + user);
-//     fs.appendFileSync('reddit.txt', title + '\n' + score + '\n' + user + '\n');
-//   });
-
-// });
-
-    </script>
+    <script src="./src/app/modules/full-screen/fill-screen.js"></script>
     <!--<script src="./src/app/app.js"></script>
     <script src="./src/app/app.core.js"></script> -->
+
   </body>
 </html>

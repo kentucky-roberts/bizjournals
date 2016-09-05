@@ -1,0 +1,16 @@
+/*------------------------------------*
+    $BACKGROUND COLORS
+\*------------------------------------*/
+.u-bg-champagne {
+  background: $champagne;
+}
+/*------------------------------------*
+    $TEXT COLORS
+\*------------------------------------*/
+.u-color-white {
+  color: $white;
+}
+
+.u-color-branded {
+  .branded($text: true) !default;
+}

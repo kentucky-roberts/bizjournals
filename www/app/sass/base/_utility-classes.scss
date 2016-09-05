@@ -1,0 +1,150 @@
+// float utility classes
+.pull-left, .u-float-left { float: left; }
+.pull-right, .u-float-right { float: right; }
+
+.clearfix, .u-clearfix { @include clear-floats(); }
+.unclearfix, .u-unclearfix { @include unclear-floats(); }
+
+.clear, .u-float-clear { clear: both; }
+// END float utility classes
+
+// position utility classes
+.relative, .u-position-relative { position: relative; }
+.u-position-absolute { position: absolute; }
+.u-position-fixed { position: fixed; }
+
+.top, .u-position-top { top: 0; }
+.right, .u-position-right { right: 0; }
+.bottom, .u-position-bottom { bottom: 0; }
+.left, .u-position-left { left: 0; }
+// END position utility classes
+
+// block level spacing - vertical rhythm/margin
+.u-spacing--top { margin-top: 1em; }
+.u-spacing--bottom { margin-bottom: 1em; }
+.u-vertical-rhythm { margin-bottom: $vertical-rhythm; }
+
+
+.img--block {
+    display: block;
+    width: 100%;
+}
+/*
+Might like for these to be
+.js .js__hidden
+.no-js .no-js__hidden
+but for right now will keep consistency
+with other hidden/visible utility class name patterns
+*/
+.js .hidden--js {
+    display: none;
+}
+.no-js .hidden--no-js {
+    display: none !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+// Fade copied from Bootstrap 3
+.js .fade {
+  opacity: 0;
+  @include transition(opacity .15s ease-out);
+  &.in {
+    opacity: 1;
+  }
+}
+
+.display-none {
+    display: none !important;
+}
+.screen-reader-only { @include hidden-text(); }
+
+.no-focus,
+.no-focus:active,
+.no-focus:focus {
+    outline: none;
+}
+
+.serif {
+    font-family: $serif;
+}
+.sans-serif {
+    font-family: $sans-serif;
+}
+.centered.centered {
+    text-align: center;
+}
+.u-link-color.u-link-color.u-link-color {
+    .ruby & { color: $link-color-ruby; }
+    .sapphire & { color: $link-color-sapphire; }
+    .emerald & { color: $link-color-emerald; }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+/*------------------------------------*
+    $RESPONSIVE VISIBILITY CLASSES
+
+    (Ripped from Bootstrap)
+    Screen size-related
+    Each visible/hidden class applies only for that exact size, not that size and greater.
+    Really really really try to AVOID using the .visible classes
+    Since the 'hidden' classes now apply at xx-only, we shouldn't need to use these as overrides anymore.
+
+    TODO: Think through swapping syntax from hidden--xx to xx-only__hidden ?
+\*------------------------------------*/
+
+@mixin generate-responsive-visibility($size-name){
+    .viewport--#{$size-name}-only {
+        .hidden--#{$size-name} { @include responsive-invisibility(); }
+
+        .visible--#{$size-name}--inline { display: inline !important !default; }
+        .visible--#{$size-name}--block { display: block !important !default; }
+        .visible--#{$size-name}--inline-block { display: inline-block !important !default; }
+    }
+}
+
+
+@include generate-responsive-visibility(xs);
+@include generate-responsive-visibility(sm);
+@include generate-responsive-visibility(md);
+@include generate-responsive-visibility(lg);
+@include generate-responsive-visibility(xl);
+/*------------------------------------*
+    $RESPONSIVE PRINT CLASSES
+
+    TODO:
+        Replace these with a hidden screen class to hide things that don't print.
+        Then we won't need to set explicit display properties to unhide the print-only pieces.
+\*------------------------------------*/
+// setting classes to place on HTML for Print options
+.visible--print--block {
+  display: none !important;
+
+  @media print {
+    display: block !important;
+  }
+}
+.visible--print--inline {
+  display: none !important;
+
+  @media print {
+    display: inline !important;
+  }
+}
+.visible--print--inline-block {
+  display: none !important;
+
+  @media print {
+    display: inline-block !important;
+  }
+}
+
+.hidden--print {
+  @media print {
+    @include responsive-invisibility();
+  }
+}

@@ -12,7 +12,7 @@ define(function (require) {
 
     // Auto go to a project detail page.  Trigger = true will tell it to run the callback
     // function from the router definition.
-    router.navigate("channels/channel_name", {trigger:true})
+    //router.navigate("channels/channel_name", {trigger:true})
 
 
 

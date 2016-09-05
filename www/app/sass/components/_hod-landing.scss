@@ -1,0 +1,304 @@
+.featured-listing {
+  .ct {
+    img {
+      width: 100%;
+      display: block;
+
+    }
+  }
+
+  .position-relative {
+    position: relative;
+  }
+
+  .totem__media {
+    margin-bottom: 4px;
+    margin-bottom: 0.4rem;
+
+    .left {
+      left: 0;
+    }
+
+    .position-relative {
+      position: relative;
+    }
+
+    .bottom {
+      bottom: 0;
+    }
+
+    .overlay--inline-block {
+      display: inline-block;
+      padding: .5em .75em;
+      font-size: 12px;
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: #fff;
+    }
+
+    [class*="overlay--"] {
+      position: absolute;
+      background: #000;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .overlay--light {
+      background: #f2f2f2;
+      background: rgba(239, 239, 239, 0.9);
+      color: #424242;
+    }
+  }
+
+  .meta-item {
+    margin-right: 1em;
+    margin-bottom: .125em;
+    padding-top: .25em;
+    padding-bottom: .25em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-size: 1.1rem;
+    line-height: 1;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  h3 {
+    margin: 0 0 .25em 0;
+    padding: 0;
+    font-family: 'Acta', Georgia, serif;
+    font-weight: bold;
+    font-size: 1.4em;
+    line-height: 1.2;
+  }
+
+  h3 {
+    a {
+      color: #222;
+    }
+  }
+
+  .rre-section--muted {
+    font-size: 14px;
+    color: gray;
+  }
+
+  .rre__specs {
+    font-size: 14px;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      list-style-type: none;
+
+      li:first-child {
+        border: none;
+        padding: 0;
+      }
+
+      li {
+        margin: 0 .25em 0 0;
+        padding: 0 0 0 .5em;
+        display: inline;
+        border-left: 1px solid #777;
+      }
+
+    }
+
+    h3 {
+      a {
+        color: #222;
+      }
+    }
+
+  }
+}
+
+.listings {
+  .ct {
+    img {
+      width: 100%;
+      display: block;
+
+    }
+  }
+
+  .totem__media {
+    margin-bottom: 4px;
+    margin-bottom: 0.4rem;
+  }
+
+  .meta-item {
+    margin-right: 1em;
+    margin-bottom: .125em;
+    padding-top: .25em;
+    padding-bottom: .25em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-size: 1.1rem;
+    line-height: 1;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  h3 {
+    margin: 0 0 .25em 0;
+    padding: 0;
+    font-family: 'Acta', Georgia, serif;
+    font-weight: bold;
+    font-size: 1.4em;
+    line-height: 1.2;
+  }
+
+  .rre-section--muted {
+    font-size: 14px;
+    color: gray;
+  }
+
+  #hodListings {
+    font-size: 14px;
+
+    .left {
+      left: 0;
+    }
+
+    .position-relative {
+      position: relative;
+    }
+
+    .bottom {
+      bottom: 0;
+    }
+
+    .overlay--inline-block {
+      display: inline-block;
+      padding: .5em .75em;
+      font-size: 12px;
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: #fff;
+    }
+
+    [class*="overlay--"] {
+      position: absolute;
+      background: #000;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .overlay--light {
+      background: #f2f2f2;
+      background: rgba(239, 239, 239, 0.9);
+      color: #424242;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      list-style-type: none;
+
+      li:first-child {
+        border: none;
+        padding: 0;
+      }
+
+      li {
+        margin: 0 .25em 0 0;
+        padding: 0 0 0 .5em;
+        display: inline;
+        border-left: 1px solid #777;
+      }
+
+    }
+
+    h3 {
+      a {
+        color: #222;
+      }
+    }
+
+  }
+
+}
+
+#ulc-items {
+  h4 {
+    font-size: 18px;
+  }
+
+  li {
+    border-bottom: 1px solid #eee;
+    color: #666;
+    line-height: 22px;
+    margin: 0 0 15px;
+  }
+
+  .play-icon {
+    background: transparent url("../img/iconsSprite.png") no-repeat scroll left -2398px;
+    height: 34px;
+    margin-left: 34px;
+    margin-top: 20px;
+    position: absolute;
+    text-indent: -9999px;
+    width: 32px;
+  }
+
+  .date {
+    display: block;
+    font-size: 12px;
+    margin-right: 4px;
+    margin-bottom: 3px;
+  }
+
+  .right {
+    float: right;
+  }
+}
+/*
+The CSS inside .ad is breaking the LESS compiler.
+The CSS inside this file is breaking my brain.
+
+.ad {
+   clear: both;
+   text-align: center;
+   width: auto;
+   margin-top: 25px;
+}
+*/
+
+#hod--landing {
+  h1 {
+    margin-bottom: 50px;
+  }
+  .market {
+    text-transform: capitalize;
+  }
+}
+
+.totem {
+
+  .totem__body {
+    min-height: 100%;
+    height: 100%;
+    padding-bottom:10px;
+    margin-bottom:10px;
+  }
+}
+
+.listings #hodListings .overlay--light {
+  background: rgba(248, 245, 239,0.75);
+}
+​
+.gallery__listing p {
+  font-family: 'Graphik Web', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+​
+.gallery-item__body {
+  padding-bottom: 15px;
+}
+
+.totem__body--champagne {
+  background-color: $champagne;
+}

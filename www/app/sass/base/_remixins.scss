@@ -1,0 +1,281 @@
+// ===== REM UNIT MIXINS ====
+$base-font-size-px: 10 !default; // root's font size. $base-font-size-px MUST ME AN INTEGER.
+
+
+$pxtorem-js-function: ~`pxtorem = function(px){ if (typeof rmxsBaseFontSize == 'undefined')  rmxsBaseFontSize = #{$base-font-size-px}; return (parseInt(px.replace(/(^\d+)(.+$)/i,'$1')) / rmxsBaseFontSize + 'rem') }` !default;
+
+
+// ===== FONT MIXINS =====
+@mixin font-size($value){
+    font-size: $value;
+}
+
+@mixin font-size($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    font-size: $rem-value;
+}
+
+@mixin line-height($value){
+    line-height: $value;
+}
+
+@mixin line-height($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    line-height: $rem-value;
+}
+
+@mixin text-indent($value){
+    text-indent: $value;
+}
+
+@mixin text-indent($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    text-indent: $rem-value;
+}
+
+
+// ===== MARGIN MIXINS =====
+@mixin margin($value){
+    margin: $value;
+}
+
+@mixin margin($vvalue, $hvalue){
+    margin: $arguments;
+}
+
+@mixin margin($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    margin: $rem-value;
+}
+
+@mixin margin($vertical, $horizontal) when (ispixel($vertical)) and (ispixel($horizontal)){
+    $rem-vvalue: ~`pxtorem('#{$vertical}')` !default;
+    $rem-hvalue: ~`pxtorem('#{$horizontal}')` !default;
+    margin: $rem-vvalue $rem-hvalue;
+}
+
+@mixin margin($vertical, $horizontal) when (ispixel($vertical)){
+    $rem-value: ~`pxtorem('#{$vertical}')` !default;
+    @include margin($rem-value, $horizontal);
+}
+
+@mixin margin($vertical, $horizontal) when (ispixel($horizontal)){
+    $rem-value: ~`pxtorem('#{$horizontal}')` !default;
+    @include margin($vertical, $rem-value);
+}
+
+@mixin margin-top($value){
+    margin-top: $value;
+}
+
+@mixin margin-top($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    margin-top: $rem-value;
+}
+
+@mixin margin-right($value){
+    margin-right: $value;
+}
+
+@mixin margin-right($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    margin-right: $rem-value;
+}
+
+@mixin margin-bottom($value){
+    margin-bottom: $value;
+}
+
+@mixin margin-bottom($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    margin-bottom: $rem-value;
+}
+
+@mixin margin-left($value){
+    margin-left: $value;
+}
+
+@mixin margin-left($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    margin-left: $rem-value;
+}
+
+
+// ===== PADDING MIXINS =====
+@mixin padding($value){
+    padding: $value;
+}
+
+@mixin padding($vvalue, $hvalue){
+    padding: $arguments;
+}
+
+@mixin padding($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    padding: $rem-value;
+}
+
+@mixin padding($vertical, $horizontal) when (ispixel($vertical)) and (ispixel($horizontal)){
+    $rem-vvalue: ~`pxtorem('#{$vertical}')` !default;
+    $rem-hvalue: ~`pxtorem('#{$horizontal}')` !default;
+    padding: $rem-vvalue $rem-hvalue;
+}
+
+@mixin padding($vertical, $horizontal) when (ispixel($vertical)){
+    $rem-value: ~`pxtorem('#{$vertical}')` !default;
+    @include padding($rem-value, $horizontal);
+}
+
+@mixin padding($vertical, $horizontal) when (ispixel($horizontal)){
+    $rem-value: ~`pxtorem('#{$horizontal}')` !default;
+    @include padding($vertical, $rem-value);
+}
+
+@mixin padding-top($value){
+    padding-top: $value;
+}
+
+@mixin padding-top($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    padding-top: $rem-value;
+}
+
+@mixin padding-right($value){
+    padding-right: $value;
+}
+
+@mixin padding-right($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    padding-right: $rem-value;
+}
+
+@mixin padding-bottom($value){
+    padding-bottom: $value;
+}
+
+@mixin padding-bottom($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    padding-bottom: $rem-value;
+}
+
+@mixin padding-left($value){
+    padding-left: $value;
+}
+
+@mixin padding-left($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    padding-left: $rem-value;
+}
+
+
+// ===== POSITION MIXINS =====
+@mixin height($value){
+    height: $value;
+}
+
+@mixin height($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    height: $rem-value;
+}
+
+@mixin min-height($value){
+    min-height: $value;
+}
+
+@mixin min-height($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    min-height: $rem-value;
+}
+
+@mixin max-height($value){
+    max-height: $value;
+}
+
+@mixin max-height($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    max-height: $rem-value;
+}
+
+
+@mixin width($value){
+    width: $value;
+}
+
+@mixin width($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    width: $rem-value;
+}
+
+@mixin min-width($value){
+    min-width: $value;
+}
+
+@mixin min-width($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    min-width: $rem-value;
+}
+
+@mixin max-width($value){
+    max-width: $value;
+}
+
+@mixin max-width($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    max-width: $rem-value;
+}
+
+@mixin top($value){
+    top: $value;
+}
+
+@mixin top($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    top: $rem-value;
+}
+
+@mixin left($value){
+    left: $value;
+}
+
+@mixin left($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    left: $rem-value;
+}
+
+@mixin right($value){
+    right: $value;
+}
+
+@mixin right($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    right: $rem-value;
+}
+
+@mixin bottom($value){
+    bottom: $value;
+}
+
+@mixin bottom($value) when (ispixel($value)){
+    $rem-value: ~`pxtorem('#{$value}')` !default;
+    bottom: $rem-value;
+}
+
+
+/*
+.rem-mixins-test-class {
+    @include font-size(10px);
+    @include line-height(20px);
+    @include margin(10px);
+    @include margin(3em);
+    @include margin(10px, 20px);
+    @include margin(10px, 20%);
+    @include margin(0px , 20px);
+    @include margin-top(2%);
+    @include margin-top(2px);
+    @include padding(10px);
+    @include padding(3em);
+    @include padding(10px, 20px);
+    @include padding(10px, 20%);
+    .padding(3em, 20px)
+}
+*/

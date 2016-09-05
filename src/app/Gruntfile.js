@@ -4,17 +4,17 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         config: {
             dir: {
-                public: './'
+                public: '../../www/app/'
             }
         },
         less: {
             dist: {
                 options: {
-                    paths: ['<%= config.dir.public %>less'],
+                    paths: ['../www/app/'],
                     compress: false
                 },
                 files: {
-                    '<%= config.dir.public %>css/bizjournals.css': '<%= config.dir.public %>less/bizjournals.less'
+                    '../src/app/css/bizjournals.css': '../src/app/less/bizjournals.less'
                 }
             },
             build: {
@@ -23,7 +23,7 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 files: {
-                    '<%= config.dir.public %>css/bizjournals.min.css': '<%= config.dir.public %>less/bizjournals.less'
+                    '<%= config.dir.public %>css/bizjournals.min.css': '../src/app/less/bizjournals.less'
                 }
             }
         },
@@ -46,40 +46,12 @@ lessToSass: {
   convert: {
       files: [{
         expand: true,
-        cwd: 'src/app',
-        src: ['less/*.less'],
-        ext: '.sass',
-        dest: 'sass/'
+        cwd: '../src/app/sass/',
+        src: ['**/*.scss'],
+        ext: '.scss',
+        dest: '../www/sass/'
       }]
     },
-    excludes_replacements: {
-      files: [{
-        expand: true,
-        cwd: 'src/app',
-        src: ['less/*.less'],
-        ext: '.scss',
-        dest: 'sass/'
-      }],
-      options: {
-        excludes: ['default']
-      }
-    },
-    convert_within_custom_replacements: {
-      files: [{
-        expand: true,
-        cwd: 'src/app',
-        src: ['less/bizjournals.less'],
-        ext: '.scss',
-        dest: 'sass/'
-      }],
-      options: {
-        replacements: [{
-          pattern: /(\s+)\.([\w\-]*)\s*\((.*)\);/gi,
-          replacement: '$1@include $2($3)',
-          order: 2
-        }]
-      }
-    }
   },
   watch: {
     less: {

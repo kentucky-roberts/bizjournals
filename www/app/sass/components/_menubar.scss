@@ -1,0 +1,482 @@
+/*------------------------------------*
+    $MENUBAR
+\*------------------------------------*/
+.menubar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $z-menubar;
+    width: 100%;
+    height: $menubar-height--mobile;
+    
+    font-size: 12px;
+    
+    background: $menubar-background-color;
+    
+    @include box-sizing(content-box);
+    
+    //.box-shadow(0 2px 1px rgba($black, (16/100)));
+    
+    @include transition-transform(150ms $easeOutFull);
+    
+    
+    .viewport--md & {
+        top: 0;
+        height: $menubar-height;
+        
+        font-size: 12px;
+        
+        //.box-shadow(0 1px 1px rgba($black, (12/100)));
+        
+        border-bottom: $border-color solid 1px;
+    }
+    
+    
+}
+.titlebar {
+    height: $menubar-height--mobile;
+
+    font-size: 12px;
+    background: $menubar-background-color;
+	@include box-shadow(0 1px 1px rgba($black, (12/100)));
+}
+.menubar-list {
+    margin: 0;
+	padding: 0;
+
+	height: $menubar-list-height--mobile;
+    
+    .viewport--md & {
+        height: $menubar-list-height;
+    }
+}
+.titlebar-list:extend(.menubar-list) {}
+
+.menubar-item,
+.titlebar-item {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    
+    background: $menubar-background-color;
+    
+    width: 1%;
+    white-space: nowrap;
+}
+
+.menubar__menu-toggle {
+    height: $menubar-height--mobile;
+    
+    .viewport--sm & {
+        width: $menubar-height--mobile;
+        height: $menubar-height--mobile;
+    }
+    .viewport--md & {
+        width: $menubar-height;
+        height: $menubar-height;
+    }
+    
+}
+.menubar-item--left-border {
+    border-left: $border-color solid 1px;
+}
+.menubar-item--auto-width,
+.titlebar-item--auto-width,
+.menu-item--auto-width {
+    width: auto;
+    white-space: normal;
+}
+.menubar-item--has-logo,
+.titlebar-item--has-icon {
+    /*
+    Dark, full-bleed menubar items (like the logo) need to extend their background
+    above the menubar's bottom border (which is a light gray)
+    */
+    
+    position: relative;
+    
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        z-index: -1;
+        
+        .ruby & { background: $ruby; }
+        .sapphire & { background: $sapphire; }
+        .emerald & { background: $emerald; }
+    }
+}
+.menubar-item--has-button {
+    width: $menubar__btn-width--mobile;
+    height: $menubar__btn-width--mobile;
+    
+    .viewport--md & {
+        width: $menubar__btn-width;
+        height: $menubar__btn-height;
+    }
+}
+.titlebar-item--has-button:extend(.menubar-item--has-button) {}
+
+.menubar-item__btn {
+    display: block;
+    width: $menubar__btn-width--mobile;
+    height: $menubar__btn-width--mobile;
+//	padding-right: 2px;
+//	padding-left: 2px;
+	padding: 0 .625em;
+    
+    font-size: 18px;
+    line-height: $menubar__btn-height--mobile;
+    color: $gray-darker;
+    text-align: center;
+    
+    .ruby &,
+    .sapphire &,
+    .emerald & {
+        color: $gray-darker;
+    }
+    
+    background: $white;
+    border: none;
+    
+    .viewport--md & {
+        width: $menubar__btn-width;
+        height: $menubar__btn-height;
+        line-height: $menubar__btn-height;
+    }
+    
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        text-decoration: none;
+        
+        border: none;
+        background: $white;
+        
+    }
+    
+    &:hover {
+        .ruby & { color: $ruby; }
+        .sapphire & { color: $sapphire; }
+        .emerald & { color: $emerald; }
+    }
+    
+    &.is-active {
+        background: $champagne-light;
+    }
+}
+.titlebar-item__btn {
+	&:extend(.menubar-item__btn all);
+		
+	.viewport--md & {
+        width: $menubar__btn-width--mobile;
+        height: $menubar__btn-height--mobile;
+        line-height: $menubar__btn-height--mobile;
+	}
+}
+.menubar-item__text {
+    font-size: 11px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    
+    .viewport--md & {
+        font-size: 13px;
+    }
+}
+.titlebar-item__text:extend(.menubar-item__text){}
+// TODO: less-blurry animation for animated hamburger icon / close icon
+.hamburger {
+    display: block;
+    width: 20px;
+    margin: 0 auto;
+    
+    .market-header__btn & {
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        margin-left: -.5625em;
+    }
+}
+.menu-button {
+    padding-left: 0;
+    padding-right: 0;
+    
+    &.is-active {
+        position: relative;
+        background: $canvas__background;
+        
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            height: 3px;
+            background: $canvas__background;
+        }
+    }
+}
+.hamburger__bar {
+    display: block;
+    height: 3px;
+    margin-bottom: 3px;
+    
+    border-radius: 1px;
+    
+    background-color: $gray-darker;
+    
+    @include transition-transform($leading-transition-duration $easeOutFull);
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+    
+    .menu-button:hover & {
+        .ruby & { background-color: $ruby; }
+        .sapphire & { background-color: $sapphire; }
+        .emerald & { background-color: $emerald; }
+    }
+    
+    .menu-button.is-active & {
+        /* For less modern browsers, change the hamburger to a minus sign
+        by hiding the top and bottom pieces */
+        &:nth-child(1) {
+            opacity: 0;
+        }
+        &:nth-child(2) {
+            
+        }
+        &:nth-child(3) {
+            opacity: 0;
+        }
+        
+        .csstransforms3d.csstransitions & {
+            &:nth-child(1) {
+                opacity: 1;
+                @include transform(translate(0, 200%) rotate3d(0,0,1,405deg));
+            }
+            &:nth-child(2) {
+                @include transform(scaleX(0));
+            }
+            &:nth-child(3) {
+                opacity: 1;
+                @include transform(translate(0, -200%) rotate3d(0,0,1,-405deg));
+            }
+        }
+    }
+}
+
+.logo-link {
+    display: inline-block;
+    position: relative;
+    padding: $pillbox-vertical-padding--mobile $pillbox-horizontal-padding--mobile;
+    
+    width: auto;
+    height: $menubar-list-height--mobile;
+    
+    background-image: url(~'../img/stripes-12px.png');
+    background-repeat: repeat;
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+        background-image: url(~'../img/stripes-12px$2x.png');
+        background-size: 12px;
+    }
+    // Not sure we want to use 1 physical pixel here, but let's try it out.
+    @media (-webkit-min-device-pixel-ratio : 3) {
+        background-image: url(~'../img/stripes-12px$3x.png');
+        background-size: 12px;
+    }
+
+    border-width: $pillbox-stripe-padding--mobile;
+    border-style: solid;
+    
+    
+    line-height: 0;
+    
+    .ruby & {
+        background-color: $ruby;
+        border-color: $ruby;
+    }
+    .sapphire & {
+        background-color: $sapphire;
+        border-color: $sapphire;
+    }
+    .emerald & {
+        background-color: $emerald;
+        border-color: $emerald;
+    }
+    
+    &:after {
+        content: "";
+        position: absolute;
+        top: -$pillbox-stripe-padding--mobile;
+        left: -$pillbox-stripe-padding--mobile;
+        right: -$pillbox-stripe-padding--mobile;
+        height: 1px;
+        background: rgba($white, (8/100));
+    }
+    
+    img {
+        width: auto;
+        height: 32px;
+        margin-top: 2px;
+        margin-bottom: -2px;
+    }
+    
+    .viewport--md & {
+        height: $menubar-list-height;
+        padding: $pillbox-vertical-padding $pillbox-horizontal-padding 0;
+        
+        border-width: $pillbox-stripe-padding;
+        
+        &:after {
+            top: -$pillbox-stripe-padding;
+            left: -$pillbox-stripe-padding;
+            right: -$pillbox-stripe-padding;
+        }
+        
+        img {
+            height: 48px;
+            margin-top: 0;
+        }
+    }
+}
+
+.icon-link {
+	&:extend(.logo-link);
+	
+	.ruby &:extend(.ruby .logo-link) {}
+	.sapphire &:extend(.sapphire .logo-link) {}
+	.emerald &:extend(.emerald .logo-link) {}
+	
+	display: table-cell;	
+	width: $menubar-height--mobile; // Square ratio
+	min-width: $menubar-height--mobile;
+	max-width: $menubar-height--mobile;
+	padding: 0;
+	
+	vertical-align: middle;
+	text-align: center;
+	
+	img {
+	    &:extend(.logo-link img);
+	    
+		height: 36px;
+		margin-top: -1px;
+	}
+	
+}
+/*
+Subscribe Now (limited time offer)
+*/
+.menubar__promo-link {
+    width: 100%;
+    height: $menubar-height--mobile;
+    
+    .viewport--md & {
+        height: $menubar-height;
+    }
+    
+    text-transform: uppercase; letter-spacing: .75px; padding-left: 2em;
+
+    .ruby & {
+        color: $ruby;
+    }
+    .sapphire & {
+        color: $sapphire;
+    }
+    .emerald & {
+        color: $emerald;
+    }
+
+    em {
+        margin-left: .5em;
+        font-family: $serif;
+        color: $gray-light;
+        font-style: italic;
+        text-transform: none; 
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+
+.menubar__search {
+    .viewport--lg & {
+        position: relative;
+        width: $menubar__search-width;
+    }
+    
+    
+}
+.menubar__search__submit-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+}
+.menubar__search__close-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.menubar__search-form {
+    border-bottom: $border-color solid 1px;
+    
+    display: none;
+    
+    .viewport--lg & {
+        display: block;
+        border-bottom: none;
+        border-right: $border-color solid 1px;
+        border-left: $border-color solid 1px;
+    }
+}
+
+.menubar__search-form.search__target {
+    position: fixed;
+    top: $header-top-border-width--mobile;
+    right: 0;
+    left: 0;
+    z-index: ($z-dropdowns + 100);
+    
+    width: 100%;
+}
+
+.menubar__search__form-item__control.menubar__search__form-item__control {
+    width: 100%;
+    height: $menubar__btn-height--mobile;
+    padding-right: $menubar__btn-width--mobile;
+    padding-left: 8px;
+    
+    border: none;
+    border-radius: 0;
+    @include box-shadow(none);
+    
+    background: #fff;
+    
+    .viewport--xs-only &,
+    .viewport--sm-only & {
+        font-size: 16px;
+    }
+    
+    .viewport--md & {
+        height: $menubar__btn-height;
+        padding-right: $menubar__btn-width;
+        padding-left: .8em;
+    }
+    
+    .viewport--md-only &:focus {
+        font-size: 16px;
+    }
+}

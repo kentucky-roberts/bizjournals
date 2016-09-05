@@ -1,0 +1,418 @@
+/*------------------------------------*
+    $STRUCTURE
+\*------------------------------------*/
+$default-viewports:
+    unquote("xs"),
+    unquote("sm"),
+    unquote("md"),
+    unquote("lg"),
+    unquote("xl");
+//$container__max-width: 1024px !default;
+
+// Gutter: spacing between columns
+// Buffer: spacing inside container
+$gutter--phone-ish: 12px !default;
+$gutter--phone-ish--condensed: $gutter--phone-ish !default;
+$gutter--phone-ish--stretched: ($gutter--phone-ish * 1.333) !default;
+$buffer--phone-ish: ($gutter--phone-ish * 1.5) !default;
+//$buffer--phone-ish--large: 46px !default;
+$buffer--phone-ish--large: $gutter--phone-ish !default;
+
+$gutter--tablet-ish: 12px !default; // Changed from 16px with 3-col test
+$gutter--tablet-ish--condensed: $gutter--phone-ish--condensed !default;
+$gutter--tablet-ish--stretched: $gutter--phone-ish--stretched !default;
+//$buffer--tablet-ish: $gutter--tablet-ish !default;
+//$buffer--tablet-ish: 64px !default;
+$buffer--tablet-ish: ($gutter--tablet-ish * 1.5) !default;
+
+$gutter--desktop-ish: 24px !default;
+$gutter--desktop-ish--condensed: $gutter--tablet-ish--condensed !default;
+$gutter--desktop-ish--stretched: $gutter--tablet-ish--stretched !default;
+//$buffer--desktop-ish: 64px !default;
+$buffer--desktop-ish: ($gutter--desktop-ish * 1.5) !default;
+
+$gutter--desktop-ish--large: 30px !default;
+$gutter--desktop-ish--large--condensed: $gutter--desktop-ish--condensed !default;
+$gutter--desktop-ish--large--stretched: $gutter--desktop-ish--stretched !default;
+//$buffer--desktop-ish--large: $gutter--desktop-ish--large !default;
+//$buffer--desktop-ish--large: 64px !default;
+$buffer--desktop-ish--large: ($gutter--desktop-ish--large * 1.5) !default;
+
+$sidebar__width: 300px !default; // 340px
+$sidebar__width--tablet-ish: 300px !default;
+
+$container__max-width: 1112px; // 1362px !default;
+$container--wide__max-width: (800px + $sidebar__width + $gutter--desktop-ish--large + (2 * $buffer--desktop-ish--large)) !default;
+
+$element__spacing: 14px !default;
+$module__spacing: 1.4em !default;
+//$module__spacing: ($element__spacing * 2) !default;
+$vertical-rhythm: 1.4em !default;
+
+
+
+
+/*------------------------------------*
+    $FONTS
+\*------------------------------------*/
+//$serif: 'PT Serif', Georgia, 'Times New Roman', serif !default;
+$serif: Acta, Georgia, 'Times New Roman', serif !default;
+//$serif: Georgia, 'Times New Roman', serif !default;
+$sans-serif: 'Graphik Web', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$font-family: $sans-serif !default;
+$font-family--alternate: $serif !default;
+//$line-height--default: 1.4 !default;
+$line-height--default: 1.5 !default; // Because of Acta's x-height :-/
+
+$base-font-size: 18px !default;
+$alpha-font-size: 40px !default;
+$beta-font-size: 32px !default;
+$gamma-font-size: 24px !default;
+$delta-font-size: 16px !default;
+$epsilon-font-size: 14px !default;
+$zeta-font-size: 12px !default;
+
+
+
+
+
+/*------------------------------------*
+    $COLORS
+\*------------------------------------*/
+$white:                 #fff !default;
+$black:                 #000 !default;
+
+$sapphire:              #1F3A7D !default;
+$ruby:                  #ab3032 !default;
+$emerald:               #005B26 !default;
+
+$link-color-sapphire:   $sapphire !default;
+$link-color-ruby:       $ruby !default;
+$link-color-emerald:    $emerald !default;
+
+$champagne:             #f8f5ef !default;
+$champagne-light:       mix($champagne, $white, 75%) !default;
+$champagne-x-light:     #FDFCFB !default;
+$champagne-dark:        #EDEAE4 !default;
+
+$gray-base:             #000 !default;
+$gray-darker:           lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:             lighten($gray-base, 20%) !default;   // #333
+$gray:                  lighten($gray-base, 33.5%) !default; // #555
+$gray-light:            lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:          lighten($gray-base, 66.667%) !default; // #aaa
+$gray-lightest:         lighten($gray-base, 93.5%) !default; // #eee
+
+$sponsored:             #f1f1f1 !default; // IE: deloitte gray bg
+
+$body__background: $white !default;
+
+$text-color: $gray-darker !default;
+$border-color: $gray-lightest !default;
+
+// social media color schemes
+$facebook-brand-color: #3b5998 !default;
+$linkedin-brand-color: #007bb5 !default;
+$twitter-brand-color: #2ba9e1 !default;
+$googleplus-brand-color: #b62c25 !default;
+$email-color: #538A31 !default;
+
+
+$breaking-news-color: #B73D41 !default;
+
+
+// alert colors
+$error-state: #b62c25 !default;
+$success-state: #25b628 !default;
+$warning-state: #d1a01f !default;
+
+//## Define colors for form feedback states and, by default, alerts. (BOOTSTRAP)
+$state--success__text-color:             #3c763d !default;
+$state--success__bg-color:               #dff0d8 !default;
+$state--success__border-color:           darken(adjust-hue($state--success__bg-color, -10), 5%) !default;
+
+$state--info__text-color:                #31708f !default;
+$state--info__bg-color:                  #d9edf7 !default;
+$state--info__border-color:              darken(adjust-hue($state--info__bg-color, -10), 7%) !default;
+
+$state--warning__text-color:             #8a6d3b !default;
+$state--warning__bg-color:               #fcf8e3 !default;
+$state--warning__border-color:           darken(adjust-hue($state--warning__bg-color, -10), 5%) !default;
+
+$state--danger__text-color:              $white !default;
+$state--danger__bg-color:                #b62c25 !default;
+$state--danger__border-color:            darken(adjust-hue($state--danger__bg-color, -10), 5%) !default;
+
+$state--error__text-color:              $state--danger__text-color !default;
+$state--error__bg-color:                $state--danger__bg-color !default;
+$state--error__border-color:            $state--danger__border-color !default;
+
+//## Define alert colors, border-color radius, and padding. (BOOTSTRAP)
+$alert--success__bg-color:            $state--success__bg-color !default;
+$alert--success__text-color:          $state--success__text-color !default;
+$alert--success__border-color:        $state--success__border-color !default;
+
+$alert--info__bg-color:               $state--info__bg-color !default;
+$alert--info__text-color:             $state--info__text-color !default;
+$alert--info__border-color:           $state--info__border-color !default;
+
+$alert--warning__bg-color:            $state--warning__bg-color !default;
+$alert--warning__text-color:          $state--warning__text-color !default;
+$alert--warning__border-color:        $state--warning__border-color !default;
+
+$alert--danger__bg-color:             $state--danger__bg-color !default;
+$alert--danger__text-color:           $state--danger__text-color !default;
+$alert--danger__border-color:         $state--danger__border-color !default;
+
+$alert--error__bg-color:             $state--error__bg-color !default;
+$alert--error__text-color:           $state--error__text-color !default;
+$alert--error__border-color:         $state--error__border-color !default;
+
+$alert__font-family:                 $font-family !default;
+
+
+
+
+
+
+
+/*------------------------------------*
+    $MEDIA QUERIES
+\*------------------------------------*/
+$desktop-ish:           1024px !default;
+$desktop-ish--large:    1200px !default;
+$desktop-ish--max:      ($desktop-ish--large - 1) !default;
+$tablet-ish--max:       ($desktop-ish - 1) !default;
+$tablet-ish:            768px !default; // Overriding the above. For bizwomen, it came out to 770.
+$phone-ish--large:      480px !default; // Landscape iPhone, phablets?
+$phone-ish--small--max: ($phone-ish--large - 1) !default;
+$phone-ish--max:        ($tablet-ish - 1) !default;
+$phone-ish:             0 !default;
+
+
+$mq__phone-ish--only:   unquote("(min-width: #{$phone-ish}) and (max-width: #{$phone-ish--max})") !default; // Portrait & Landscape phone-ish only
+$mq__phone-ish--small--only: unquote("(max-width: #{$phone-ish--small--max})") !default; // Portrait phone-ish only
+$mq__phone-ish--large:  unquote("(min-width: #{$phone-ish--large})") !default; // At least landscape phone-ish
+$mq__phone-ish--large--only: unquote("(min-width: #{$phone-ish--large}) and (max-width: #{$phone-ish--max})") !default;
+$mq__tablet-ish:        unquote("(min-width: #{$tablet-ish})") !default; // At least portrait tablet-ish
+$mq__tablet-ish--only:  unquote("(min-width: #{$tablet-ish}) and (max-width: #{$tablet-ish--max})") !default; // Only greater than portrait iPad and less than landscape iPad
+$mq__desktop-ish:       unquote("(min-width: #{$desktop-ish})") !default; // At least desktop-ish (includes landscape iPad)
+$mq__desktop-ish--only: unquote("#{$mq__desktop-ish} and (max-width: #{$desktop-ish--max})") !default;
+$mq__desktop-ish--large: unquote("(min-width: #{$desktop-ish--large})") !default; // At least desktop-ish wide
+
+$mq__retina-ish:        unquote("only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)") !default;
+
+
+
+
+
+/*------------------------------------*
+    $Z-INDEXES
+\*------------------------------------*/
+$z-off-canvas: 0 !default;
+$z-on-canvas: 2 !default;
+$z-header: 500 !default;
+$z-skyboxes: 1000 !default;
+$z-off-canvas__content: 2000 !default;
+$z-drawer: 2925 !default;
+$z-submenus: 2950 !default;
+$z-menubar: 3000 !default;
+$z-dropdowns: 3100 !default;
+$z-sheets: 4000 !default;
+
+
+
+
+
+
+/*------------------------------------*
+    $MENUBAR and MENUS
+\*------------------------------------*/
+$menubar-desktop-scale: 1.5 !default;
+
+$menubar-list-height--mobile: 40px !default;
+$menubar-list-height: ($menubar-list-height--mobile * $menubar-desktop-scale) !default;
+$menubar-background-color: $white !default;
+$header-top-border-color: $gray-darker !default;
+$header-top-border-width: 2px !default;
+$header-top-border-width--mobile: $header-top-border-width !default;
+$menubar-height: $menubar-list-height !default;
+$menubar-height--mobile: $menubar-list-height--mobile !default;
+//$menubar-bottom-border-color: darken($champagne, 3%) !default;
+
+$pillbox-stripe-padding--mobile: 2px !default;
+$pillbox-stripe-padding: ($pillbox-stripe-padding--mobile * $menubar-desktop-scale) !default;
+
+$pillbox-vertical-padding--mobile: 0 !default;
+$pillbox-vertical-padding: 2px; //($pillbox-vertical-padding--mobile * $menubar-desktop-scale) !default;
+
+$pillbox-horizontal-padding--mobile: 6px !default;
+$pillbox-horizontal-padding: 8px; //($pillbox-horizontal-padding--mobile * $menubar-desktop-scale) !default;
+
+$menubar__btn-width: $menubar-list-height !default;
+$menubar__btn-height: ($menubar-list-height) !default;
+$menubar__btn-width--mobile: $menubar-list-height--mobile !default;
+$menubar__btn-height--mobile: $menubar-list-height--mobile !default;
+
+$menubar__search-width: 240px !default;
+
+$menu-container-top-margin: 16px !default;
+$menu-horizontal-padding: 20px !default;
+
+
+
+
+
+
+/*------------------------------------*
+    $SKYBOXES
+\*------------------------------------*/
+$skyboxes-height: 92px !default;
+$skyboxes-gutter: 12px !default;
+//$skyboxes-background-color: mix($champagne, $white, 75%) !default;
+$skyboxes-background-color: $white !default;
+//$skyboxes-border-color: desaturate(darken($champagne, 12%), 20%) !default;
+$skyboxes-border-color: #dadada !default;
+
+//$skybox-width: 245px !default;
+$skybox-media-height: 68px !default;
+$skybox-media-width: 68px !default;
+$skybox-width: 280px + $skyboxes-gutter !default;
+$skybox-height: $skyboxes-height !default;
+$item--skybox-height: ($skybox-media-height + 16) !default; // 84px
+$item--skybox-padding-top: 8px !default;
+//$skybox-vertical-padding: (($skyboxes-height - $skybox-media-height) / 2) !default;
+//$skybox-horizontal-padding: ($skybox-vertical-padding * .75) !default;
+//$skybox-horizontal-padding: 10px !default;
+//$skybox-right-padding: 10px !default;
+//$skybox-left-padding: 10px !default;
+$skybox-horizontal-padding: 4px !default;
+$skybox-right-padding: 20px !default;
+//$skybox-border-color: darken($champagne, 3%) !default;
+$skybox-border-color: #eaeaea !default;
+
+
+
+
+/*------------------------------------*
+    $HEADER
+\*------------------------------------*/
+// skybox is a attr of the header.
+$header-height: ($menubar-height + $header-top-border-width) !default; // global menubar height
+$header-height--mobile: ($menubar-height--mobile + $header-top-border-width--mobile) !default; // global menu mobile adjustment
+$header-height__skyboxes: ($menubar-height + $header-top-border-width + $skyboxes-height) !default; // menubar when skybox present
+
+$header-shadow: unquote("0 2px 1px rgba(0,0,0,.08)") !default;
+
+
+/*------------------------------------*
+    $OFF-CANVAS NAVIGATION
+\*------------------------------------*/
+$scrollbar-width: 20px !default;
+$off-canvas__width: 240px !default;
+$off-canvas__width--scrollbar: $off-canvas__width + $scrollbar-width !default;
+$canvas__background: darken($body__background, 10%) !default;
+$on-canvas__background: $body__background !default;
+$drawer__width: 240px !default;
+$drawer__width--scrollbar: $drawer__width + $scrollbar-width !default;
+$drawer__background: darken($body__background, 10%) !default;
+$leading-transition-duration: 125ms !default;
+$trailing-transition-duration: 225ms !default;
+$easeOutBack: unquote("cubic-bezier(0.175, 0.885, 0.32, 1.275)") !default; // Overshoots for a bit of bounce
+$easeOutBackLightly: unquote("cubic-bezier(0.175, 0.885, 0.32, 1.05)") !default; // Overshoots for a tiny amount of bounce
+$easeOutFull: unquote("cubic-bezier(0.175, 0.885, 0.32, 1.0)") !default;
+
+
+
+
+/*------------------------------------*
+    $ITEMS
+\*------------------------------------*/
+$item-vertical-padding: ($module__spacing / 2) !default;
+$item-container-adjustment: 3px !default;
+
+$flag__media-width: 16.667% !default;
+$flag__media-min-width: 100px !default;
+$flag__media--small-min-width: 88px !default;
+$flag__gutter-width: $gutter--phone-ish--condensed !default;
+
+
+
+
+/*------------------------------------*
+    $META-ITEMS
+\*------------------------------------*/
+$meta-item__font-weight: normal !default;
+$meta-item__font-color: $gray-dark !default;
+//$meta-item--tag__font-color: $meta-item__font-color !default;
+$meta-item--tag__font-color: $white !default;
+//$meta-item--tag__background-color: lighten($meta-item--tag__font-color, 45%) !default;
+$meta-item--tag__border-radius: 2px !default;
+$meta-item--tag--is-link__font-color: $white !default;
+
+
+
+
+
+/*------------------------------------*
+    $FORMS
+\*------------------------------------*/
+$font--form__label: $sans-serif !default;
+$font--form__input: $sans-serif !default;
+//$input__height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+$input__bg: $white !default;
+$input__border: darken($border-color, 15%) !default;
+//$input__border-radius: .333em !default;
+$input__border-radius: 2px !default; // Match button border radius
+
+
+
+
+
+/*------------------------------------*
+    $BUTTONS
+\*------------------------------------*/
+$btn__padding-vertical: .5em !default;
+$btn__padding-horizontal: .8em !default;
+$btn__border-radius: 2px !default;
+$btn__is-flat: true !default;
+$btn__text-color: $gray !default;
+$btn__background-color: #dddddd !default;
+$btn__background-color--hover: darken($btn__background-color, 5%) !default;
+$btn__border-color: #ccc !default;
+$btn__font-size: 15px !default;
+$btn__font-family: $sans-serif !default;
+$btn__font-weight: normal !default;
+$btn__box-shadow: unquote("inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)") !default;
+
+$btn--primary__border-radius: $btn__border-radius !default;
+
+$btn--primary__text-color: $white !default;
+$btn--primary__background-color: $sapphire !default;
+$btn--primary__border-color: darken($btn--primary__background-color, 5%) !default;
+$btn--secondary__text-color: $white !default;
+$btn--secondary__background-color: $gray-light !default;
+$btn--secondary__border-color: darken($gray-light, 5%) !default;
+$btn--secondary__border-color: #6a6a6a !default;
+
+$btn--large__font-size: 18px !default;
+$btn--small__font-size: 12px !default;
+$btn--xsmall__font-size: 1.0rem !default;
+
+
+
+
+/*------------------------------------*
+    $SHEET
+\*------------------------------------*/
+$sheet-background: $canvas__background !default;
+$sheet-spacing-unit: 12px !default;
+$sheet-body-max-width: (800px + (2 * $sheet-spacing-unit)) !default;
+// $sheet-leaderboard-height: (90px + (2 * $sheet-spacing-unit)) !default; // old sheet leaderboard with padding top/bottom
+$sheet-leaderboard-height: (90px) !default;
+
+
+
+
+
+$photo-viewer-spacing-unit: $sheet-spacing-unit !default;

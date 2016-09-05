@@ -1,0 +1,216 @@
+/*------------------------------------*
+    $RESPONSIVE GRID
+
+	TODO:
+		.clear-- ?
+		.faux-column equivalent?
+\*------------------------------------*/
+.row {
+    @include clearfix();
+
+	> * {
+		float: left;
+        position: relative;
+        min-height: 1px;
+
+		width: 100%; // I'm scared.
+		
+		.row--flush.row--flush& {
+            padding: 0;
+        }
+	}
+	
+	&.row--flush.row--flush {
+        margin: 0;
+    }
+}
+@mixin generate-responsive-rows($size-name; $gutter-width; $gutter-width--condensed; $gutter-width--stretched){
+    .viewport--#{$size-name} {
+		.row {
+	        margin-right: -($gutter-width * .5);
+	        margin-left: -($gutter-width * .5);
+
+	        > * {
+	            padding-right: ($gutter-width * .5);
+	            padding-left: ($gutter-width * .5);
+	        }
+	    }
+
+	    // Continue to condense gutters inside primary/secondary for now,
+	    // but allow for the .row--default-gutters modifier to negate this.
+	    // TODO: Consider changing the default behavior.
+	    .primary .row:not(.row--default-gutters),
+	    .secondary .row:not(.row--default-gutters) {
+	        margin-right: -($gutter-width--condensed * .5);
+	        margin-left: -($gutter-width--condensed * .5);
+
+	        > * {
+	            padding-right: ($gutter-width--condensed * .5);
+	            padding-left: ($gutter-width--condensed * .5);
+	        }
+	    }
+
+        .row.row--stretched {
+            margin-right: -($gutter-width--stretched);
+            margin-left: -($gutter-width--stretched);
+
+            > * {
+                padding-right: ($gutter-width--stretched);
+                padding-left: ($gutter-width--stretched);
+            }
+        }
+	}
+
+}
+@include generate-responsive-rows(xs, $gutter--phone-ish, $gutter--phone-ish--condensed, $gutter--phone-ish--stretched);
+@include generate-responsive-rows(sm, $gutter--phone-ish, $gutter--phone-ish--condensed, $gutter--phone-ish--stretched);
+@include generate-responsive-rows(md, $gutter--tablet-ish, $gutter--tablet-ish--condensed, $gutter--tablet-ish--stretched);
+@include generate-responsive-rows(lg, $gutter--desktop-ish, $gutter--desktop-ish--condensed, $gutter--desktop-ish--stretched);
+@include generate-responsive-rows(xl, $gutter--desktop-ish--large, $gutter--desktop-ish--large--condensed, $gutter--desktop-ish--large--stretched);
+
+// Base columns
+// Escape first number, slash.
+// Looks like .8/12 or .md__8/12 in practice
+@if $viewport == false {
+	@mixin generate-column-selectors($viewport; $base-columns-class; $viewport-columns-class){
+	$column-selector: unquote(".#{$base-columns-class}}") !default;
+	$push-selector: unquote(".push-#{$viewport-columns-class}") !default;
+	$pull-selector: unquote(".pull-#{$viewport-columns-class}") !default;
+}
+@mixin generate-column-selectors($viewport; $base-columns-class; $viewport-columns-class) when (default()){
+	$column-selector: unquote(".viewport--#{$viewport} .#{$viewport}__#{$viewport-columns-class}, .viewport--#{$viewport}-only .#{$viewport}-only__#{$viewport-columns-class}") !default;
+	$push-selector: unquote(".viewport--#{$viewport} .#{$viewport}__push-#{$viewport-columns-class}, .viewport--#{$viewport}-only .#{$viewport}-only__push-#{$viewport-columns-class}") !default;
+	$pull-selector: unquote(".viewport--#{$viewport} .#{$viewport}__pull-#{$viewport-columns-class}, .viewport--#{$viewport}-only .#{$viewport}-only__pull-#{$viewport-columns-class}") !default;
+}
+
+
+@mixin generate-column($span; $total-columns; $viewport: false){
+	$base-columns-class-initial: unquote("\3#{$span} \/#{$total-columns}") !default;
+
+	// Special case for our only span with two digits, which needs a formatting tweak
+	$base-columns-class: replace($base-columns-class-initial, "311 ", "31 1") !default;
+
+	$viewport-columns-class: unquote("#{$span}\/#{$total-columns}") !default;
+
+	$column-width: percentage($span/$total-columns) !default;
+
+	@include generate-column-selectors($viewport; $base-columns-class; $viewport-columns-class);
+
+	#{$column-selector} { width: percentage($span / $total-columns) !default; }
+	#{$push-selector} { margin-left: percentage($span / $total-columns) !default; }
+	#{$pull-selector} { margin-left: -(percentage($span / $total-columns)) !default; }
+
+}
+@mixin generate-columns($viewport: false){
+	@include generate-column(1,1,$viewport);
+	@include generate-column(1,2,$viewport);
+	@include generate-column(1,3,$viewport);
+	@include generate-column(2,3,$viewport);
+	@include generate-column(1,4,$viewport);
+	@include generate-column(3,4,$viewport);
+	@include generate-column(1,5,$viewport);
+	@include generate-column(2,5,$viewport);
+	@include generate-column(3,5,$viewport);
+	@include generate-column(4,5,$viewport);
+	@include generate-column(1,6,$viewport);
+	@include generate-column(5,6,$viewport);
+	@include generate-column(1,8,$viewport);
+	@include generate-column(3,8,$viewport);
+	@include generate-column(5,8,$viewport);
+	@include generate-column(7,8,$viewport);
+	@include generate-column(1,10,$viewport);
+	@include generate-column(3,10,$viewport);
+	@include generate-column(7,10,$viewport);
+	@include generate-column(9,10,$viewport);
+	@include generate-column(1,12,$viewport);
+	@include generate-column(5,12,$viewport);
+	@include generate-column(7,12,$viewport);
+	@include generate-column(11,12,$viewport);
+}
+
+@include generate-columns();
+@include generate-columns(xs);
+@include generate-columns(sm);
+@include generate-columns(md);
+@include generate-columns(lg);
+@include generate-columns(xl);
+
+
+
+
+
+/*------------------------------------*
+    $RIGID ROWS
+
+	Add modifier to individual rows to clear after every nth column.
+	This will make sure that columns of unequal height will still render
+	in even rows.
+	At every breakpoint, all columns must have equal spans.
+
+\*------------------------------------*/
+@mixin generate-rigid-rows($cols){
+    $nth: ($cols + 1) !default;
+    
+    .row--has-#{$cols}-cols,
+	.viewport--xs-only .row--has-#{$cols}-cols\$xs-only,
+	.viewport--sm .row--has-#{$cols}-cols\$sm,
+	.viewport--sm-only .row--has-#{$cols}-cols\$sm-only,
+	.viewport--md .row--has-#{$cols}-cols\$md,
+	.viewport--md-only .row--has-#{$cols}-cols\$md-only,
+	.viewport--lg .row--has-#{$cols}-cols\$lg,
+	.viewport--lg-only .row--has-#{$cols}-cols\$lg-only,
+	.viewport--xl .row--has-#{$cols}-cols\$xl,
+	.viewport--xl-only .row--has-#{$cols}-cols\$xl-only, {
+		> * {
+			clear: none;
+		}
+
+		> :nth-child(#{$nth}n) {
+			clear: left;
+		}
+	}
+}
+
+@include generate-rigid-rows(2);
+@include generate-rigid-rows(3);
+@include generate-rigid-rows(4);
+@include generate-rigid-rows(5);
+@include generate-rigid-rows(6);
+
+/*
+// Alternative approach that generates much less CSS,
+// but requires more logic in the viewscripts to add classes when necessary
+.clear-left,
+.viewport--xs-only .clear-left\$xs-only,
+.viewport--sm .clear-left\$sm,
+.viewport--sm-only .clear-left\$sm-only,
+.viewport--md .clear-left\$md,
+.viewport--md-only .clear-left\$md-only,
+.viewport--lg .clear-left\$lg,
+.viewport--lg-only .clear-left\$lg-only,
+.viewport--xl .clear-left\$xl,
+.viewport--xl-only .clear-left\$xl-only, {
+	clear: left;
+}
+*/
+
+
+
+
+.row--middle,
+.viewport--xs-only .row--middle\$xs-only,
+.viewport--sm .row--middle\$sm,
+.viewport--sm-only .row--middle\$sm-only,
+.viewport--md .row--middle\$md,
+.viewport--md-only .row--middle\$md-only,
+.viewport--lg .row--middle\$lg,
+.viewport--lg-only .row--middle\$lg-only,
+.viewport--xl .row--middle\$xl,
+.viewport--xl-only .row--middle\$xl-only {
+	display: table;
+	> * {
+		float: none;
+		display: table-cell;
+		vertical-align: middle;
+	}
+}

@@ -1,0 +1,70 @@
+/* New responsive Landing pages -- usually with float forms */
+.landing {
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+.landing__header {
+    padding: 1.5em 0;
+}
+.landing__title.landing__title {
+    padding: 0;
+    font-weight: normal;
+    font-family: $font-family;
+    font-size: 24px;
+    
+    .viewport--md & {
+        font-size: 32px;
+    }
+}
+.landing__subtitle {
+    margin: 0 0 1.25em;
+    font-family: $font-family;
+    font-size: 16px;
+    font-weight: bold;
+    color: #777;
+}
+.landing__list {
+    margin-top: 0;
+    font-size: 16px;
+    font-size: 13px;
+    color: #777;
+    
+    li {
+        position: relative;
+        margin-bottom: 1.5em;
+        padding-left: 2.25em;
+        
+        i {
+            position: absolute;
+            font-size: 18px;
+            top: -2px;
+            left: 0;
+            color: green;
+        }
+    }
+}
+
+/* Landing page modules */
+.date-page {
+    border: 1px solid #ddd;
+    
+    &__month,
+    &__day {
+        color: $black;
+        padding: 2px 0;
+    }
+    
+    &__month {
+        color: $white;
+        
+        .ruby & {
+            background: $ruby;
+        }
+        .sapphire & {
+            background: $sapphire;
+        }
+        .emerald & {
+            background: $emerald;   
+        }
+    }
+}

@@ -1,0 +1,175 @@
+/* Import vendor css*/
+@import "bootstrap-tour-standalone.min.css";
+
+/* Set specific variables */
+@import 'base/_variables';
+$cmbg: #FFFDE5 !default;
+
+/* Coach Marks Layout */
+.coach-mark {
+    font-family: 'Graphik Web','Helvetica Neue','Helvetica','Arial',sans-serif;
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 16px;
+    background: $cmbg;
+    color: $gray;
+    text-align: center;
+    padding: 0 0 15px 0;
+    border-radius: 0;
+    border: 1px solid $gray;
+    z-index: 100000 !important;
+
+    .coach-mark__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 110000;
+        font-size: 16px;
+        font-size: 1.6rem;
+        font-weight: bold;
+
+        a {
+            &:hover,
+            &:active {
+                text-decoration: none;
+            }
+
+            display: block;
+            padding: 14px;
+        }
+    }
+
+    .viewport--md & {
+        max-width: 500px;
+    }
+
+    &.bottom {
+        bottom: auto !important; // to over-ride standard bizj
+
+        .arrow {
+            .sapphire & {
+                border-bottom-color: $sapphire;
+            }
+            .ruby & {
+                border-bottom-color: $ruby;
+            }
+            .emerald & {
+                border-bottom-color: $emerald;
+            }
+            &:after {
+                border-bottom-color: $cmbg;
+            }
+        }
+    }
+
+    &.right {
+        .arrow {
+            .sapphire & {
+                border-right-color: $sapphire;
+            }
+            .ruby & {
+                border-right-color: $ruby;
+            }
+            .emerald & {
+                border-right-color: $emerald;
+            }
+            &:after {
+                border-right-color: $cmbg;
+            }
+        }
+    }
+
+    &.top {
+        .arrow {
+            .sapphire & {
+                border-top-color: $sapphire;
+            }
+            .ruby & {
+                border-top-color: $ruby;
+            }
+            .emerald & {
+                border-top-color: $emerald;
+            }
+            &:after {
+                border-top-color: $cmbg;
+            }
+        }
+    }
+
+    .sapphire & {
+            border-color: $sapphire;
+    }
+    .ruby & {
+        border-color: $ruby;
+    }
+    .emerald & {
+        border-color: $emerald;
+    }
+
+    &.coach-mark--full-width {
+        position: fixed;
+
+        left: 0 !important; // To over-ride dynamically set
+
+        &.popover{
+            max-width: 100%;
+            width: 100%;
+            padding: 0 0 15px 0;
+            box-shadow: none;
+            border: none;
+            border-top: 2px solid;
+
+            &.top {
+                margin: 0;
+            }
+        }
+    }
+
+    .popover-title {
+        padding: 11px 14px 0 14px;
+        font-family: inherit;
+        font-size: 16px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 1.2;
+        background: none;
+        border: none;
+        border-radius: 0;
+        // Prevent running into close X
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .popover-navigation .btn[data-role=end] {
+        float: none;
+    }
+
+    .btn {
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    .left {
+        text-align: center;
+        padding-bottom: 10px;
+
+        .viewport--md & {
+            text-align: right;
+            padding: 0;
+            padding-right: 10px;
+        }
+    }
+
+    .right {
+        text-align: center;
+
+        .viewport--md & {
+            text-align: left;
+            padding-left: 10px;
+        }
+    }
+
+    .btn.btn--secondary {
+        background: transparent;
+    }
+}

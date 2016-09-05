@@ -1,0 +1,64 @@
+/*------------------------------------*
+    $BREAKING-BAR
+\*------------------------------------*/
+.breaking-bar {
+    position: relative;
+    padding: .5em 0 .0125em;
+
+    text-align: center;
+    color: $white;
+    background: $breaking-news-color;
+
+    a {
+        color: $white;
+
+        &:hover {
+            color: $white;
+            text-decoration: underline;
+        }
+    }
+
+    .meta-item.meta-item--tag { // TODO: This will fall apart.
+		margin-top: 4px;
+        color: $breaking-news-color;
+        vertical-align: top;
+		background: $white;
+
+    }
+
+    .viewport--md & {
+        padding-top: 1em;
+    }
+}
+
+.breaking-bar__headline {
+    font-family: $sans-serif;
+    @include font-size(22px);
+    font-weight: bold;
+
+    .viewport--md & {
+        display: inline;
+    }
+}
+.breaking-bar__cta,
+.breaking-bar__msg {
+    @include font-size(12px);
+}
+.breaking-bar__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    a, a:link, a:hover, a:visited, a:active { text-decoration: none; }
+
+    .viewport--xs &,
+    .viewport--sm &,
+    .viewport--md & {
+        right: 1em;
+    }
+}
+
+
+
+
+

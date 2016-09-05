@@ -1,0 +1,233 @@
+$ruby-dark-accent: darken($ruby, 15%) !default;
+$sapphire-dark-accent: darken($sapphire, 15%) !default;
+$emerald-dark-accent: darken($emerald, 9%) !default;
+
+.hero {
+    position: relative;
+    background: $gray-darker;
+    background-position: 0 0;
+    background-size: 100% auto;
+    background-repeat: repeat-x, no-repeat;
+
+    &.has-artwork {
+        background-position: 50% -4%;
+        background-position: 0 0, 50% 0vw;
+    }
+
+    .viewport--xs-only &.has-logo:not(.has-artwork),
+    .viewport--sm-only &.has-logo:not(.has-artwork) {
+        @include padding-top(88px);
+
+        .ruby& {
+            background: $ruby-dark-accent;
+        }
+        .sapphire& {
+            background: $sapphire-dark-accent;
+        }
+        .emerald& {
+            background: $emerald-dark-accent;
+        }
+    }
+
+    .viewport--xs-only &.has-artwork,
+    .viewport--sm-only &.has-artwork {
+        @include padding-top(200px);
+        padding-top: 48vw;
+    }
+
+    .viewport--md & {
+        background-size: cover;
+    }
+}
+.hero__header {
+    color: $white;
+
+    border-bottom-size: 4px;
+    border-bottom-style: solid;
+
+    .ruby & { background: $ruby; border-color: $ruby-dark-accent !default; }
+    .sapphire & { background: $sapphire; border-color: $sapphire-dark-accent !default; }
+    .emerald & { background: $emerald; border-color: $emerald-dark-accent !default; }
+
+    .viewport--md.ruby & { background: rgba($ruby, 85%); border-color: fade($ruby-dark-accent, (85/100)) !default; }
+    .viewport--md.sapphire & { background: rgba($sapphire, 85%); border-color: fade($sapphire-dark-accent, (85/100)) !default; }
+    .viewport--md.emerald & { background: rgba($emerald, 85%); border-color: fade($emerald-dark-accent, (85/100)) !default; }
+}
+$hero__logo-width: 160px !default;
+$hero__logo-height: 160px !default;
+$hero__logo-width--mobile-ish: 72px !default;
+$hero__logo-height--mobile-ish: 72px !default;
+$hero__logo-margin-right: 24px !default;
+$hero__logo-margin-right--mobile-ish: 8px !default;
+@mixin clear-hero__logo(){
+    .viewport--md .hero.has-logo & {
+        margin-left: ($hero__logo-width + $hero__logo-margin-right);
+    }
+}
+.hero.has-logo .hero__title.hero__title {
+    margin-left: 0;
+}
+.hero__title.hero__title {
+    margin: 0;
+    padding: .75em 0 .5em;
+
+    @include font-size(24px);
+        .hero.has-logo .hero__title.hero__title {
+            margin-left: 0;
+        }
+
+    .viewport--md & {
+        @include font-size(48px);
+        padding-top: .5em;
+        padding-bottom: .25em;
+
+//        .hero.has-logo & {
+//            margin-left: ($hero__logo-width--mobile-ish + $hero__logo-margin-right--mobile-ish);
+//        }
+    }
+
+    @include clear-hero__logo();
+}
+.hero__logo {
+    position: absolute;
+    bottom: unquote("calc(100% - 7px)"); // TODO: Magic number
+    @include width($hero__logo-width--mobile-ish);
+    @include height($hero__logo-height--mobile-ish);
+    display: table;
+    padding: 3px;
+    background: $white;
+
+    .viewport--md & {
+        top: 8px;
+        bottom: auto;
+        padding: 4px;
+
+        @include width($hero__logo-width);
+        @include height($hero__logo-height);
+    }
+}
+.hero__logo__img-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    line-height: 0;
+
+    // This mimics the thumb_link crop styling
+    &:before {
+        @include thumb-outline();
+    }
+
+    &:hover:before {
+        @include thumb-outline-hover();
+    }
+}
+.hero__logo__img {
+    display: inline;
+    width: 100%;
+    line-height:1;
+}
+.clear-hero__logo\$md {
+    .viewport--md .hero.has-logo & {
+        margin-left: ($hero__logo-width + $hero__logo-margin-right);
+    }
+}
+.hero__nav-bar {
+    /*
+    background: $gray-dark;
+
+    .viewport--md & {
+        background: rgba($black, (50/100));
+    }
+    */
+    .ruby & {
+        background: $ruby-dark-accent;
+    }
+    .sapphire & {
+        background: $sapphire-dark-accent;
+    }
+    .emerald & {
+        background: $emerald-dark-accent;
+    }
+
+    .viewport--md.ruby &,
+    .viewport--md.sapphire &,
+    .viewport--md.emerald & {
+        background: rgba($black, (50/100));
+
+        &.is-stuck-to-window-top,
+        &.is-stuck-to-boundary-bottom {
+            background: rgba($black, (85/100));
+        }
+    }
+}
+.page-nav {
+    @include clear-hero__logo();
+
+    .viewport--md .hero.has-logo .sticker.is-stuck-to-window-top &,
+    .viewport--md .hero.has-logo .sticker.is-stuck-to-boundary-bottom & {
+        margin-left: 0;
+    }
+
+    @include transition(margin-left .15s ease-in-out);
+}
+.hero__art-credit {
+    @include font-size(10px);
+    text-align: right;
+    position: absolute;
+    margin-top: 1em;
+    right: 1em;
+    color: rgba($white, (40/100));
+    text-shadow: rgba($black, (15/100)) 0 1px 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    .viewport--xs-only &,
+    .viewport--sm-only & {
+        top: 0;
+    }
+}
+.hero__body {
+    padding: 1em 0;
+    color: $white;
+
+    background: $black;
+
+    .viewport--md & {
+        padding: 4em 0 1.5em;
+        background: none;
+    }
+    .viewport--md .hero.has-logo & {
+        padding-top: 2em;
+    }
+    .viewport--md .hero.has-logo.has-artwork & {
+        //padding-top: 6em;
+    }
+
+    .viewport--md .has-artwork & {
+        margin-top: 200px;
+        margin-top: 20vh;
+        @include gradient-vertical($start-color: rgba($black, 0%); $end-color: fade($black, (75/100)); $start-percent: 0%; $end-percent: 50%) !default;
+    }
+}
+
+.hero__primary {
+    padding-bottom: 3em;
+
+    .viewport--md & {
+        padding-bottom: 0;
+    }
+}
+
+.hero__subtitle {
+    font-family: $serif;
+    font-weight: normal;
+    vertical-align: middle;
+
+    @include font-size(16px);
+    @include ligatures();
+
+    .viewport--md & {
+        @include font-size(24px);
+            vertical-align: middle;
+    }
+}

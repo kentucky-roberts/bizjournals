@@ -1,0 +1,67 @@
+@import '_base';
+@import '_components';
+@import '_layouts';
+@import '_utility-classes-important';
+//
+// /*------------------------------------*
+//     $USABILITY TEST TEMP STYLES
+// \*------------------------------------*/
+// .kickoff-promo {
+//     padding-top: .7em;
+//     background: $champagne;
+//     border-bottom: #eaeaea solid 1px;
+// }
+// .kickoff-promo__body {
+//     padding-top: .7em;
+//     padding-bottom: 1.4em;
+//     text-align: center;
+//
+//     .viewport--md & {
+//         padding-top: .7em;
+//         padding-bottom: 2.1em;
+//     }
+//
+//     .menubar-item--kickoff-subscribe-whatever & {
+//         padding-right: 1em;
+//         padding-bottom: .5em;
+//         padding-left: 1em;
+//     }
+// }
+// .kickoff-promo__headline {
+//     font-family: $sans-serif;
+//     font-weight: normal;
+//     font-size: 1.25em;
+// 	text-transform: none;
+//
+//     .viewport--sm-only & {
+//         white-space: nowrap;
+//     }
+//
+//     .viewport--md & {
+//         font-size: 1.5em;
+//     }
+//
+//     .menubar-item--kickoff-subscribe-whatever & {
+//         font-size: 1em;
+//     }
+// }
+// .kickoff-promo__img-container {
+//     .viewport--md & {
+//         position: absolute;
+//         bottom: 0;
+//     }
+// }
+// .kickoff-promo__img {
+//     margin: 0 auto;
+//
+//     .viewport--xs & {
+//         width: 40%;
+//     }
+// 	.viewport--md & {
+// 		width: 90%;
+// 	}
+//
+//     .menubar-item--kickoff-subscribe-whatever & {
+//         margin-top: 2em;
+//     }
+// }//

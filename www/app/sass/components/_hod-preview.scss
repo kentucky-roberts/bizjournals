@@ -1,0 +1,410 @@
+.csspositionsticky {
+  #hod-container {
+    .sticker {
+      position: -webkit-sticky;
+      position: -moz-sticky;
+      position: -ms-sticky;
+      position: -o-sticky;
+      position: sticky;
+      top: 90px;
+      z-index: 1;
+    }
+  }
+}
+
+#hod-container {
+  /*------------------------------------*
+      $HOD-PREVIEW
+
+
+  \*------------------------------------*/
+  .nav-buttons {
+    float: right;
+    a {
+      text-transform: capitalize;
+      float: left;
+    }
+  }
+
+  .secondary {
+    font-size: 12px;
+    margin-top: 20px;
+    display: table-cell;
+  }
+
+  .primary {
+    .btn--primary {
+      margin-bottom: 50px;
+      margin-left: 35px;
+      text-shadow: none;
+      text-transform: capitalize;
+    }
+    .btn {
+      margin-bottom: 50px;
+      margin-left: 35px;
+      text-shadow: none;
+      text-transform: capitalize;
+    }
+  }
+
+  .sponsored-by {
+    min-height: 43px;
+    font-size: 10px;
+    font-size: 1rem;
+    color: #777777;
+
+    .no-border {
+      border: none;
+      padding: 0;
+      bottom: auto;
+      padding-top: 6px;
+    }
+
+  }
+
+  .position-relative {
+    position: relative;
+  }
+
+  .sponsored-by__tab {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    z-index: 1;
+    padding: 4px 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    border: 1px solid #eeeeee;
+    border-bottom: none;
+    background: #fff;
+  }
+
+  .gallery-item__content {
+    font-family: 'Acta', Georgia, serif;
+    font-size: 17px;
+    font-size: 1.7rem;
+    padding: 15px;
+    padding: 1.5rem;
+  }
+
+  h3, .gamma {
+    margin: 0 0 .25em 0;
+    padding: 0;
+    font-family: 'Acta', Georgia, serif;
+    font-weight: bold;
+    font-size: 1.4em;
+    line-height: 1.2;
+  }
+
+  .sticker-boundary {
+    align-items: stretch;
+    display: block;
+  }
+
+  #stickyFirefox.stickyFixedFF {
+    width: 300px;
+    position: fixed;
+  }
+
+  /*------------------------------------*
+      $Module
+  \*------------------------------------*/
+  .module--boxed {
+    border: 1px solid #e6e6e6;
+
+    .module__header--expanded {
+      padding-right: 12px;
+      padding-right: 1.2rem;
+      padding-left: 12px;
+      padding-left: 1.2rem;
+      background: #f8f8f8;
+
+      .module__header__title {
+        h2 {
+          margin: 0;
+          font-size: 17px;
+          a {
+            color: #424242;
+          }
+        }
+      }
+    }
+
+    .module__header {
+      position: relative;
+      margin: 0;
+      margin-bottom: 12px;
+      padding-top: .5em;
+      padding-right: 0;
+      padding-left: 12px;
+      padding-bottom: 5px;
+      color: #424242;
+      border: 1px solid #eeeeee;
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    .module__header__sponsor {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: -1px;
+      width: 100px;
+      width: 10rem;
+      padding: 4px;
+      text-align: center;
+      border-left: 1px solid #eeeeee;
+      border-bottom: 1px solid #fff;
+      background: #fff;
+    }
+
+    .module__body--padded {
+      margin-top: -12px;
+      margin-top: -1.2rem;
+      padding-top: 12px;
+      padding-top: 1.2rem;
+      padding-right: 12px;
+      padding-right: 1.2rem;
+      padding-bottom: 0;
+      padding-left: 12px;
+      padding-left: 1.2rem;
+    }
+
+    .module__footer {
+      padding: 12px;
+      padding: 1.2rem;
+      border-top: 1px solid #eeeeee;
+      background: #f8f8f8;
+    }
+
+  }
+
+  /*------------------------------------*
+      $SOCIAL ITEMS
+
+      Initially used as the <a> in each sharing tool,
+      and the <label> on each account signup integration option
+  \*------------------------------------*/
+  [class*="social-item--"] {
+    display: inline-block;
+    padding: .5em .375em;
+    text-align: center;
+    line-height: 1;
+    color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .social-item--facebook:hover {
+    color: #ffffff !important;
+    background: #3b5998;
+  }
+  .social-item--facebook.social-item--solid,
+  .social-items--solid .social-item--facebook {
+    color: #ffffff !important;
+    background: #3b5998;
+  }
+  .social-item--facebook.social-item--solid:hover,
+  .social-items--solid .social-item--facebook:hover {
+    color: #ffffff;
+    background: #344e86;
+    text-decoration: none;
+  }
+
+  .social-item--linkedin:hover {
+    color: #ffffff;
+    background: #007bb5;
+  }
+  .social-item--linkedin.social-item--solid,
+  .social-items--solid .social-item--linkedin {
+    color: #ffffff !important;
+    background: #007bb5;
+  }
+  .social-item--linkedin.social-item--solid:hover,
+  .social-items--solid .social-item--linkedin:hover {
+    color: #ffffff;
+    background: #006a9c;
+    text-decoration: none;
+  }
+
+  .social-item--twitter:hover {
+    color: #ffffff;
+    background: #2ba9e1;
+  }
+  .social-item--twitter.social-item--solid,
+  .social-items--solid .social-item--twitter {
+    color: #ffffff;
+    background: #2ba9e1;
+  }
+  .social-item--twitter.social-item--solid:hover,
+  .social-items--solid .social-item--twitter:hover {
+    color: #ffffff;
+    background: #1e9cd4;
+    text-decoration: none;
+  }
+
+  .social-item--gplus:hover {
+    color: #ffffff;
+    background: #b62c25;
+  }
+  .social-item--gplus.social-item--solid,
+  .social-items--solid .social-item--gplus {
+    color: #ffffff;
+    background: #b62c25;
+  }
+  .social-item--gplus.social-item--solid:hover,
+  .social-items--solid .social-item--gplus:hover {
+    color: #ffffff;
+    background: #a12721;
+    text-decoration: none;
+  }
+  .social-item--email:hover {
+    color: #ffffff;
+    background: #538a31;
+  }
+  .social-item--email.social-item--solid,
+  .social-items--solid .social-item--email {
+    color: #ffffff;
+    background: #538a31;
+  }
+  .social-item--email.social-item--solid:hover,
+  .social-items--solid .social-item--email:hover {
+    color: #ffffff;
+    background: #48772a;
+    text-decoration: none;
+  }
+
+  .social-item--print:hover {
+    color: #ffffff;
+    background: #777777;
+  }
+  .social-item--print.social-item--solid,
+  .social-items--solid .social-item--print {
+    color: #ffffff;
+    background: #777777;
+  }
+  .social-item--print.social-item--solid:hover,
+  .social-items--solid .social-item--print:hover {
+    color: #ffffff;
+    background: #6a6a6a;
+    text-decoration: none;
+  }
+
+  .social-item--reprint:hover {
+    color: #ffffff;
+    background: #777777;
+  }
+  .social-item--reprint.social-item--solid,
+  .social-items--solid .social-item--reprint {
+    color: #ffffff;
+    background: #777777;
+  }
+  .social-item--reprint.social-item--solid:hover,
+  .social-items--solid .social-item--reprint:hover {
+    color: #ffffff;
+    background: #6a6a6a;
+    text-decoration: none;
+  }
+
+  .social-item--comments:hover {
+    color: #ffffff;
+    background: #3e5d9f;
+  }
+  .social-item--comments.social-item--solid,
+  .social-items--solid .social-item--comments {
+    color: #ffffff;
+    background: #3e5d9f;
+  }
+  .social-item--comments.social-item--solid:hover,
+  .social-items--solid .social-item--comments:hover {
+    color: #ffffff;
+    background: #37538d;
+    text-decoration: none;
+  }
+  /*
+  .social-item--solid,
+  .social-item--solid:hover {
+      color: $white;
+  }
+  */
+
+  .sharing-tools {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+  .sharing-tools li {
+    width: auto;
+  }
+  .sharing-tools.sharing-tools--vertical {
+    float: left;
+  }
+  .sharing-tools.sharing-tools--vertical li {
+    margin-top: .5em;
+  }
+  .sharing-tools.sharing-tools--vertical li:first-child {
+    margin-top: 0;
+  }
+  .sharing-tools.sharing-tools--horizontal:before,
+  .sharing-tools.sharing-tools--horizontal:after {
+    content: " ";
+    display: table;
+  }
+  .sharing-tools.sharing-tools--horizontal:after {
+    clear: both;
+  }
+  .sharing-tools.sharing-tools--horizontal li {
+    float: left;
+    margin-left: .5em;
+  }
+  .sharing-tools.sharing-tools--horizontal li:first-child {
+    margin-left: 0;
+  }
+  .sharing-tools.sharing-tools--horizontal li.push-right {
+    float: right;
+  }
+  .sharing-tools.sharing-tools--seamless {
+    margin: 0;
+  }
+  .sharing-tools.sharing-tools--seamless li {
+    margin: 0;
+  }
+  .sharing-tools.social-items.social-items--inline li {
+    display: inline;
+    float: none;
+  }
+  .comment-anchor {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 2em;
+  }
+  .comment-anchor a {
+    display: block;
+  }
+
+  .icon-facebook.icon-facebook {
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  .icon-linkedin.icon-linkedin {
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  .icon-twitter.icon-twitter {
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  .icon-googleplus.icon-googleplus {
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  .icon-email.icon-email {
+    font-size: 16px;
+    color: #ffffff;
+  }
+}

@@ -14,7 +14,8 @@ requirejs.config({
         app: 'src/app',
         jquery: 'empty:', // jquery is already loaded
         underscore: 'lib/underscore',
-        backbone: 'lib/backbone'
+        backbone: 'lib/backbone',
+        zeroclipboard: 'lib/zeroclipboard/dist'
     }
 });
 

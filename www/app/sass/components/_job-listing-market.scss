@@ -1,0 +1,136 @@
+#market-landing {
+  overflow: auto;
+  h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  #searchQuery_form {
+    select {
+      height: 35px;
+    }
+  }
+
+  .module {
+    margin-top: 10px;
+  }
+
+  a.rss_icon:link, a.rss_icon:visited, a.rss_iconLeft:link, a.rss_iconLeft:visited, .videoAsset, .premiumEmbargoed, .groupSections {
+    background: transparent url("../img/iconsSprite.png") no-repeat scroll 0 0;
+  }
+
+  a.rss_iconLeft:link, a.rss_iconLeft:visited {
+    background-position: -17px -365px;
+    padding: 3px 0 7px 21px;
+  }
+
+  .item {
+    .module__title {
+      h2 {
+        margin-top: 35px;
+      }
+    }
+  }
+
+
+
+  .bannerAd {
+    margin-bottom: 20px;
+  }
+
+  .bannerAdWide {
+    text-align: center;
+  }
+
+  .primary {
+    h3 {
+      font-size: 22px;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    #ulc-items {
+      h4 {
+        font-size: 18px;
+      }
+
+      li {
+        border-bottom: 1px solid #eee;
+        color: #666;
+        line-height: 16px;
+        margin: 0 0 15px;
+      }
+
+      .play-icon {
+        background: transparent url("../img/iconsSprite.png") no-repeat scroll left -2398px;
+        height: 34px;
+        margin-left: 34px;
+        margin-top: 20px;
+        position: absolute;
+        text-indent: -9999px;
+        width: 32px;
+      }
+
+      .date {
+        display: block;
+        font-size: 12px;
+        margin-right: 4px;
+        margin-bottom: 3px;
+      }
+    }
+
+  }
+
+
+
+  .items-container h2 {
+    border-bottom: 1px solid #d1d1d1;
+    line-height: 15px;
+    margin-bottom: 0;
+    padding-bottom: 15px;
+  }
+
+  .jobsMore {
+    font-size: 12px;
+    text-align: right;
+  }
+
+  .jobsHeaderContainer {
+    background-color: #F4F4F4;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+
+  }
+
+  .ml-secondary {
+    background-color: #DFDFDF;
+    padding: 20px;
+    min-height: 100%;
+  }
+
+  .logo-div {
+    padding-top: .333em;
+
+  }
+
+  .featured-jobs-item {
+    p {
+      color: #434343;
+      margin-bottom: 0;
+    }
+  }
+
+  .right {
+    float: right;
+  }
+
+  .item__body {
+    ul {
+      font-size: 13px;
+      li {
+
+      }
+    }
+  }
+}
